@@ -1,0 +1,512 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MasterlibraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="MasterlibraryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CHITIET_NHAP" EntityType="MasterlibraryModel.CHITIET_NHAP" />
+    <EntitySet Name="CTHDs" EntityType="MasterlibraryModel.CTHD" />
+    <EntitySet Name="DAYKEs" EntityType="MasterlibraryModel.DAYKE" />
+    <EntitySet Name="GIOHANGs" EntityType="MasterlibraryModel.GIOHANG" />
+    <EntitySet Name="HOADONs" EntityType="MasterlibraryModel.HOADON" />
+    <EntitySet Name="KHACHHANGs" EntityType="MasterlibraryModel.KHACHHANG" />
+    <EntitySet Name="LOAISUCOes" EntityType="MasterlibraryModel.LOAISUCO" />
+    <EntitySet Name="LUATTHUVIENs" EntityType="MasterlibraryModel.LUATTHUVIEN" />
+    <EntitySet Name="NHAPKHOes" EntityType="MasterlibraryModel.NHAPKHO" />
+    <EntitySet Name="PHIEUMUONs" EntityType="MasterlibraryModel.PHIEUMUON" />
+    <EntitySet Name="PHIEUTHUs" EntityType="MasterlibraryModel.PHIEUTHU" />
+    <EntitySet Name="SACHes" EntityType="MasterlibraryModel.SACH" />
+    <EntitySet Name="SUCOes" EntityType="MasterlibraryModel.SUCO" />
+    <EntitySet Name="TANGs" EntityType="MasterlibraryModel.TANG" />
+    <EntitySet Name="TRANGTHAISCs" EntityType="MasterlibraryModel.TRANGTHAISC" />
+    <EntitySet Name="USERROLEs" EntityType="MasterlibraryModel.USERROLE" />
+    <AssociationSet Name="FK__CHITIET_NH__SOHD__73BA3083" Association="MasterlibraryModel.FK__CHITIET_NH__SOHD__73BA3083">
+      <End Role="NHAPKHO" EntitySet="NHAPKHOes" />
+      <End Role="CHITIET_NHAP" EntitySet="CHITIET_NHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__MAHD__6D0D32F4" Association="MasterlibraryModel.FK__CTHD__MAHD__6D0D32F4">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CTHD__MASACH__6E01572D" Association="MasterlibraryModel.FK__CTHD__MASACH__6E01572D">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DAYKE__IDTANG__6754599E" Association="MasterlibraryModel.FK__DAYKE__IDTANG__6754599E">
+      <End Role="TANG" EntitySet="TANGs" />
+      <End Role="DAYKE" EntitySet="DAYKEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SACH__VITRIDAY__66603565" Association="MasterlibraryModel.FK__SACH__VITRIDAY__66603565">
+      <End Role="DAYKE" EntitySet="DAYKEs" />
+      <End Role="SACH" EntitySet="SACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GIOHANG__MAKH__778AC167" Association="MasterlibraryModel.FK__GIOHANG__MAKH__778AC167">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__GIOHANG__MASACH__76969D2E" Association="MasterlibraryModel.FK__GIOHANG__MASACH__76969D2E">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="GIOHANG" EntitySet="GIOHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOADON__MAKH__6A30C649" Association="MasterlibraryModel.FK__HOADON__MAKH__6A30C649">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__KHACHHANG__IDROL__5EBF139D" Association="MasterlibraryModel.FK__KHACHHANG__IDROL__5EBF139D">
+      <End Role="USERROLE" EntitySet="USERROLEs" />
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NHAPKHO__MANV__70DDC3D8" Association="MasterlibraryModel.FK__NHAPKHO__MANV__70DDC3D8">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="NHAPKHO" EntitySet="NHAPKHOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUMUON__MAKH__02FC7413" Association="MasterlibraryModel.FK__PHIEUMUON__MAKH__02FC7413">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTHU__MAKH__06CD04F7" Association="MasterlibraryModel.FK__PHIEUTHU__MAKH__06CD04F7">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SUCO__MAKH__7E37BEF6" Association="MasterlibraryModel.FK__SUCO__MAKH__7E37BEF6">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="SUCO" EntitySet="SUCOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SUCO__MALSC__7F2BE32F" Association="MasterlibraryModel.FK__SUCO__MALSC__7F2BE32F">
+      <End Role="LOAISUCO" EntitySet="LOAISUCOes" />
+      <End Role="SUCO" EntitySet="SUCOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUMUON__MASAC__03F0984C" Association="MasterlibraryModel.FK__PHIEUMUON__MASAC__03F0984C">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="PHIEUMUON" EntitySet="PHIEUMUONs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHIEUTHU__MASACH__07C12930" Association="MasterlibraryModel.FK__PHIEUTHU__MASACH__07C12930">
+      <End Role="SACH" EntitySet="SACHes" />
+      <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SACH__VITRITANG__656C112C" Association="MasterlibraryModel.FK__SACH__VITRITANG__656C112C">
+      <End Role="TANG" EntitySet="TANGs" />
+      <End Role="SACH" EntitySet="SACHes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SUCO__MATTSC__00200768" Association="MasterlibraryModel.FK__SUCO__MATTSC__00200768">
+      <End Role="TRANGTHAISC" EntitySet="TRANGTHAISCs" />
+      <End Role="SUCO" EntitySet="SUCOes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CHITIET_NHAP">
+    <Key>
+      <PropertyRef Name="SOHD" />
+      <PropertyRef Name="TENSACH" />
+      <PropertyRef Name="NXB" />
+      <PropertyRef Name="TACGIA" />
+    </Key>
+    <Property Name="SOHD" Type="Int32" Nullable="false" />
+    <Property Name="TENSACH" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NXB" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TACGIA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SL" Type="Int32" />
+    <Property Name="GIANHAP" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="GIABAN" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="NHAPKHO" Relationship="MasterlibraryModel.FK__CHITIET_NH__SOHD__73BA3083" FromRole="CHITIET_NHAP" ToRole="NHAPKHO" />
+  </EntityType>
+  <EntityType Name="CTHD">
+    <Key>
+      <PropertyRef Name="MAHD" />
+      <PropertyRef Name="MASACH" />
+    </Key>
+    <Property Name="MAHD" Type="Int32" Nullable="false" />
+    <Property Name="MASACH" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <NavigationProperty Name="HOADON" Relationship="MasterlibraryModel.FK__CTHD__MAHD__6D0D32F4" FromRole="CTHD" ToRole="HOADON" />
+    <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__CTHD__MASACH__6E01572D" FromRole="CTHD" ToRole="SACH" />
+  </EntityType>
+  <EntityType Name="DAYKE">
+    <Key>
+      <PropertyRef Name="MADAY" />
+    </Key>
+    <Property Name="MADAY" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENDAY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDTANG" Type="Int32" />
+    <Property Name="ISDELETE" Type="Boolean" />
+    <NavigationProperty Name="TANG" Relationship="MasterlibraryModel.FK__DAYKE__IDTANG__6754599E" FromRole="DAYKE" ToRole="TANG" />
+    <NavigationProperty Name="SACHes" Relationship="MasterlibraryModel.FK__SACH__VITRIDAY__66603565" FromRole="DAYKE" ToRole="SACH" />
+  </EntityType>
+  <EntityType Name="GIOHANG">
+    <Key>
+      <PropertyRef Name="MASACH" />
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MASACH" Type="Int32" Nullable="false" />
+    <Property Name="MAKH" Type="Int32" Nullable="false" />
+    <Property Name="SOLUONGHT" Type="Int32" />
+    <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__GIOHANG__MAKH__778AC167" FromRole="GIOHANG" ToRole="KHACHHANG" />
+    <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__GIOHANG__MASACH__76969D2E" FromRole="GIOHANG" ToRole="SACH" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="MAHD" />
+    </Key>
+    <Property Name="MAHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NGHD" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="TRIGIA" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="CTHDs" Relationship="MasterlibraryModel.FK__CTHD__MAHD__6D0D32F4" FromRole="HOADON" ToRole="CTHD" />
+    <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__HOADON__MAKH__6A30C649" FromRole="HOADON" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USERPASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IDROLE" Type="Int32" />
+    <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ISEXIST" Type="Int32" />
+    <NavigationProperty Name="GIOHANGs" Relationship="MasterlibraryModel.FK__GIOHANG__MAKH__778AC167" FromRole="KHACHHANG" ToRole="GIOHANG" />
+    <NavigationProperty Name="HOADONs" Relationship="MasterlibraryModel.FK__HOADON__MAKH__6A30C649" FromRole="KHACHHANG" ToRole="HOADON" />
+    <NavigationProperty Name="USERROLE" Relationship="MasterlibraryModel.FK__KHACHHANG__IDROL__5EBF139D" FromRole="KHACHHANG" ToRole="USERROLE" />
+    <NavigationProperty Name="NHAPKHOes" Relationship="MasterlibraryModel.FK__NHAPKHO__MANV__70DDC3D8" FromRole="KHACHHANG" ToRole="NHAPKHO" />
+    <NavigationProperty Name="PHIEUMUONs" Relationship="MasterlibraryModel.FK__PHIEUMUON__MAKH__02FC7413" FromRole="KHACHHANG" ToRole="PHIEUMUON" />
+    <NavigationProperty Name="PHIEUTHUs" Relationship="MasterlibraryModel.FK__PHIEUTHU__MAKH__06CD04F7" FromRole="KHACHHANG" ToRole="PHIEUTHU" />
+    <NavigationProperty Name="SUCOes" Relationship="MasterlibraryModel.FK__SUCO__MAKH__7E37BEF6" FromRole="KHACHHANG" ToRole="SUCO" />
+  </EntityType>
+  <EntityType Name="LOAISUCO">
+    <Key>
+      <PropertyRef Name="MALSC" />
+    </Key>
+    <Property Name="MALSC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENLSC" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SUCOes" Relationship="MasterlibraryModel.FK__SUCO__MALSC__7F2BE32F" FromRole="LOAISUCO" ToRole="SUCO" />
+  </EntityType>
+  <EntityType Name="LUATTHUVIEN">
+    <Key>
+      <PropertyRef Name="MALUAT" />
+    </Key>
+    <Property Name="MALUAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SONGAYMUON" Type="Int32" />
+    <Property Name="TIENTRASACHMUONMOTNGAY" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="NHAPKHO">
+    <Key>
+      <PropertyRef Name="SOHD" />
+    </Key>
+    <Property Name="SOHD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MANV" Type="Int32" />
+    <Property Name="NGNHAP" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TRIGIA" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="CHITIET_NHAP" Relationship="MasterlibraryModel.FK__CHITIET_NH__SOHD__73BA3083" FromRole="NHAPKHO" ToRole="CHITIET_NHAP" />
+    <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__NHAPKHO__MANV__70DDC3D8" FromRole="NHAPKHO" ToRole="KHACHHANG" />
+  </EntityType>
+  <EntityType Name="PHIEUMUON">
+    <Key>
+      <PropertyRef Name="MAPHIEUMUON" />
+    </Key>
+    <Property Name="MAPHIEUMUON" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="MASACH" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="NGAYHETHAN" Type="DateTime" Precision="0" />
+    <Property Name="NGAYMUON" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__PHIEUMUON__MAKH__02FC7413" FromRole="PHIEUMUON" ToRole="KHACHHANG" />
+    <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__PHIEUMUON__MASAC__03F0984C" FromRole="PHIEUMUON" ToRole="SACH" />
+  </EntityType>
+  <EntityType Name="PHIEUTHU">
+    <Key>
+      <PropertyRef Name="MAPHIEUTHU" />
+    </Key>
+    <Property Name="MAPHIEUTHU" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="MASACH" Type="Int32" />
+    <Property Name="SOLUONG" Type="Int32" />
+    <Property Name="NGAYHETHAN" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TIENTREMOTNGAY" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SOLUONGHONG" Type="Int32" />
+    <Property Name="TIENPHATHONG" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TONGTIEN" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="NGAYTHU" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__PHIEUTHU__MAKH__06CD04F7" FromRole="PHIEUTHU" ToRole="KHACHHANG" />
+    <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__PHIEUTHU__MASACH__07C12930" FromRole="PHIEUTHU" ToRole="SACH" />
+  </EntityType>
+  <EntityType Name="SACH">
+    <Key>
+      <PropertyRef Name="MASACH" />
+    </Key>
+    <Property Name="MASACH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENSACH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TACGIA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NAMXB" Type="Int32" />
+    <Property Name="SL" Type="Int32" />
+    <Property Name="GIA" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="IMAGESOURCE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="THELOAI" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VITRITANG" Type="Int32" />
+    <Property Name="VITRIDAY" Type="Int32" />
+    <Property Name="NXB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ISEXIST" Type="Int32" />
+    <NavigationProperty Name="CTHDs" Relationship="MasterlibraryModel.FK__CTHD__MASACH__6E01572D" FromRole="SACH" ToRole="CTHD" />
+    <NavigationProperty Name="DAYKE" Relationship="MasterlibraryModel.FK__SACH__VITRIDAY__66603565" FromRole="SACH" ToRole="DAYKE" />
+    <NavigationProperty Name="GIOHANGs" Relationship="MasterlibraryModel.FK__GIOHANG__MASACH__76969D2E" FromRole="SACH" ToRole="GIOHANG" />
+    <NavigationProperty Name="PHIEUMUONs" Relationship="MasterlibraryModel.FK__PHIEUMUON__MASAC__03F0984C" FromRole="SACH" ToRole="PHIEUMUON" />
+    <NavigationProperty Name="PHIEUTHUs" Relationship="MasterlibraryModel.FK__PHIEUTHU__MASACH__07C12930" FromRole="SACH" ToRole="PHIEUTHU" />
+    <NavigationProperty Name="TANG" Relationship="MasterlibraryModel.FK__SACH__VITRITANG__656C112C" FromRole="SACH" ToRole="TANG" />
+  </EntityType>
+  <EntityType Name="SUCO">
+    <Key>
+      <PropertyRef Name="MASC" />
+    </Key>
+    <Property Name="MASC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAKH" Type="Int32" />
+    <Property Name="TIEUDE" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MOTA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IMG" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CHIPHI" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="THOIGIANBAOCAO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="MALSC" Type="Int32" />
+    <Property Name="MATTSC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__SUCO__MAKH__7E37BEF6" FromRole="SUCO" ToRole="KHACHHANG" />
+    <NavigationProperty Name="LOAISUCO" Relationship="MasterlibraryModel.FK__SUCO__MALSC__7F2BE32F" FromRole="SUCO" ToRole="LOAISUCO" />
+    <NavigationProperty Name="TRANGTHAISC" Relationship="MasterlibraryModel.FK__SUCO__MATTSC__00200768" FromRole="SUCO" ToRole="TRANGTHAISC" />
+  </EntityType>
+  <EntityType Name="TANG">
+    <Key>
+      <PropertyRef Name="MATANG" />
+    </Key>
+    <Property Name="MATANG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TENTANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DAYKEs" Relationship="MasterlibraryModel.FK__DAYKE__IDTANG__6754599E" FromRole="TANG" ToRole="DAYKE" />
+    <NavigationProperty Name="SACHes" Relationship="MasterlibraryModel.FK__SACH__VITRITANG__656C112C" FromRole="TANG" ToRole="SACH" />
+  </EntityType>
+  <EntityType Name="TRANGTHAISC">
+    <Key>
+      <PropertyRef Name="MATT" />
+    </Key>
+    <Property Name="MATT" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TENTT" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SUCOes" Relationship="MasterlibraryModel.FK__SUCO__MATTSC__00200768" FromRole="TRANGTHAISC" ToRole="SUCO" />
+  </EntityType>
+  <EntityType Name="USERROLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DISPLAYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="KHACHHANGs" Relationship="MasterlibraryModel.FK__KHACHHANG__IDROL__5EBF139D" FromRole="USERROLE" ToRole="KHACHHANG" />
+  </EntityType>
+  <Association Name="FK__CHITIET_NH__SOHD__73BA3083">
+    <End Type="MasterlibraryModel.NHAPKHO" Role="NHAPKHO" Multiplicity="1" />
+    <End Type="MasterlibraryModel.CHITIET_NHAP" Role="CHITIET_NHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHAPKHO">
+        <PropertyRef Name="SOHD" />
+      </Principal>
+      <Dependent Role="CHITIET_NHAP">
+        <PropertyRef Name="SOHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHD__MAHD__6D0D32F4">
+    <End Type="MasterlibraryModel.HOADON" Role="HOADON" Multiplicity="1" />
+    <End Type="MasterlibraryModel.CTHD" Role="CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="MAHD" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="MAHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CTHD__MASACH__6E01572D">
+    <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="1" />
+    <End Type="MasterlibraryModel.CTHD" Role="CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DAYKE__IDTANG__6754599E">
+    <End Type="MasterlibraryModel.TANG" Role="TANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.DAYKE" Role="DAYKE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TANG">
+        <PropertyRef Name="MATANG" />
+      </Principal>
+      <Dependent Role="DAYKE">
+        <PropertyRef Name="IDTANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SACH__VITRIDAY__66603565">
+    <End Type="MasterlibraryModel.DAYKE" Role="DAYKE" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAYKE">
+        <PropertyRef Name="MADAY" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="VITRIDAY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GIOHANG__MAKH__778AC167">
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="1" />
+    <End Type="MasterlibraryModel.GIOHANG" Role="GIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="GIOHANG">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__GIOHANG__MASACH__76969D2E">
+    <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="1" />
+    <End Type="MasterlibraryModel.GIOHANG" Role="GIOHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="GIOHANG">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOADON__MAKH__6A30C649">
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.HOADON" Role="HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__KHACHHANG__IDROL__5EBF139D">
+    <End Type="MasterlibraryModel.USERROLE" Role="USERROLE" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERROLE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="KHACHHANG">
+        <PropertyRef Name="IDROLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NHAPKHO__MANV__70DDC3D8">
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.NHAPKHO" Role="NHAPKHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="NHAPKHO">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUMUON__MAKH__02FC7413">
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.PHIEUMUON" Role="PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="PHIEUMUON">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTHU__MAKH__06CD04F7">
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.PHIEUTHU" Role="PHIEUTHU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="PHIEUTHU">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SUCO__MAKH__7E37BEF6">
+    <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.SUCO" Role="SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SUCO__MALSC__7F2BE32F">
+    <End Type="MasterlibraryModel.LOAISUCO" Role="LOAISUCO" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.SUCO" Role="SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAISUCO">
+        <PropertyRef Name="MALSC" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="MALSC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUMUON__MASAC__03F0984C">
+    <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.PHIEUMUON" Role="PHIEUMUON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="PHIEUMUON">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHIEUTHU__MASACH__07C12930">
+    <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.PHIEUTHU" Role="PHIEUTHU" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="PHIEUTHU">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SACH__VITRITANG__656C112C">
+    <End Type="MasterlibraryModel.TANG" Role="TANG" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TANG">
+        <PropertyRef Name="MATANG" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="VITRITANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SUCO__MATTSC__00200768">
+    <End Type="MasterlibraryModel.TRANGTHAISC" Role="TRANGTHAISC" Multiplicity="0..1" />
+    <End Type="MasterlibraryModel.SUCO" Role="SUCO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TRANGTHAISC">
+        <PropertyRef Name="MATT" />
+      </Principal>
+      <Dependent Role="SUCO">
+        <PropertyRef Name="MATTSC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

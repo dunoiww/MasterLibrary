@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MasterlibraryModelStoreContainer" CdmEntityContainer="MasterlibraryEntities">
+    <EntitySetMapping Name="CHITIET_NHAP">
+      <EntityTypeMapping TypeName="MasterlibraryModel.CHITIET_NHAP">
+        <MappingFragment StoreEntitySet="CHITIET_NHAP">
+          <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+          <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+          <ScalarProperty Name="NXB" ColumnName="NXB" />
+          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+          <ScalarProperty Name="SOHD" ColumnName="SOHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CTHDs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.CTHD">
+        <MappingFragment StoreEntitySet="CTHD">
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DAYKEs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.DAYKE">
+        <MappingFragment StoreEntitySet="DAYKE">
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="IDTANG" ColumnName="IDTANG" />
+          <ScalarProperty Name="TENDAY" ColumnName="TENDAY" />
+          <ScalarProperty Name="MADAY" ColumnName="MADAY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GIOHANGs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.GIOHANG">
+        <MappingFragment StoreEntitySet="GIOHANG">
+          <ScalarProperty Name="SOLUONGHT" ColumnName="SOLUONGHT" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="NGHD" ColumnName="NGHD" />
+          <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KHACHHANGs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.KHACHHANG">
+        <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+          <ScalarProperty Name="USERPASSWORD" ColumnName="USERPASSWORD" />
+          <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOAISUCOes">
+      <EntityTypeMapping TypeName="MasterlibraryModel.LOAISUCO">
+        <MappingFragment StoreEntitySet="LOAISUCO">
+          <ScalarProperty Name="TENLSC" ColumnName="TENLSC" />
+          <ScalarProperty Name="MALSC" ColumnName="MALSC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LUATTHUVIENs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.LUATTHUVIEN">
+        <MappingFragment StoreEntitySet="LUATTHUVIEN">
+          <ScalarProperty Name="TIENTRASACHMUONMOTNGAY" ColumnName="TIENTRASACHMUONMOTNGAY" />
+          <ScalarProperty Name="SONGAYMUON" ColumnName="SONGAYMUON" />
+          <ScalarProperty Name="MALUAT" ColumnName="MALUAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHAPKHOes">
+      <EntityTypeMapping TypeName="MasterlibraryModel.NHAPKHO">
+        <MappingFragment StoreEntitySet="NHAPKHO">
+          <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
+          <ScalarProperty Name="NGNHAP" ColumnName="NGNHAP" />
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="SOHD" ColumnName="SOHD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUMUONs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.PHIEUMUON">
+        <MappingFragment StoreEntitySet="PHIEUMUON">
+          <ScalarProperty Name="NGAYMUON" ColumnName="NGAYMUON" />
+          <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MAPHIEUMUON" ColumnName="MAPHIEUMUON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHIEUTHUs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.PHIEUTHU">
+        <MappingFragment StoreEntitySet="PHIEUTHU">
+          <ScalarProperty Name="NGAYTHU" ColumnName="NGAYTHU" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="TIENPHATHONG" ColumnName="TIENPHATHONG" />
+          <ScalarProperty Name="SOLUONGHONG" ColumnName="SOLUONGHONG" />
+          <ScalarProperty Name="TIENTREMOTNGAY" ColumnName="TIENTREMOTNGAY" />
+          <ScalarProperty Name="NGAYHETHAN" ColumnName="NGAYHETHAN" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MAPHIEUTHU" ColumnName="MAPHIEUTHU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SACHes">
+      <EntityTypeMapping TypeName="MasterlibraryModel.SACH">
+        <MappingFragment StoreEntitySet="SACH">
+          <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
+          <ScalarProperty Name="NXB" ColumnName="NXB" />
+          <ScalarProperty Name="VITRIDAY" ColumnName="VITRIDAY" />
+          <ScalarProperty Name="VITRITANG" ColumnName="VITRITANG" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="THELOAI" ColumnName="THELOAI" />
+          <ScalarProperty Name="IMAGESOURCE" ColumnName="IMAGESOURCE" />
+          <ScalarProperty Name="GIA" ColumnName="GIA" />
+          <ScalarProperty Name="SL" ColumnName="SL" />
+          <ScalarProperty Name="NAMXB" ColumnName="NAMXB" />
+          <ScalarProperty Name="TACGIA" ColumnName="TACGIA" />
+          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUCOes">
+      <EntityTypeMapping TypeName="MasterlibraryModel.SUCO">
+        <MappingFragment StoreEntitySet="SUCO">
+          <ScalarProperty Name="MATTSC" ColumnName="MATTSC" />
+          <ScalarProperty Name="MALSC" ColumnName="MALSC" />
+          <ScalarProperty Name="THOIGIANBAOCAO" ColumnName="THOIGIANBAOCAO" />
+          <ScalarProperty Name="CHIPHI" ColumnName="CHIPHI" />
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+          <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="MASC" ColumnName="MASC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TANGs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.TANG">
+        <MappingFragment StoreEntitySet="TANG">
+          <ScalarProperty Name="TENTANG" ColumnName="TENTANG" />
+          <ScalarProperty Name="MATANG" ColumnName="MATANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TRANGTHAISCs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.TRANGTHAISC">
+        <MappingFragment StoreEntitySet="TRANGTHAISC">
+          <ScalarProperty Name="TENTT" ColumnName="TENTT" />
+          <ScalarProperty Name="MATT" ColumnName="MATT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERROLEs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.USERROLE">
+        <MappingFragment StoreEntitySet="USERROLE">
+          <ScalarProperty Name="DISPLAYNAME" ColumnName="DISPLAYNAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
