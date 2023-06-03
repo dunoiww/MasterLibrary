@@ -45,6 +45,8 @@
     <EntitySetMapping Name="HOADONs">
       <EntityTypeMapping TypeName="MasterlibraryModel.HOADON">
         <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="ISRECEIVED" ColumnName="ISRECEIVED" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
           <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
           <ScalarProperty Name="MAKH" ColumnName="MAKH" />
           <ScalarProperty Name="NGHD" ColumnName="NGHD" />
@@ -55,6 +57,7 @@
     <EntitySetMapping Name="KHACHHANGs">
       <EntityTypeMapping TypeName="MasterlibraryModel.KHACHHANG">
         <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="CHITIEU" ColumnName="CHITIEU" />
           <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
@@ -77,6 +80,7 @@
     <EntitySetMapping Name="LUATTHUVIENs">
       <EntityTypeMapping TypeName="MasterlibraryModel.LUATTHUVIEN">
         <MappingFragment StoreEntitySet="LUATTHUVIEN">
+          <ScalarProperty Name="SOSACHTOIDA" ColumnName="SOSACHTOIDA" />
           <ScalarProperty Name="TIENTRASACHMUONMOTNGAY" ColumnName="TIENTRASACHMUONMOTNGAY" />
           <ScalarProperty Name="SONGAYMUON" ColumnName="SONGAYMUON" />
           <ScalarProperty Name="MALUAT" ColumnName="MALUAT" />
@@ -121,9 +125,22 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="REVIEWs">
+      <EntityTypeMapping TypeName="MasterlibraryModel.REVIEW">
+        <MappingFragment StoreEntitySet="REVIEW">
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+          <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+          <ScalarProperty Name="MARV" ColumnName="MARV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="SACHes">
       <EntityTypeMapping TypeName="MasterlibraryModel.SACH">
         <MappingFragment StoreEntitySet="SACH">
+          <ScalarProperty Name="AVGRATING" ColumnName="AVGRATING" />
+          <ScalarProperty Name="RATING" ColumnName="RATING" />
+          <ScalarProperty Name="SOLUONGDANHGIA" ColumnName="SOLUONGDANHGIA" />
           <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
           <ScalarProperty Name="NXB" ColumnName="NXB" />
           <ScalarProperty Name="VITRIDAY" ColumnName="VITRIDAY" />
@@ -152,6 +169,17 @@
           <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
           <ScalarProperty Name="MAKH" ColumnName="MAKH" />
           <ScalarProperty Name="MASC" ColumnName="MASC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="MasterlibraryModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

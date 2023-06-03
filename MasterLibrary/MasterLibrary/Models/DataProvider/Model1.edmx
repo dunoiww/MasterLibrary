@@ -55,6 +55,8 @@
           <Property Name="NGHD" Type="smalldatetime" Nullable="false" />
           <Property Name="MAKH" Type="int" />
           <Property Name="TRIGIA" Type="money" />
+          <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="100" />
+          <Property Name="ISRECEIVED" Type="int" />
         </EntityType>
         <EntityType Name="KHACHHANG">
           <Key>
@@ -68,6 +70,7 @@
           <Property Name="IDROLE" Type="int" />
           <Property Name="DIACHI" Type="nvarchar(max)" />
           <Property Name="ISEXIST" Type="int" />
+          <Property Name="CHITIEU" Type="money" />
         </EntityType>
         <EntityType Name="LOAISUCO">
           <Key>
@@ -83,6 +86,7 @@
           <Property Name="MALUAT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SONGAYMUON" Type="int" />
           <Property Name="TIENTRASACHMUONMOTNGAY" Type="money" />
+          <Property Name="SOSACHTOIDA" Type="int" />
         </EntityType>
         <EntityType Name="NHAPKHO">
           <Key>
@@ -119,6 +123,15 @@
           <Property Name="TONGTIEN" Type="money" />
           <Property Name="NGAYTHU" Type="smalldatetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="MARV" />
+          </Key>
+          <Property Name="MARV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NHANXET" Type="nvarchar" MaxLength="500" />
+          <Property Name="MAKH" Type="int" />
+          <Property Name="MASACH" Type="int" />
+        </EntityType>
         <EntityType Name="SACH">
           <Key>
             <PropertyRef Name="MASACH" />
@@ -136,6 +149,9 @@
           <Property Name="VITRIDAY" Type="int" />
           <Property Name="NXB" Type="nvarchar" MaxLength="100" />
           <Property Name="ISEXIST" Type="int" />
+          <Property Name="SOLUONGDANHGIA" Type="int" />
+          <Property Name="RATING" Type="float" />
+          <Property Name="AVGRATING" Type="float" />
         </EntityType>
         <EntityType Name="SUCO">
           <Key>
@@ -150,6 +166,16 @@
           <Property Name="THOIGIANBAOCAO" Type="smalldatetime" Nullable="false" />
           <Property Name="MALSC" Type="int" />
           <Property Name="MATTSC" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TANG">
           <Key>
@@ -328,6 +354,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__REVIEW__MAKH__17036CC0">
+          <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEW__MASACH__17F790F9">
+          <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
+          <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SACH__VITRIDAY__66603565">
           <End Role="DAYKE" Type="Self.DAYKE" Multiplicity="0..1" />
           <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
@@ -400,8 +450,10 @@
           <EntitySet Name="NHAPKHO" EntityType="Self.NHAPKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="REVIEW" EntityType="Self.REVIEW" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SUCO" EntityType="Self.SUCO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TANG" EntityType="Self.TANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TRANGTHAISC" EntityType="Self.TRANGTHAISC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERROLE" EntityType="Self.USERROLE" Schema="dbo" store:Type="Tables" />
@@ -457,6 +509,14 @@
             <End Role="SACH" EntitySet="SACH" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
           </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__MAKH__17036CC0" Association="Self.FK__REVIEW__MAKH__17036CC0">
+            <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+            <End Role="REVIEW" EntitySet="REVIEW" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__MASACH__17F790F9" Association="Self.FK__REVIEW__MASACH__17F790F9">
+            <End Role="SACH" EntitySet="SACH" />
+            <End Role="REVIEW" EntitySet="REVIEW" />
+          </AssociationSet>
           <AssociationSet Name="FK__SACH__VITRIDAY__66603565" Association="Self.FK__SACH__VITRIDAY__66603565">
             <End Role="DAYKE" EntitySet="DAYKE" />
             <End Role="SACH" EntitySet="SACH" />
@@ -494,8 +554,10 @@
           <EntitySet Name="NHAPKHOes" EntityType="MasterlibraryModel.NHAPKHO" />
           <EntitySet Name="PHIEUMUONs" EntityType="MasterlibraryModel.PHIEUMUON" />
           <EntitySet Name="PHIEUTHUs" EntityType="MasterlibraryModel.PHIEUTHU" />
+          <EntitySet Name="REVIEWs" EntityType="MasterlibraryModel.REVIEW" />
           <EntitySet Name="SACHes" EntityType="MasterlibraryModel.SACH" />
           <EntitySet Name="SUCOes" EntityType="MasterlibraryModel.SUCO" />
+          <EntitySet Name="sysdiagrams" EntityType="MasterlibraryModel.sysdiagram" />
           <EntitySet Name="TANGs" EntityType="MasterlibraryModel.TANG" />
           <EntitySet Name="TRANGTHAISCs" EntityType="MasterlibraryModel.TRANGTHAISC" />
           <EntitySet Name="USERROLEs" EntityType="MasterlibraryModel.USERROLE" />
@@ -547,6 +609,10 @@
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
           </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__MAKH__17036CC0" Association="MasterlibraryModel.FK__REVIEW__MAKH__17036CC0">
+            <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+            <End Role="REVIEW" EntitySet="REVIEWs" />
+          </AssociationSet>
           <AssociationSet Name="FK__SUCO__MAKH__7E37BEF6" Association="MasterlibraryModel.FK__SUCO__MAKH__7E37BEF6">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="SUCO" EntitySet="SUCOes" />
@@ -562,6 +628,10 @@
           <AssociationSet Name="FK__PHIEUTHU__MASACH__07C12930" Association="MasterlibraryModel.FK__PHIEUTHU__MASACH__07C12930">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="PHIEUTHU" EntitySet="PHIEUTHUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__REVIEW__MASACH__17F790F9" Association="MasterlibraryModel.FK__REVIEW__MASACH__17F790F9">
+            <End Role="SACH" EntitySet="SACHes" />
+            <End Role="REVIEW" EntitySet="REVIEWs" />
           </AssociationSet>
           <AssociationSet Name="FK__SACH__VITRITANG__656C112C" Association="MasterlibraryModel.FK__SACH__VITRITANG__656C112C">
             <End Role="TANG" EntitySet="TANGs" />
@@ -629,6 +699,8 @@
           <Property Name="NGHD" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MAKH" Type="Int32" />
           <Property Name="TRIGIA" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ISRECEIVED" Type="Int32" />
           <NavigationProperty Name="CTHDs" Relationship="MasterlibraryModel.FK__CTHD__MAHD__6D0D32F4" FromRole="HOADON" ToRole="CTHD" />
           <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__HOADON__MAKH__6A30C649" FromRole="HOADON" ToRole="KHACHHANG" />
         </EntityType>
@@ -644,12 +716,14 @@
           <Property Name="IDROLE" Type="Int32" />
           <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ISEXIST" Type="Int32" />
+          <Property Name="CHITIEU" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="GIOHANGs" Relationship="MasterlibraryModel.FK__GIOHANG__MAKH__778AC167" FromRole="KHACHHANG" ToRole="GIOHANG" />
           <NavigationProperty Name="HOADONs" Relationship="MasterlibraryModel.FK__HOADON__MAKH__6A30C649" FromRole="KHACHHANG" ToRole="HOADON" />
           <NavigationProperty Name="USERROLE" Relationship="MasterlibraryModel.FK__KHACHHANG__IDROL__5EBF139D" FromRole="KHACHHANG" ToRole="USERROLE" />
           <NavigationProperty Name="NHAPKHOes" Relationship="MasterlibraryModel.FK__NHAPKHO__MANV__70DDC3D8" FromRole="KHACHHANG" ToRole="NHAPKHO" />
           <NavigationProperty Name="PHIEUMUONs" Relationship="MasterlibraryModel.FK__PHIEUMUON__MAKH__02FC7413" FromRole="KHACHHANG" ToRole="PHIEUMUON" />
           <NavigationProperty Name="PHIEUTHUs" Relationship="MasterlibraryModel.FK__PHIEUTHU__MAKH__06CD04F7" FromRole="KHACHHANG" ToRole="PHIEUTHU" />
+          <NavigationProperty Name="REVIEWs" Relationship="MasterlibraryModel.FK__REVIEW__MAKH__17036CC0" FromRole="KHACHHANG" ToRole="REVIEW" />
           <NavigationProperty Name="SUCOes" Relationship="MasterlibraryModel.FK__SUCO__MAKH__7E37BEF6" FromRole="KHACHHANG" ToRole="SUCO" />
         </EntityType>
         <EntityType Name="LOAISUCO">
@@ -667,6 +741,7 @@
           <Property Name="MALUAT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SONGAYMUON" Type="Int32" />
           <Property Name="TIENTRASACHMUONMOTNGAY" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SOSACHTOIDA" Type="Int32" />
         </EntityType>
         <EntityType Name="NHAPKHO">
           <Key>
@@ -709,6 +784,17 @@
           <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__PHIEUTHU__MAKH__06CD04F7" FromRole="PHIEUTHU" ToRole="KHACHHANG" />
           <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__PHIEUTHU__MASACH__07C12930" FromRole="PHIEUTHU" ToRole="SACH" />
         </EntityType>
+        <EntityType Name="REVIEW">
+          <Key>
+            <PropertyRef Name="MARV" />
+          </Key>
+          <Property Name="MARV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NHANXET" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MAKH" Type="Int32" />
+          <Property Name="MASACH" Type="Int32" />
+          <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__REVIEW__MAKH__17036CC0" FromRole="REVIEW" ToRole="KHACHHANG" />
+          <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__REVIEW__MASACH__17F790F9" FromRole="REVIEW" ToRole="SACH" />
+        </EntityType>
         <EntityType Name="SACH">
           <Key>
             <PropertyRef Name="MASACH" />
@@ -726,11 +812,15 @@
           <Property Name="VITRIDAY" Type="Int32" />
           <Property Name="NXB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="ISEXIST" Type="Int32" />
+          <Property Name="SOLUONGDANHGIA" Type="Int32" />
+          <Property Name="RATING" Type="Double" />
+          <Property Name="AVGRATING" Type="Double" />
           <NavigationProperty Name="CTHDs" Relationship="MasterlibraryModel.FK__CTHD__MASACH__6E01572D" FromRole="SACH" ToRole="CTHD" />
           <NavigationProperty Name="DAYKE" Relationship="MasterlibraryModel.FK__SACH__VITRIDAY__66603565" FromRole="SACH" ToRole="DAYKE" />
           <NavigationProperty Name="GIOHANGs" Relationship="MasterlibraryModel.FK__GIOHANG__MASACH__76969D2E" FromRole="SACH" ToRole="GIOHANG" />
           <NavigationProperty Name="PHIEUMUONs" Relationship="MasterlibraryModel.FK__PHIEUMUON__MASAC__03F0984C" FromRole="SACH" ToRole="PHIEUMUON" />
           <NavigationProperty Name="PHIEUTHUs" Relationship="MasterlibraryModel.FK__PHIEUTHU__MASACH__07C12930" FromRole="SACH" ToRole="PHIEUTHU" />
+          <NavigationProperty Name="REVIEWs" Relationship="MasterlibraryModel.FK__REVIEW__MASACH__17F790F9" FromRole="SACH" ToRole="REVIEW" />
           <NavigationProperty Name="TANG" Relationship="MasterlibraryModel.FK__SACH__VITRITANG__656C112C" FromRole="SACH" ToRole="TANG" />
         </EntityType>
         <EntityType Name="SUCO">
@@ -749,6 +839,16 @@
           <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__SUCO__MAKH__7E37BEF6" FromRole="SUCO" ToRole="KHACHHANG" />
           <NavigationProperty Name="LOAISUCO" Relationship="MasterlibraryModel.FK__SUCO__MALSC__7F2BE32F" FromRole="SUCO" ToRole="LOAISUCO" />
           <NavigationProperty Name="TRANGTHAISC" Relationship="MasterlibraryModel.FK__SUCO__MATTSC__00200768" FromRole="SUCO" ToRole="TRANGTHAISC" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TANG">
           <Key>
@@ -919,6 +1019,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__REVIEW__MAKH__17036CC0">
+          <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
+          <End Type="MasterlibraryModel.REVIEW" Role="REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHACHHANG">
+              <PropertyRef Name="MAKH" />
+            </Principal>
+            <Dependent Role="REVIEW">
+              <PropertyRef Name="MAKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__SUCO__MAKH__7E37BEF6">
           <End Type="MasterlibraryModel.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1" />
           <End Type="MasterlibraryModel.SUCO" Role="SUCO" Multiplicity="*" />
@@ -963,6 +1075,18 @@
               <PropertyRef Name="MASACH" />
             </Principal>
             <Dependent Role="PHIEUTHU">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__REVIEW__MASACH__17F790F9">
+          <End Type="MasterlibraryModel.SACH" Role="SACH" Multiplicity="0..1" />
+          <End Type="MasterlibraryModel.REVIEW" Role="REVIEW" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACH">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="REVIEW">
               <PropertyRef Name="MASACH" />
             </Dependent>
           </ReferentialConstraint>
@@ -1041,6 +1165,8 @@
           <EntitySetMapping Name="HOADONs">
             <EntityTypeMapping TypeName="MasterlibraryModel.HOADON">
               <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="ISRECEIVED" ColumnName="ISRECEIVED" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
                 <ScalarProperty Name="TRIGIA" ColumnName="TRIGIA" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="NGHD" ColumnName="NGHD" />
@@ -1051,6 +1177,7 @@
           <EntitySetMapping Name="KHACHHANGs">
             <EntityTypeMapping TypeName="MasterlibraryModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="CHITIEU" ColumnName="CHITIEU" />
                 <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="IDROLE" ColumnName="IDROLE" />
@@ -1073,6 +1200,7 @@
           <EntitySetMapping Name="LUATTHUVIENs">
             <EntityTypeMapping TypeName="MasterlibraryModel.LUATTHUVIEN">
               <MappingFragment StoreEntitySet="LUATTHUVIEN">
+                <ScalarProperty Name="SOSACHTOIDA" ColumnName="SOSACHTOIDA" />
                 <ScalarProperty Name="TIENTRASACHMUONMOTNGAY" ColumnName="TIENTRASACHMUONMOTNGAY" />
                 <ScalarProperty Name="SONGAYMUON" ColumnName="SONGAYMUON" />
                 <ScalarProperty Name="MALUAT" ColumnName="MALUAT" />
@@ -1117,9 +1245,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="REVIEWs">
+            <EntityTypeMapping TypeName="MasterlibraryModel.REVIEW">
+              <MappingFragment StoreEntitySet="REVIEW">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="MAKH" ColumnName="MAKH" />
+                <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />
+                <ScalarProperty Name="MARV" ColumnName="MARV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SACHes">
             <EntityTypeMapping TypeName="MasterlibraryModel.SACH">
               <MappingFragment StoreEntitySet="SACH">
+                <ScalarProperty Name="AVGRATING" ColumnName="AVGRATING" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="SOLUONGDANHGIA" ColumnName="SOLUONGDANHGIA" />
                 <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
                 <ScalarProperty Name="NXB" ColumnName="NXB" />
                 <ScalarProperty Name="VITRIDAY" ColumnName="VITRIDAY" />
@@ -1148,6 +1289,17 @@
                 <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="MASC" ColumnName="MASC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MasterlibraryModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -807,6 +807,8 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\C
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\InformationPage.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\RolePage.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\SettingPageAdmin.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\StatisticalPage\RankingStatistical.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\StatisticalPage\StatisticalMainPage.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\StatisticalPage\StatisticalPage.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\TroublePage\DetailTroubleAdmin.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\TroublePage\ProcessTrouble.g.cs
@@ -816,6 +818,9 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BookLocati
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BorrowBookPage\BorrowBookPage.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BuyBookPage\BuyBookPage.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BuyBookPage\DetailBookService.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\DeFinish.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\DeliveryPage.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\DeNotFinish.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\MainCustomerWindow.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\ReportTroublePage\AddRTrouble.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\ReportTroublePage\DetailTrouble.g.cs
@@ -865,6 +870,8 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\C
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\InformationPage.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\RolePage.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\SettingPage\SettingPageAdmin.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\StatisticalPage\RankingStatistical.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\StatisticalPage\StatisticalMainPage.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\StatisticalPage\StatisticalPage.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\TroublePage\DetailTroubleAdmin.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\TroublePage\ProcessTrouble.baml
@@ -874,6 +881,9 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BookLocati
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BorrowBookPage\BorrowBookPage.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BuyBookPage\BuyBookPage.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BuyBookPage\DetailBookService.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\DeFinish.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\DeliveryPage.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\DeNotFinish.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\MainCustomerWindow.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\ReportTroublePage\AddRTrouble.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\ReportTroublePage\DetailTrouble.baml
@@ -895,3 +905,5 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\MasterLibrary.csproj.Core
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\MasterLibrary.csproj.CopyComplete
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\MasterLibrary.exe
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\MasterLibrary.pdb
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\ReviewBook.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\ReviewBook.baml

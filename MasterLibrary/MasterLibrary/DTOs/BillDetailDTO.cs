@@ -12,5 +12,6 @@ namespace MasterLibrary.DTOs
         public int MaSach { get; set; }
         public int SoLuong { get; set; }
         public decimal GiaMoiCai { get; set; }
+        public string TenSach { get; set; }
     }
 }

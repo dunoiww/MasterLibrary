@@ -236,8 +236,21 @@
                                                FontSize="14"
                                                FontWeight="Bold"
                                                Foreground="#a47100"
-                                               TextAlignment="Left"
-                                               Padding="0,0,0,15"/>
+                                               TextAlignment="Left"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation ="Horizontal"
+                                                Margin="10,10,0,0">
+                                        <TextBlock Text="Đánh giá: "
+                                               FontSize="14"
+                                               Foreground="#3f2016"
+                                               TextAlignment="Left"/>
+
+                                        <materialDesign:RatingBar Value="{Binding AVGRATING}"
+                                                                  x:Name="BasicRatingBar" 
+                                                                  FontSize="15"
+                                                                  IsReadOnly="True"
+                                                                  Padding="0 0 0 15"/>
                                     </StackPanel>
                                 </StackPanel>
                                 <i:Interaction.Triggers>

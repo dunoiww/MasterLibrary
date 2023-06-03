@@ -52,6 +52,13 @@ namespace MasterLibrary.DTOs
             }
         } 
         public DateTime NGHD { get; set; }
+        public int ISRECEIVED { get; set; }
+        public string TRANGTHAI { get; set; }
+
+        public string TenSach { get; set; }
+        public int SoLuong { get; set; }
+
+        public int MASACH { get; set; }
 
 
         //sử dụng để gán thông tin cho hoá đơn bán hàng

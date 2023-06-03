@@ -17,5 +17,6 @@ namespace MasterLibrary.Models.DataProvider
         public int MALUAT { get; set; }
         public Nullable<int> SONGAYMUON { get; set; }
         public Nullable<decimal> TIENTRASACHMUONMOTNGAY { get; set; }
+        public Nullable<int> SOSACHTOIDA { get; set; }
     }
 }

@@ -1,0 +1,171 @@
+﻿<Window x:Class="MasterLibrary.Views.Customer.DeliveryPage.ReviewBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterLibrary.Views.Customer.DeliveryPage"
+        xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="ReviewBook" Height="650" Width="520"
+        x:Name="ReviewBookWindow"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        DataContext="{StaticResource DeliveryVM}">
+
+    
+
+    <Border BorderThickness="0.5"
+            BorderBrush="Black"
+            CornerRadius="15"
+            Background="white">
+        <Grid Margin="10">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="53*"/>
+                    <RowDefinition Height="138*"/>
+                    <RowDefinition Height="159*"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Label Cursor="Hand"
+                           Height="35"
+                           Grid.Row="0"
+                           Width="35"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Top">
+                        <materialDesign:PackIcon Kind="ArrowLeft"
+                                         Height="30"
+                                         Width="30" />
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction Command="{Binding CloseReviewBook}"
+                                                       CommandParameter="{Binding ElementName=ReviewBookWindow}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Label>
+
+                    <TextBlock Text="Đánh giá sản phẩm"
+                               MaxHeight="100"
+                               FontSize="26"
+                               FontWeight="Bold"
+                               Foreground="#593000"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center"
+                               TextWrapping="Wrap"
+                               TextTrimming="CharacterEllipsis"
+                               Margin="0,10,0,0"/>
+
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Content="Gửi đánh giá"
+                            HorizontalAlignment="Right"
+                            FontSize="18"
+                            VerticalAlignment="Top"
+                            Command="{Binding UpdateReviewBook}"
+                            CommandParameter="{Binding ElementName=ReviewBookWindow}">
+                    </Button>
+
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0"
+                            Margin="10"
+                            CornerRadius="8"
+                            BorderThickness="1"
+                            BorderBrush="Black">
+                        <Border.Background>
+                            <ImageBrush ImageSource="{Binding CurrentBook.ImageSource}" />
+                        </Border.Background>
+                    </Border>
+
+                    <StackPanel Grid.Column="1"
+                                Orientation="Vertical"
+                                Margin="15,10">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Tên sách:"
+                                   Foreground="#593000"
+                                   FontSize="16"/>
+                            <Label Content="{Binding CurrentBook.TenSach}"
+                                   FontSize="16"
+                                   Foreground="#593000"
+                                   FontWeight="SemiBold"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0"
+                            Orientation="Horizontal">
+                            <Label Content="Tên tác giả:"
+                                   FontSize="16"
+                                   Foreground="#593000"/>
+                            <Label Content="{Binding CurrentBook.TacGia}"
+                                   ContentStringFormat="{}{0:dd/MM/yyyy}"
+                                   FontSize="16"
+                                   Foreground="#593000"
+                                   FontWeight="SemiBold"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0"
+                            Orientation="Horizontal">
+                            <Label Content="Năm xuất bản:"
+                                   FontSize="16"
+                                   Foreground="#593000"/>
+                            <Label Content="{Binding CurrentBook.NamXB}"
+                                   FontSize="16"
+                                   Foreground="#593000"
+                                   FontWeight="SemiBold"/>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,10,0,0"
+                            Orientation="Horizontal">
+                            <Label Content="Đánh giá:"
+                                   FontSize="16"
+                                   Foreground="#593000"/>
+
+                            <materialDesign:RatingBar Value="0"
+                                                      x:Name="BasicRatingBar"
+                                                      Margin="0 4 0 0" 
+                                                      ValueChanged="BasicRatingBar_ValueChanged"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+
+                <StackPanel Grid.Row="2">
+                    <Label Content="Nhận xét"
+                           FontSize="20"
+                           Foreground="#593000"
+                           Margin="10,10,0,0"
+                           FontWeight="DemiBold"
+                           Padding="6"/>
+                    <StackPanel>
+                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                 x:Name="tbReview"
+                                 Width="460"
+                                 Height="200"
+                                 FontSize="22"
+                                 MaxLength="500"
+                                 BorderBrush="#593000"
+                                 Margin="-5,15,0,0"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 HorizontalScrollBarVisibility="Disabled"
+                                 IsReadOnly="False"
+                                 materialDesign:HintAssist.Hint="Nhận xét tối đa 500 từ."
+                                 Text="{Binding ReviewText}" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
+
+    
+    
+
+<!--SelectedItem="{Binding SelectedFinishFilter}"
+                                      SelectionChanged="filtercbb_SelectionChanged"-->

@@ -33,5 +33,13 @@ namespace MasterLibrary.DTOs
         public string USERPASSWORD { get; set; }
         public string IDROLE { get; set; }
         public string DIACHI { get; set; }
+        public decimal Expense { get; set; }
+        public string ExpenseStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(Expense);
+            }
+        }
     }
 }

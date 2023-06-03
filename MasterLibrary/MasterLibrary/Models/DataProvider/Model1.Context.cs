@@ -36,8 +36,10 @@ namespace MasterLibrary.Models.DataProvider
         public virtual DbSet<NHAPKHO> NHAPKHOes { get; set; }
         public virtual DbSet<PHIEUMUON> PHIEUMUONs { get; set; }
         public virtual DbSet<PHIEUTHU> PHIEUTHUs { get; set; }
+        public virtual DbSet<REVIEW> REVIEWs { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<SUCO> SUCOes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TANG> TANGs { get; set; }
         public virtual DbSet<TRANGTHAISC> TRANGTHAISCs { get; set; }
         public virtual DbSet<USERROLE> USERROLEs { get; set; }

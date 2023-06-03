@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents.DocumentStructures;
 using System.Windows.Input;
 
 namespace MasterLibrary.Models.DataProvider
@@ -26,7 +27,7 @@ namespace MasterLibrary.Models.DataProvider
             }
             private set => _ins = value;
         }
-
+        #region thu chi
         //Tính tiền thu theo năm
         public async Task<(List<decimal>, decimal)> GetRevenueByYear(int year)
         {
@@ -175,7 +176,9 @@ namespace MasterLibrary.Models.DataProvider
                 return (expenseByDayList, outputMoney);
             }
         }
+        #endregion
 
+        #region sự cố
         //tính tiền sự cố theo tháng
         public async Task<(List<decimal>, decimal)> GetExpenseTroubleByMonth(int year, int month)
         {
@@ -218,6 +221,158 @@ namespace MasterLibrary.Models.DataProvider
                 }
 
                 return collectMoney;
+            }
+        }
+        #endregion
+
+        #region khách hàng
+        //Lấy ra danh sách top 5 khách hàng.
+        public async Task<List<CustomerDTO>> GetTop5CustomerExpenseByYear(int year)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var cusStatistic = await context.HOADONs.Where(b => b.NGHD.Year == year && b.MAKH != null)
+                        .GroupBy(b => b.MAKH)
+                        .Select(grC => new
+                        {
+                            MAKH = grC.Key,
+                            Expense = grC.Sum(c => (Decimal?)(c.TRIGIA)) ?? 0
+                        })
+                        .OrderByDescending(b => b.Expense).Take(5)
+                        .Join(
+                            context.KHACHHANGs,
+                            statis => statis.MAKH,
+                            cus => cus.MAKH,
+                            (statis, cus) => new CustomerDTO
+                            {
+                                MAKH = cus.MAKH,
+                                TENKH = cus.TENKH,
+                                Expense = statis.Expense
+                            }
+                        ).ToListAsync();
+
+                    //decimal BookExpense = 0;
+                    //if (cusStatistic.Count >= 1)
+                    //{
+                    //    string cusId = cusStatistic.First().MAKH.ToString();
+                    //}
+
+                    return (cusStatistic);
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public async Task<List<CustomerDTO>> GetTop5CustomerExpenseByMonth(int month, int year)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var cusStatistic = await context.HOADONs.Where(b => b.NGHD.Month == month && b.NGHD.Year == year && b.MAKH != null)
+                        .GroupBy(b => b.MAKH)
+                        .Select(grC => new
+                        {
+                            MAKH = grC.Key,
+                            Expense = grC.Sum(c => (Decimal?)(c.TRIGIA)) ?? 0
+                        })
+                        .OrderByDescending(b => b.Expense).Take(5)
+                        .Join(
+                            context.KHACHHANGs,
+                            statis => statis.MAKH,
+                            cus => cus.MAKH,
+                            (statis, cus) => new CustomerDTO
+                            {
+                                MAKH = cus.MAKH,
+                                TENKH = cus.TENKH,
+                                Expense = statis.Expense
+                            }
+                         ).ToListAsync();
+
+                    return cusStatistic;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        #endregion
+        //Lấy ra danh sách top 5 sách có doanh thu cao nhất
+        public async Task<List<BookDTO>> GetTop5BookByYear(int year)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var bookStatis = context.CTHDs.Where(s => s.HOADON.NGHD.Year == year)
+                        .GroupBy(s => s.MASACH)
+                        .Select(gr => new
+                        {
+                            MASACH = gr.Key,
+                            Revenue = gr.Sum(s => s.HOADON.TRIGIA),
+                            soluong = gr.Sum(b => b.SOLUONG)
+                        })
+                        .OrderByDescending(m => m.Revenue).Take(5)
+                        .Join(
+                            context.SACHes,
+                            statis => statis.MASACH,
+                            sach => sach.MASACH,
+                            (statis, sach) => new BookDTO
+                            {
+                                TenSach = sach.TENSACH,
+                                tonggiaban = (decimal)statis.Revenue,
+                                soluongban = (int)statis.soluong
+                            }
+                         ).ToList();
+                        
+                   
+
+                        return bookStatis;
+                }
+            }
+            catch (Exception e) { throw e; }
+
+        }
+
+        public async Task<List<BookDTO>> GetTop5BookByMonth(int month, int year)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var bookStatis = context.CTHDs.Where(s => s.HOADON.NGHD.Month == month && s.HOADON.NGHD.Year == year)
+                        .GroupBy(s => s.MASACH)
+                        .Select(gr => new
+                        {
+                            MASACH = gr.Key,
+                            Revenue = gr.Sum(s => s.HOADON.TRIGIA),
+                            soluong = gr.Sum(b => b.SOLUONG)
+                        })
+                        .OrderByDescending(r => r.Revenue).Take(5)
+                        .Join (
+                            context.SACHes,
+                            statis => statis.MASACH,
+                            sach => sach.MASACH,
+                            (statis, sach) => new BookDTO
+                            {
+                                TenSach = sach.TENSACH,
+                                tonggiaban = (decimal)statis.Revenue,
+                                soluongban = (int)statis.soluong
+                            }
+                        ).ToList();
+
+                    return bookStatis;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
     }

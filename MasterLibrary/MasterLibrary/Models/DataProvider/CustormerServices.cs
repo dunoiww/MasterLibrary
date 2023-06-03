@@ -395,7 +395,7 @@ namespace MasterLibrary.Models.DataProvider
                     }
                     else
                     {
-                        return (false, "Không khách hàng để xoá");
+                        return (false, "Không có khách hàng để xoá");
                     }
                 }
             }

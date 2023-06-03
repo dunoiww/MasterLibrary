@@ -1,21 +1,18 @@
-﻿using System;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using MasterLibrary.DTOs;
+using MasterLibrary.Models.DataProvider;
+using MasterLibrary.Views.Admin.BookManagePage;
+using MasterLibrary.Views.MessageBoxML;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using MasterLibrary.Models.DataProvider;
-using MasterLibrary.Views.Admin.BookManagePage;
-using CloudinaryDotNet;
-using CloudinaryDotNet.Actions;
 using System.Windows.Media.Imaging;
-using MasterLibrary.Views.MessageBoxML;
-using System.Collections.ObjectModel;
-using MasterLibrary.DTOs;
-using System.Windows.Media;
 
 namespace MasterLibrary.ViewModel.AdminVM
 {
@@ -200,10 +197,15 @@ namespace MasterLibrary.ViewModel.AdminVM
                     command.Parameters.AddWithValue("@mota", MoTa);
                     command.Parameters.AddWithValue("@tang", MaTang);
                     command.Parameters.AddWithValue("@day", MaDay);
-                    if(TenSach.Length > 0 && TacGia.Length > 0 && NamXuatBan.Length > 0 && NhaXuatBan.Length > 0 && SoLuong.Length > 0 && Gia.Length > 0 && ImgSource.Length > 0 && TheLoai.Length > 0 && MoTa.Length > 0 && Day.Length > 0 && Tang.Length > 0)
+                    command.Parameters.AddWithValue("@ratingstar", 0);
+                    command.Parameters.AddWithValue("@review", "");
+                    command.Parameters.AddWithValue("@soluongdanhgia", 0);
+                    command.Parameters.AddWithValue("@avgrating", 0);
+
+                    if (!String.IsNullOrEmpty(TenSach) && !String.IsNullOrEmpty(TacGia) && !String.IsNullOrEmpty(NamXuatBan) && !String.IsNullOrEmpty(NhaXuatBan) && !String.IsNullOrEmpty(SoLuong) && !String.IsNullOrEmpty(Gia) && !String.IsNullOrEmpty(ImgSource) && !String.IsNullOrEmpty(TheLoai) && !String.IsNullOrEmpty(MoTa) && !String.IsNullOrEmpty(Day) && !String.IsNullOrEmpty(Tang))
                     {
                         command.CommandText = "UPDATE SACH " +
-                                              "SET TENSACH = @tensach, TACGIA = @tacgia, NAMXB = @namxb, NXB = @nxb, SL = @sl, GIA = @gia, IMAGESOURCE = @imagesource, THELOAI = @theloai, MOTA = @mota, VITRITANG = @tang, VITRIDAY = @day " +
+                                              "SET TENSACH = @tensach, TACGIA = @tacgia, NAMXB = @namxb, NXB = @nxb, SL = @sl, GIA = @gia, IMAGESOURCE = @imagesource, THELOAI = @theloai, MOTA = @mota, VITRITANG = @tang, VITRIDAY = @day, RATING = @ratingstar, SOLUONGDANHGIA = @soluongdanhgia, AVGRATING = @avgrating" +
                                               "WHERE MASACH = @masach";
                         context.SaveChanges();
                         int a = command.ExecuteNonQuery();
@@ -236,10 +238,7 @@ namespace MasterLibrary.ViewModel.AdminVM
                     img.UriSource = new Uri(dlg.FileName);
                     img.EndInit();
                     updatingwindow.Image.Source = img;
-                    Account account = new Account(
-                    "dsrqapm0a",
-                    "957237172661889",
-                    "-1RSpajRMHkAQicQdFuyhIJfogE");
+                    Account account = new Account("dg0uneomp", "924294962494475", "Ahrb-2beUzb0TEJpKjHck2IYCGI");
 
                     Cloudinary cloudinary = new Cloudinary(account);
                     cloudinary.Api.Secure = true;

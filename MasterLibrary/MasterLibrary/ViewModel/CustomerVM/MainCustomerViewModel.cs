@@ -11,6 +11,7 @@ using MasterLibrary.Views.Customer.ReportTroublePage;
 using MasterLibrary.Views.MessageBoxML;
 using MasterLibrary.Views.Customer.BorrowBookPage;
 using System;
+using MasterLibrary.Views.Customer.DeliveryPage;
 
 namespace MasterLibrary.ViewModel.CustomerVM
 {
@@ -45,6 +46,8 @@ namespace MasterLibrary.ViewModel.CustomerVM
         public ICommand TurnOnSetting { get; set; }
         public ICommand LoadBookCartPageML { get; set; }
         public ICommand TurnOnCartBook { get; set; }
+        public ICommand LoadDeliveryPageML { get; set; }
+        public ICommand TurnOnDelivery { get; set; }
         public ICommand LoadReportTroublePageML { get; set; }
         public ICommand TurnOnReportTrouble { get; set; }
         public ICommand LoadBorrowBookPageML { get; set; }
@@ -61,7 +64,7 @@ namespace MasterLibrary.ViewModel.CustomerVM
             Timer.Start();
 
             // Load trang mua sách
-            LoadBuyBookPageML = new RelayCommand<Frame>((p) => { return true; }, async (p) => 
+            LoadBuyBookPageML = new RelayCommand<Frame>((p) => { return true; }, async (p) =>
             {
                 p.Content = new BuyBookPage();
             });
@@ -70,6 +73,12 @@ namespace MasterLibrary.ViewModel.CustomerVM
             LoadBookCartPageML = new RelayCommand<Frame>((p) => { return true; }, async (p) =>
             {
                 p.Content = new BookCartPage();
+            });
+
+            //Load trang giao hàng
+            LoadDeliveryPageML = new RelayCommand<Frame>((p) => { return true; }, async (p) =>
+            {
+                p.Content = new DeliveryPage();
             });
 
             // Load trang vị trí sách
@@ -104,6 +113,12 @@ namespace MasterLibrary.ViewModel.CustomerVM
 
             // Bật button giỏ hàng
             TurnOnCartBook = new RelayCommand<RadioButton>((p) => { return true; }, (p) =>
+            {
+                p.IsChecked = true;
+            });
+
+            //Bật button giao hàng
+            TurnOnDelivery = new RelayCommand<RadioButton>((p) => { return true; }, (p) =>
             {
                 p.IsChecked = true;
             });

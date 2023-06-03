@@ -268,6 +268,7 @@
     <Compile Include="DTOs\CustomerDTO.cs" />
     <Compile Include="DTOs\DayDTO.cs" />
     <Compile Include="DTOs\InputBookDTO.cs" />
+    <Compile Include="DTOs\ReviewDTO.cs" />
     <Compile Include="DTOs\RoleLibraryDTO.cs" />
     <Compile Include="DTOs\TangDTO.cs" />
     <Compile Include="DTOs\TroubleDTO.cs" />
@@ -329,12 +330,19 @@
     <Compile Include="Models\DataProvider\PHIEUTHU.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataProvider\REVIEW.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataProvider\ReviewServices.cs" />
     <Compile Include="Models\DataProvider\RoleLibraryServices.cs" />
     <Compile Include="Models\DataProvider\SACH.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataProvider\StatisticServices.cs" />
     <Compile Include="Models\DataProvider\SUCO.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataProvider\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataProvider\TANG.cs">
@@ -356,6 +364,8 @@
     <Compile Include="Utils\ConverterValue\BoolValueConverter.cs" />
     <Compile Include="Utils\ConverterValue\ChangePasswordMultiValueConverter.cs" />
     <Compile Include="Utils\ConverterValue\NotNullValidationConverter.cs" />
+    <Compile Include="Utils\ConverterValue\StatusBillConverter.cs" />
+    <Compile Include="Utils\ConverterValue\StatusBillCusConverter.cs" />
     <Compile Include="Utils\Helper.cs" />
     <Compile Include="Validations\NotNullValidation.cs" />
     <Compile Include="ViewModel\AdminVM\BookManage\BookManageViewModel.cs" />
@@ -370,6 +380,9 @@
     <Compile Include="ViewModel\AdminVM\ManageCustomerVM\AddOrEditCustomerViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\ManageCustomerVM\ManageCustomerViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\SettingVM\SettingViewModel.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticVM\IndexConverter.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticVM\Ranking.cs" />
+    <Compile Include="ViewModel\AdminVM\StatisticVM\StatisticManagementViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\StatisticVM\StatisticViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\TroubleVM\DetailTroubleViewModel.cs" />
     <Compile Include="ViewModel\AdminVM\TroubleVM\TroubleViewModel.cs" />
@@ -379,6 +392,7 @@
     <Compile Include="ViewModel\CustomerVM\BuyBookVM\BuyBookViewModel.cs" />
     <Compile Include="ViewModel\CustomerVM\BuyBookVM\DetailBookViewModel.cs" />
     <Compile Include="ViewModel\ControlBarViewModel.cs" />
+    <Compile Include="ViewModel\CustomerVM\DeliveryVM\DeliveryViewModel.cs" />
     <Compile Include="ViewModel\CustomerVM\MainCustomerViewModel.cs" />
     <Compile Include="ViewModel\CustomerVM\ReportTroubleVM\AddOrEditTroubleViewModel.cs" />
     <Compile Include="Utils\ConverterValue\OperatorTroubleConverter.cs" />
@@ -465,6 +479,12 @@
     <Compile Include="Views\Admin\SettingPage\SettingPageAdmin.xaml.cs">
       <DependentUpon>SettingPageAdmin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\StatisticalPage\RankingStatistical.xaml.cs">
+      <DependentUpon>RankingStatistical.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\StatisticalPage\StatisticalMainPage.xaml.cs">
+      <DependentUpon>StatisticalMainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\StatisticalPage\StatisticalPage.xaml.cs">
       <DependentUpon>StatisticalPage.xaml</DependentUpon>
     </Compile>
@@ -491,6 +511,18 @@
     </Compile>
     <Compile Include="Views\Customer\BuyBookPage\DetailBookService.xaml.cs">
       <DependentUpon>DetailBookService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\DeliveryPage\DeFinish.xaml.cs">
+      <DependentUpon>DeFinish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\DeliveryPage\DeliveryPage.xaml.cs">
+      <DependentUpon>DeliveryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\DeliveryPage\DeNotFinish.xaml.cs">
+      <DependentUpon>DeNotFinish.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\DeliveryPage\ReviewBook.xaml.cs">
+      <DependentUpon>ReviewBook.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\MainCustomerWindow.xaml.cs">
       <DependentUpon>MainCustomerWindow.xaml</DependentUpon>
@@ -658,6 +690,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\StatisticalPage\RankingStatistical.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\StatisticalPage\StatisticalMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\StatisticalPage\StatisticalPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -691,6 +731,22 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Customer\BuyBookPage\DetailBookService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\DeliveryPage\DeFinish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\DeliveryPage\DeliveryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\DeliveryPage\DeNotFinish.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\DeliveryPage\ReviewBook.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -849,6 +905,10 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\Images\rank1.png" />
+    <Resource Include="Resources\Images\rank2.png" />
+    <Resource Include="Resources\Images\rank3.png" />
+    <Resource Include="Resources\Images\award1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -856,9 +916,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Avalonia.0.10.18\build\Avalonia.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Avalonia.0.10.18\build\Avalonia.targets'))" />
-    <Error Condition="!Exists('..\packages\Avalonia.0.10.18\build\Avalonia.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Avalonia.0.10.18\build\Avalonia.props'))" />
     <Error Condition="!Exists('..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets'))" />
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.4.7.0-ci390\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.4.7.0-ci390\build\MaterialDesignThemes.targets'))" />
+    <Error Condition="!Exists('..\packages\Avalonia.0.10.18\build\Avalonia.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Avalonia.0.10.18\build\Avalonia.props'))" />
   </Target>
   <Import Project="..\packages\Avalonia.0.10.18\build\Avalonia.targets" Condition="Exists('..\packages\Avalonia.0.10.18\build\Avalonia.targets')" />
   <Import Project="..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.5\build\System.Text.Json.targets')" />

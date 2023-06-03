@@ -49,7 +49,7 @@ namespace MasterLibrary.ViewModel.AdminVM
             // Load trang phân tích
             LoadStatisticalPageML = new RelayCommand<Frame>((p) => { return true; }, (p) =>
             {
-                p.Content = new StatisticalPage();
+                p.Content = new StatisticalMainPage();
             });
 
             // Load trang quản lý khách hàng

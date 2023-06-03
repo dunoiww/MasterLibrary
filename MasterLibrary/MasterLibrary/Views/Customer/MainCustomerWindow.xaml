@@ -151,6 +151,39 @@
                         </i:Interaction.Triggers>
                     </Border>
 
+                    <!-- Button Giao hàng -->
+                    <Border CornerRadius="5"
+                            Cursor="Hand">
+                        <StackPanel Tag="{Binding ElementName=btnDelivery}"
+                                    Orientation="Horizontal"
+                                    Height="60"
+                                    Width="130"
+                                    Style= "{StaticResource EffectMenuButton}">
+                            <materialDesign:PackIcon Kind="CubeSend"
+                                                     Width="35"
+                                                     Height="32"
+                                                     VerticalAlignment="Center"
+                                                     Foreground="White"/>
+                            <RadioButton Style="{StaticResource MenuButtonMain}"
+                                         GroupName="mainOptions"
+                                         Content="Đơn hàng"
+                                         FontWeight="Bold"
+                                         x:Name="btnDelivery"
+                                         Width="auto"
+                                         Command="{Binding LoadDeliveryPageML}"
+                                         CommandParameter="{Binding ElementName=mainFrame}"/>
+                        </StackPanel>
+
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding LoadDeliveryPage}"
+                                         CommandParameter="{Binding ElementName=mainFrame}"/>
+                                <i:InvokeCommandAction Command="{Binding TurnOnDelivery}"
+                                         CommandParameter="{Binding ElementName=btnDelivery}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Border>
+
                     <!-- Button vị trí sách -->
                     <Border CornerRadius="5"
                             Cursor="Hand">

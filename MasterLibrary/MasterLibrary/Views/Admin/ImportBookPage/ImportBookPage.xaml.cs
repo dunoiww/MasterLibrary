@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MasterLibrary.ViewModel.AdminVM;
 using MasterLibrary.ViewModel.LoginVM;
+using System.Text.RegularExpressions;
 
 namespace MasterLibrary.Views.Admin.ImportBookPage
 {
@@ -27,6 +28,12 @@ namespace MasterLibrary.Views.Admin.ImportBookPage
         public ImportBookPage()
         {
             InitializeComponent();
+        }
+
+        private void i_gianhap_txb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 

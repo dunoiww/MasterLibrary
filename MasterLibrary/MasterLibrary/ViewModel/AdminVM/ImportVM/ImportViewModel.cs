@@ -128,7 +128,10 @@ namespace MasterLibrary.ViewModel.AdminVM.ImportVM
             //Thêm mặt hàng vào ds nhập
             AddBookToImportDTG = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
-                
+                if (!string.IsNullOrEmpty(TenMatHang) && !string.IsNullOrEmpty(NhaXuatBan) && !string.IsNullOrEmpty(TacGia) && !string.IsNullOrEmpty(GiaNhap) && !string.IsNullOrEmpty(GiaBan) && !string.IsNullOrEmpty(SoLuong))
+                {
+
+                }
                 if (TenMatHang != null && NhaXuatBan != null && TacGia != null && GiaNhap != null && GiaBan != null && SoLuong != null)
                 {
                     if ((TriGiaHoaDon + int.Parse(SoLuong) * int.Parse(GiaNhap)) > 1000000000)
@@ -236,7 +239,8 @@ namespace MasterLibrary.ViewModel.AdminVM.ImportVM
 
                             MessageBoxML tb = new MessageBoxML("Thông báo", "Thêm phiếu nhập thành công!", MessageType.Accept, MessageButtons.OK);
                             tb.ShowDialog();
-                            LoginViewModel.ListInputbook = null;
+                            //LoginViewModel.ListInputbook = null;
+                            LoginViewModel.ListInputbook.Clear();
                             Loaded.Execute(p);
                         }
                         catch

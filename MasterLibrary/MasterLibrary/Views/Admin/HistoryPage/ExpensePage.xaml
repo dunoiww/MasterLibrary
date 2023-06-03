@@ -46,6 +46,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="25"
+                                             Height="35"
+                                             Foreground="Black"
+                                             VerticalAlignment="Center" 
+                                             Margin="10 0 0 0"/>
                     <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" 
                              x:Name="FilterBox"
                              FontSize="20"
@@ -53,7 +59,7 @@
                              FontFamily="arial"
                              Width="300"
                              Height="30"
-                             Margin="20 0 0 0"
+                             Margin="0 0 0 0"
                              TextChanged="TextBox_TextChanged"
                              HorizontalAlignment="Left"
                              />
@@ -156,45 +162,45 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã đơn"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding IDInput}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         
                         <GridViewColumn Header="Tên sách"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TenSach}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
                         <GridViewColumn Header="Ngày nhập"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding NgNhap}"
+                                    <TextBlock  Text="{Binding NgNhap, StringFormat='dd/MM/yyyy'}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         
                         <GridViewColumn Header="Số lượng"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding SoLuong}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -203,9 +209,9 @@
                                         Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding GiaNhap}"
+                                    <TextBlock  Text="{Binding GiaNhapStr}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

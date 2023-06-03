@@ -1,0 +1,144 @@
+﻿<Page x:Class="MasterLibrary.Views.Admin.StatisticalPage.StatisticalMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MasterLibrary.Views.Admin.StatisticalPage"
+      mc:Ignorable="d" 
+      d:DesignHeight="630" d:DesignWidth="1170"
+      xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+    TextElement.FontWeight="Regular"
+    TextElement.FontSize="13"
+    TextOptions.TextFormattingMode="Ideal"
+    TextOptions.TextRenderingMode="Auto"
+    FontFamily="{DynamicResource MaterialDesignFont}"
+      DataContext="{StaticResource StatisticVM}"
+      Title="StatisticalMainPage"
+      x:Name="StatisticalMainPageML">
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="StatisticalMainPageML"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.5" />
+
+
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding StoreButtonNameML}"
+                                   CommandParameter="{Binding ElementName=card1}" />
+            <i:InvokeCommandAction Command="{Binding LoadViewML}"
+                                   CommandParameter="{Binding ElementName=mainFrame}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8*" />
+            <RowDefinition Height="92*" />
+        </Grid.RowDefinitions>
+
+        <!--Filter-->
+        <StackPanel Grid.Row="0"
+                    Orientation="Horizontal">
+
+            <StackPanel HorizontalAlignment="Left"
+                        Orientation="Horizontal"
+                        Height="57"
+                        Background="#f0f2f5">
+                <materialDesign:Card  Height="57"
+                                      Background="#f0f2f5"
+                                      materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                      materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                      x:Name="card1">
+                    <Button
+                            Content="Tổng thu chi"
+                            Background="Transparent"
+                            Foreground="Black"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            materialDesign:ButtonAssist.CornerRadius="0"
+                            Command="{Binding LoadAllStatisticalML}"
+                            CommandParameter="{Binding ElementName=card1}" Margin="0,0,0,20" />
+                </materialDesign:Card>
+                <materialDesign:Card Height="57"
+                                     Background="#f0f2f5"
+                                     materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                     materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                     BorderThickness="0"
+                                     x:Name="card2">
+                    <Button Height="36"
+                            Content="Bảng xếp hạng"
+                            Background="Transparent"
+                            Foreground="Black"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            materialDesign:ButtonAssist.CornerRadius="0"
+                            Command="{Binding LoadRankStatisticalML}"
+                            CommandParameter="{Binding ElementName=card2}" VerticalAlignment="Top" />
+                </materialDesign:Card>
+
+            </StackPanel>
+            <materialDesign:Card Background="#f0f2f5"
+                                 Width="1110"
+                                 materialDesign:ShadowAssist.ShadowDepth="Depth2"
+                                 materialDesign:ShadowAssist.ShadowEdges="Bottom"
+                                 BorderThickness="0"
+                                 BorderBrush="Transparent"
+                                 UniformCornerRadius="0" />
+
+        </StackPanel>
+
+        <!---FRAME-->
+        <Grid Grid.Row="1">
+            <Frame x:Name="mainFrame"
+                   Content="">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadAllStatisticalML}"
+                                               CommandParameter="{Binding ElementName=card1}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Frame>
+
+        </Grid>
+
+        <Grid VerticalAlignment="Top"
+              Height="720"
+              Background="Transparent"
+              Grid.RowSpan="2">
+            <ProgressBar Grid.RowSpan="2"
+                         IsIndeterminate="{Binding IsLoading}"
+                         BorderThickness="0"
+                         VerticalAlignment="Top"
+                         Margin="0,60,0,0"
+                         x:Name="load"
+                         Height="3" />
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility"
+                            Value="Collapsed" />
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=load,Path=IsIndeterminate}"
+                                     Value="True">
+                            <Setter Property="Visibility"
+                                    Value="Visible" />
+                        </DataTrigger>
+                    </Style.Triggers>
+
+                </Style>
+            </Grid.Style>
+        </Grid>
+    </Grid>
+</Page>

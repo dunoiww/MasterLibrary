@@ -83,7 +83,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
             {
                 IsLoading = true;
 
-                ListBook1 = new ObservableCollection<BookDTO>(await BookServices.Ins.GetAllbook());
+                ListBook1 = new ObservableCollection<BookDTO>(await BookServices.Ins.GetAllbook());            
                 GenreBook = new ObservableCollection<string>(baseBook.ListTheLoai);
                 isAscending = false;
 

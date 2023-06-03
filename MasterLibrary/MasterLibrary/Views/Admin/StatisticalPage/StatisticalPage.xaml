@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.StatisticalPage"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="630" d:DesignWidth="1170"
+      d:DesignHeight="530" d:DesignWidth="1130"
     xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -215,7 +215,7 @@
 
             <!--Right-->
             <StackPanel Grid.Column="1">
-                <materialDesign:Card Background="White" Width="800" Height="540" 
+                <materialDesign:Card Background="White" Width="800" Height="496" 
                                      VerticalAlignment="top" UniformCornerRadius="5">
                     <lvc:CartesianChart Series="{Binding IncomeData, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" LegendLocation="Bottom">
                         <lvc:CartesianChart.AxisX>

@@ -185,11 +185,11 @@ namespace MasterLibrary.Models.DataProvider
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
-                return (false, "Xãy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
+                return (false, "Xảy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
             }
             catch (Exception)
             {
-                return (false, "Xãy ra lỗi khi thực hiện thao tác");
+                return (false, "Xảy ra lỗi khi thực hiện thao tác");
             }
         }
 

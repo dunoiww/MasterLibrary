@@ -46,6 +46,12 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Height="53">
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="25"
+                                             Height="35"
+                                             Foreground="Black"
+                                             VerticalAlignment="Center" 
+                                             Margin="10 0 0 0"/>
                     <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" 
                              x:Name="FilterBox"
                              FontSize="20"
@@ -53,7 +59,7 @@
                              FontFamily="arial"
                              Width="300"
                              Height="30"
-                             Margin="20 0 0 0"
+                             Margin="0 0 0 0"
                              TextChanged="FilterBox_TextChanged"
                              HorizontalAlignment="Left"
                              />
@@ -161,7 +167,7 @@
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding MaPhieuMuon}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -172,7 +178,7 @@
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TenKH}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -183,7 +189,7 @@
                                 <DataTemplate>
                                     <TextBlock Text="{Binding TenSach}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -194,7 +200,7 @@
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding SoLuong}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -203,9 +209,9 @@
                                         Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding NgayTra}"
+                                    <TextBlock  Text="{Binding NgayTra, StringFormat='dd/MM/yyyy'}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -216,7 +222,7 @@
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TienHong}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -227,7 +233,7 @@
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TongTienTreMotCuon}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -238,7 +244,7 @@
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TongTienTra}"
                                                 FontSize="18"
-                                                Margin="10,0,0,0" />
+                                                Margin="18,0,0,0" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

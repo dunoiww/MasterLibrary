@@ -140,8 +140,7 @@
                                                     HorizontalAlignment="Left"
                                                     Width="35" Height="35"
                                                     Command="{Binding Path=DataContext.EditBookDTG,RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                                    CommandParameter="{Binding ElementName=dtg_Import}"
-                                                    ToolTip="MaterialDesignFloatingActionMiniButton">
+                                                    CommandParameter="{Binding ElementName=dtg_Import}">
                                                 <materialDesign:PackIcon Kind="EditOutline" Width="15" Height="15"/>
                                             </Button>
 
@@ -151,7 +150,7 @@
                                                     Width="35" Height="35"
                                                     Command="{Binding Path=DataContext.DeleteBookDTG,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                     CommandParameter="{Binding ElementName=dtg_Import}"
-                                                    ToolTip="MaterialDesignFloatingActionMiniButton" Margin="5 0 0 0">
+                                                    Margin="5 0 0 0">
                                                 <materialDesign:PackIcon Kind="DeleteOutline" Width="15" Height="15"/>
                                             </Button>
                                         </StackPanel>
@@ -168,7 +167,7 @@
                                                     Width="35" Height="35"
                                                     Command="{Binding Path=DataContext.CommitEditBookDTG,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                     CommandParameter="{Binding ElementName=dtg_Import}"
-                                                    ToolTip="MaterialDesignFloatingActionMiniButton" Margin="0 0 0 0">
+                                                    Margin="0 0 0 0">
                                                 <materialDesign:PackIcon Kind="CheckOutline" Width="15" Height="15"/>
                                             </Button>
 
@@ -179,7 +178,7 @@
                                                     Width="35" Height="35"
                                                     Command="{Binding Path=DataContext.CancelEditBookDTG,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                     CommandParameter="{Binding ElementName=dtg_Import}"
-                                                    ToolTip="MaterialDesignFloatingActionMiniButton" Margin="5 0 0 0">
+                                                    Margin="5 0 0 0">
                                                 <materialDesign:PackIcon Kind="CloseOutline" Width="15" Height="15"/>
                                             </Button>
 
@@ -264,7 +263,7 @@
                                 Command="{Binding CreateOrder}"
                                 CommandParameter="{Binding ElementName=dtg_Import}"
                                 Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"  HorizontalAlignment="Center" Margin="0 -30 0 0" >
+                                HorizontalAlignment="Center" Margin="0 -30 0 0" >
                             Lập phiếu nhập
                             
                         </Button>
@@ -339,28 +338,30 @@
 
                         <Grid Grid.Column="0">
                             <TextBox Margin="10 0 10 0"
-                                Name="i_gianhap_txb"
-                                Text="{Binding GiaNhap, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                materialDesign:HintAssist.Hint="Giá nhập"
-                                Foreground="Black"
-                                FontSize="14"
-                                Height="54"
-                                VerticalContentAlignment="Center"
-                                BorderBrush="LightGray"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Center"/>
+                                     Name="i_gianhap_txb"
+                                     Text="{Binding GiaNhap, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     materialDesign:HintAssist.Hint="Giá nhập"
+                                     Foreground="Black"
+                                     FontSize="14"
+                                     Height="54"
+                                     VerticalContentAlignment="Center"
+                                     PreviewTextInput="i_gianhap_txb_PreviewTextInput"
+                                     BorderBrush="LightGray"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="1">
                             <TextBox Margin="10 0 10 0"
-                                Name="i_giaban_txb"
-                                Text="{Binding GiaBan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                materialDesign:HintAssist.Hint="Giá bán"
-                                Foreground="Black"
-                                FontSize="14"
-                                Height="54"
-                                VerticalContentAlignment="Center"
-                                BorderBrush="LightGray"
-                                Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Center"/>
+                                     Name="i_giaban_txb"
+                                     Text="{Binding GiaBan, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                     materialDesign:HintAssist.Hint="Giá bán"
+                                     Foreground="Black"
+                                     FontSize="14"
+                                     Height="54"
+                                     VerticalContentAlignment="Center"
+                                     PreviewTextInput="i_gianhap_txb_PreviewTextInput"
+                                     BorderBrush="LightGray"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Center"/>
                         </Grid>
 
                         <Grid Grid.Column="2">
@@ -371,15 +372,16 @@
 
                             <Grid Grid.Row="0">
                                 <TextBox Margin="10 0 10 0"
-                                    Name="i_soluong_txb"
-                                    Text="{Binding SoLuong, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                    materialDesign:HintAssist.Hint="Số lượng"
-                                    Foreground="Black"
-                                    FontSize="14"
-                                    Height="54"
-                                    VerticalContentAlignment="Center"
-                                    BorderBrush="LightGray"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Center"/>
+                                         Name="i_soluong_txb"
+                                         Text="{Binding SoLuong, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         materialDesign:HintAssist.Hint="Số lượng"
+                                         Foreground="Black"
+                                         FontSize="14"
+                                         Height="54"
+                                         VerticalContentAlignment="Center"
+                                         BorderBrush="LightGray"
+                                         PreviewTextInput="i_gianhap_txb_PreviewTextInput"
+                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"  VerticalAlignment="Center"/>
 
                             </Grid>
 
@@ -387,8 +389,7 @@
                                 <Button Command="{Binding AddBookToImportDTG}"
                                         CommandParameter="{Binding ElementName=dtg_Import}"
                                         Background="#008000" Foreground="#ffff" BorderBrush="#008000"
-                                        Style="{StaticResource MaterialDesignFloatingActionAccentButton}"
-                                        ToolTip="MaterialDesignFloatingActionAccentButton">
+                                        Style="{StaticResource MaterialDesignFloatingActionAccentButton}">
                                         <materialDesign:PackIcon
                                                 Kind="PlusOutline"
                                                 Height="24"

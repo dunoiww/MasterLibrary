@@ -5,7 +5,9 @@ using MasterLibrary.Views.Customer.BuyBookPage;
 using MasterLibrary.Views.MessageBoxML;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -70,6 +72,13 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
             }
         }
 
+        private ObservableCollection<ReviewDTO> _ListReview;
+        public ObservableCollection<ReviewDTO> ListReview
+        {
+            get { return _ListReview; }
+            set { _ListReview = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region ICommand
@@ -95,6 +104,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
             FirstLoadML = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
                 BookCurrent = await BookServices.Ins.GetBook(selectBookId);
+                ListReview = new ObservableCollection<ReviewDTO>(await ReviewServices.Ins.GetAllReview(BookCurrent.MaSach));
                 soluongBook = BookCurrent.SoLuong;
                 Quantity = 0;
                 TotalTien = 0;
@@ -126,7 +136,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
             {
                 if (Quantity == 0)
                 {
-                    MessageBoxML ms = new MessageBoxML("Thông báo", "Số lượng bằng 0 nên không thực hiện thực hiện được thao tác", MessageType.Error, MessageButtons.OK);
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Số lượng bằng 0 nên không thực hiện được thao tác", MessageType.Error, MessageButtons.OK);
                     ms.ShowDialog();
                     return;
                 }
@@ -135,6 +145,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                 
                 if (isAddCart == true)
                 {
+                    Quantity = 0;
                     MessageBoxML ms = new MessageBoxML("Thông báo", lb, MessageType.Accept, MessageButtons.OK);
                     ms.ShowDialog();
                 }
@@ -180,6 +191,8 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                     NGHD = DateTime.Now,
                     MAKH = MainCustomerViewModel.CurrentCustomer.MAKH,
                     TRIGIA = totalTien,
+                    TRANGTHAI = "Chờ xác nhận",
+                    ISRECEIVED = 0
                 };
 
                 // Tạo hoá đơn mới
@@ -193,8 +206,9 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                 {
                     BookCurrent.SoLuong -= Quantity;
                     soluongBook = BookCurrent.SoLuong;
+                    Quantity = 0;
 
-                    MessageBoxML ms = new MessageBoxML("Thông báo", "Mua thành công", MessageType.Accept, MessageButtons.OK);
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Vui lòng vào Đơn hàng để theo dõi tình trạng đơn hàng của bạn!", MessageType.Accept, MessageButtons.OK);
                     ms.ShowDialog();
                 }
                 else
@@ -210,8 +224,28 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                 if (Quantity > BookCurrent.SoLuong)
                 {
                     Quantity = BookCurrent.SoLuong;
-                    p.Content = "Vượt số lượng hiện có";
+                    p.Content = "Vượt số lượng hiện có.";
                 }
+                else if (Quantity < 0)
+                {
+                    Quantity = 0;
+                    p.Content = "Không còn sách để giảm.";
+                }
+                else
+                {
+                    p.Content = "";
+                }
+                
+                //if (Quantity >= 0)
+                //{
+                //    p.Content = "";
+                //}
+
+                //if (Quantity < 0)
+                //{
+                //    Quantity = 0;
+                //    p.Content = "Số lượng sách đã là nhỏ nhất";
+                //}
 
                 TotalTien = Quantity * BookCurrent.Gia;
                 TotalTienStr = Helper.FormatVNMoney(TotalTien);

@@ -17,10 +17,8 @@ using System.Collections.ObjectModel;
 
 namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
 {
-    public class StatisticViewModel : BaseViewModel
+    public partial class StatisticManagementViewModel : BaseViewModel
     {
-
-        public ICommand ChangePeriodML { get; set; }
 
         #region variable
         private SeriesCollection _IncomeData;
@@ -102,36 +100,32 @@ namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
         }
 
         #endregion
-        public StatisticViewModel()
+        public async Task ChangePeriod()
         {
-            ChangePeriodML = new RelayCommand<ComboBox>((p) => { return true; }, async(p) =>
+            if (SelectedPeriod != null)
             {
-                if (SelectedPeriod != null)
+                switch (SelectedPeriod.Content.ToString())
                 {
-                    switch (SelectedPeriod.Content.ToString())
-                    {
-                        case "Theo năm":
+                    case "Theo năm":
+                        {
+                            if (SelectedTime != null)
                             {
-                                if (SelectedTime != null)
-                                {
-                                    if (SelectedTime.Length == 4)
-                                        SelectedYear = int.Parse(SelectedTime);
-                                    await LoadIncomeByYear();
-                                }
-                                return;
+                                if (SelectedTime.Length == 4)
+                                    SelectedYear = int.Parse(SelectedTime);
+                                await LoadIncomeByYear();
                             }
-                        case "Theo tháng":
+                            return;
+                        }
+                    case "Theo tháng":
+                        {
+                            if (SelectedTime != null)
                             {
-                                if (SelectedTime != null)
-                                {
-                                    LoadIncomeByMonth();
-                                }
-                                return;
+                                LoadIncomeByMonth();
                             }
-                    }
+                            return;
+                        }
                 }
             }
-            );
         }
 
         public async Task LoadIncomeByYear()

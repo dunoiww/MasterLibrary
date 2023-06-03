@@ -50,6 +50,8 @@
     <Property Name="NGHD" Type="smalldatetime" Nullable="false" />
     <Property Name="MAKH" Type="int" />
     <Property Name="TRIGIA" Type="money" />
+    <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="100" />
+    <Property Name="ISRECEIVED" Type="int" />
   </EntityType>
   <EntityType Name="KHACHHANG">
     <Key>
@@ -63,6 +65,7 @@
     <Property Name="IDROLE" Type="int" />
     <Property Name="DIACHI" Type="nvarchar(max)" />
     <Property Name="ISEXIST" Type="int" />
+    <Property Name="CHITIEU" Type="money" />
   </EntityType>
   <EntityType Name="LOAISUCO">
     <Key>
@@ -78,6 +81,7 @@
     <Property Name="MALUAT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SONGAYMUON" Type="int" />
     <Property Name="TIENTRASACHMUONMOTNGAY" Type="money" />
+    <Property Name="SOSACHTOIDA" Type="int" />
   </EntityType>
   <EntityType Name="NHAPKHO">
     <Key>
@@ -114,6 +118,15 @@
     <Property Name="TONGTIEN" Type="money" />
     <Property Name="NGAYTHU" Type="smalldatetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="REVIEW">
+    <Key>
+      <PropertyRef Name="MARV" />
+    </Key>
+    <Property Name="MARV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NHANXET" Type="nvarchar" MaxLength="500" />
+    <Property Name="MAKH" Type="int" />
+    <Property Name="MASACH" Type="int" />
+  </EntityType>
   <EntityType Name="SACH">
     <Key>
       <PropertyRef Name="MASACH" />
@@ -131,6 +144,9 @@
     <Property Name="VITRIDAY" Type="int" />
     <Property Name="NXB" Type="nvarchar" MaxLength="100" />
     <Property Name="ISEXIST" Type="int" />
+    <Property Name="SOLUONGDANHGIA" Type="int" />
+    <Property Name="RATING" Type="float" />
+    <Property Name="AVGRATING" Type="float" />
   </EntityType>
   <EntityType Name="SUCO">
     <Key>
@@ -145,6 +161,16 @@
     <Property Name="THOIGIANBAOCAO" Type="smalldatetime" Nullable="false" />
     <Property Name="MALSC" Type="int" />
     <Property Name="MATTSC" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
   <EntityType Name="TANG">
     <Key>
@@ -323,6 +349,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__REVIEW__MAKH__17036CC0">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1" />
+    <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="REVIEW">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__REVIEW__MASACH__17F790F9">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="0..1" />
+    <End Role="REVIEW" Type="Self.REVIEW" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="REVIEW">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__SACH__VITRIDAY__66603565">
     <End Role="DAYKE" Type="Self.DAYKE" Multiplicity="0..1" />
     <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
@@ -395,8 +445,10 @@
     <EntitySet Name="NHAPKHO" EntityType="Self.NHAPKHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUMUON" EntityType="Self.PHIEUMUON" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUTHU" EntityType="Self.PHIEUTHU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REVIEW" EntityType="Self.REVIEW" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SUCO" EntityType="Self.SUCO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TANG" EntityType="Self.TANG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TRANGTHAISC" EntityType="Self.TRANGTHAISC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USERROLE" EntityType="Self.USERROLE" Schema="dbo" store:Type="Tables" />
@@ -451,6 +503,14 @@
     <AssociationSet Name="FK__PHIEUTHU__MASACH__07C12930" Association="Self.FK__PHIEUTHU__MASACH__07C12930">
       <End Role="SACH" EntitySet="SACH" />
       <End Role="PHIEUTHU" EntitySet="PHIEUTHU" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REVIEW__MAKH__17036CC0" Association="Self.FK__REVIEW__MAKH__17036CC0">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="REVIEW" EntitySet="REVIEW" />
+    </AssociationSet>
+    <AssociationSet Name="FK__REVIEW__MASACH__17F790F9" Association="Self.FK__REVIEW__MASACH__17F790F9">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="REVIEW" EntitySet="REVIEW" />
     </AssociationSet>
     <AssociationSet Name="FK__SACH__VITRIDAY__66603565" Association="Self.FK__SACH__VITRIDAY__66603565">
       <End Role="DAYKE" EntitySet="DAYKE" />

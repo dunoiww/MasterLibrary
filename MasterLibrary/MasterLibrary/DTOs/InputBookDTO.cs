@@ -27,5 +27,12 @@ namespace MasterLibrary.DTOs
         public int GiaBan { get; set; }
         public int SoLuong { get; set; }
         public DateTime NgNhap { get; set; }
+        public string NgNhapStr
+        {
+            get
+            {
+                return NgNhap.ToString().Remove(9);
+            }
+        }
     }
 }

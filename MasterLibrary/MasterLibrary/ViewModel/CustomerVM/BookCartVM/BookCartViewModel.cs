@@ -242,7 +242,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BookCartVM
                     return;
                 }
 
-                MessageBoxML ms = new MessageBoxML("Xác nhận", "Bạn muốn thanh toán", MessageType.Waitting, MessageButtons.YesNo);
+                MessageBoxML ms = new MessageBoxML("Xác nhận", "Xác nhận đặt hàng", MessageType.Waitting, MessageButtons.YesNo);
 
                 if (ms.ShowDialog() == true)
                 {
@@ -279,6 +279,8 @@ namespace MasterLibrary.ViewModel.CustomerVM.BookCartVM
                         NGHD = DateTime.Now,
                         MAKH = MainCustomerViewModel.CurrentCustomer.MAKH,
                         TRIGIA = totalTien,
+                        TRANGTHAI = "Chờ xác nhận",
+                        ISRECEIVED = 0
                     };
 
                     // Tạo hoá đơn mới
@@ -293,7 +295,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BookCartVM
 
                     if (isCreate == true)
                     {
-                        MessageBoxML mb = new MessageBoxML("Thông báo", "Thanh toán thành công", MessageType.Accept, MessageButtons.OK);
+                        MessageBoxML mb = new MessageBoxML("Thông báo", "Vui lòng vào Đơn hàng để theo dõi tình trạng đơn hàng của bạn!", MessageType.Accept, MessageButtons.OK);
                         mb.ShowDialog();
 
                         ListBooksInCart.Clear();

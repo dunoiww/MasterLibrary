@@ -24,6 +24,8 @@ namespace MasterLibrary.Models.DataProvider
         public System.DateTime NGHD { get; set; }
         public Nullable<int> MAKH { get; set; }
         public Nullable<decimal> TRIGIA { get; set; }
+        public string TRANGTHAI { get; set; }
+        public Nullable<int> ISRECEIVED { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }

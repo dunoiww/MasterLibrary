@@ -14,6 +14,8 @@ using SaveFileDialog = System.Windows.Forms.SaveFileDialog;
 using MasterLibrary.Views.MessageBoxML;
 using MasterLibrary.Models.DataProvider;
 using System.Windows;
+using JetBrains.Annotations;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
 {
@@ -217,6 +219,7 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
         public ICommand LoadBorrowPage { get; set; }
         public ICommand ExportFileML { get; set; }
         public ICommand MaskNameML { get; set; }
+        public ICommand MaskNameRevenuePage { get; set; }
         public ICommand SelectedExpenseMonthML { get; set; }
         public ICommand SelectedExpenseYearML { get; set; }
         public ICommand CheckSelectedExpenseFilterML { get; set; }
@@ -235,6 +238,9 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
         public ICommand SelectedBorrowYearML { get; set; }
         public ICommand LoadInforRevenueML { get; set; }
         public ICommand closeML { get; set; }
+
+        public ICommand ConfirmBill { get; set; }
+        public ICommand CancelBill { get; set; }
         #endregion
 
         public HistoryViewModel()
@@ -255,6 +261,7 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
             #endregion
 
             MaskNameML = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
+            MaskNameRevenuePage = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
             closeML = new RelayCommand<Window>((p) => { return true; }, (p) =>
             { 
                 MaskName.Visibility = Visibility.Collapsed;
@@ -262,6 +269,7 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                 p.Close();
             });
 
+            #region oldIcommand
             SelectedExpenseMonthML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
             {
                 await checkExpenseMonthFilter();
@@ -399,6 +407,18 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                 ExportFile();
             });
 
+            #endregion
+
+            ConfirmBill = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                UpdateConfirmBill();
+            });
+
+            CancelBill = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                UpdateCancelBill();
+            });
+
             #region not use
             //LoadInforRevenueML = new RelayCommand<object>((p) => { return true; }, async (p) =>
             //{
@@ -427,6 +447,80 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
             //    }
             //});
             #endregion
+        }
+
+        public async void UpdateConfirmBill()
+        {
+            MessageBoxML mb = new MessageBoxML("Xác nhận", "Bạn có muốn xác nhận đơn hàng này?", MessageType.Accept, MessageButtons.YesNo);
+            mb.ShowDialog();
+
+            if ((bool)mb.DialogResult)
+            {
+                BillDTO newBill = new BillDTO()
+                {
+                    MAKH = SelectedItemRevenue.MAKH,
+                    cusId = (int)SelectedItemRevenue.MAKH,
+                    cusName = SelectedItemRevenue.cusName,
+                    cusAdd = SelectedItemRevenue.cusAdd,
+                    MAHD = SelectedItemRevenue.MAHD,
+                    TRIGIA = (decimal)SelectedItemRevenue.TRIGIA,
+                    NGHD = SelectedItemRevenue.NGHD,
+                    TRANGTHAI = "Đang trên đường vận chuyển",
+                    TenSach = SelectedItemRevenue.TenSach,
+                };
+
+                (bool isUpdate, string lb) = await BillServices.Ins.UpdateBillConfirm(newBill);
+
+                await checkRevenueFilter();
+
+                if (isUpdate)
+                {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", lb, MessageType.Accept, MessageButtons.OK);
+                    ms.ShowDialog();
+                    
+                }
+                else
+                {
+                    MessageBoxML ms = new MessageBoxML("Lỗi", lb, MessageType.Accept, MessageButtons.OK);
+                    ms.ShowDialog();
+                }
+            }
+        }
+
+        public async void UpdateCancelBill()
+        {
+            MessageBoxML mb = new MessageBoxML("Huỷ đơn hàng", "Bạn có muốn huỷ đơn hàng này?", MessageType.Accept, MessageButtons.YesNo);
+            mb.ShowDialog();
+
+            if ((bool)mb.DialogResult)
+            {
+                BillDTO currentBill = new BillDTO()
+                {
+                    MAKH = SelectedItemRevenue.MAKH,
+                    cusId = (int)SelectedItemRevenue.MAKH,
+                    cusName = SelectedItemRevenue.cusName,
+                    cusAdd = SelectedItemRevenue.cusAdd,
+                    MAHD = SelectedItemRevenue.MAHD,
+                    TRIGIA = (decimal)SelectedItemRevenue.TRIGIA,
+                    NGHD = SelectedItemRevenue.NGHD,
+                    TRANGTHAI = "Đơn hàng đã bị huỷ",
+                    TenSach = SelectedItemRevenue.TenSach,
+                };
+
+                (bool isCancel, string lb) = await BillServices.Ins.CancelBill(currentBill);
+
+                await checkRevenueFilter();
+                if (isCancel)
+                {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", lb, MessageType.Accept, MessageButtons.OK);
+                    ms.ShowDialog();
+                }
+                else
+                {
+                    MessageBoxML ms = new MessageBoxML("Lỗi", lb, MessageType.Accept, MessageButtons.OK);
+                    ms.ShowDialog();
+                }
+            }
         }
 
         //filter tháng cho danh sách chi tiền

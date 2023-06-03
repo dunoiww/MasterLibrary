@@ -36,6 +36,7 @@ namespace MasterLibrary.Models.DataProvider
                 newBill.NGHD = bill.NGHD;
                 newBill.MAKH = bill.MAKH;
                 newBill.TRIGIA = bill.TRIGIA;
+                newBill.TRANGTHAI = bill.TRANGTHAI;
 
                 context.HOADONs.Add(newBill);
 

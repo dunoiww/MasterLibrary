@@ -103,7 +103,7 @@
                         Background="Transparent"
                         BorderBrush="Transparent"
                         HorizontalContentAlignment="Right"
-                        Command="{Binding LoadForgotPassPage}" />
+                        Command="{Binding LoadForgotPassPage}"/>
             </StackPanel>
 
             <StackPanel HorizontalAlignment="Right"
@@ -111,7 +111,7 @@
                     Width="250">
                 <!-- Đăng kí -->
                 <StackPanel HorizontalAlignment="Left"
-                            Margin="40,0,0,0">
+                            Margin="50,0,0,0">
                     <Button Content="Đăng kí"
                                 Width="90"
                                 x:Name="btnRegister"
@@ -127,15 +127,15 @@
                 <StackPanel HorizontalAlignment="Right"
                             Margin="10,0,0,0">
                     <Button Content="Đăng nhập"
-                                IsDefault="True"
-                                Width="90"
-                                x:Name="btnLogin"
-                                Padding="0,0,0,5"
-                                Background="#391c00"
-                                materialDesign:ButtonAssist.CornerRadius="8"
-                                Command="{Binding LoginML}"
-                                CommandParameter="{Binding ElementName=Error}"    
-                                Click="btnLogin_Click">
+                            IsDefault="True"
+                            Width="90"
+                            x:Name="btnLogin"
+                            Padding="0,0,0,5"
+                            Background="#391c00"
+                            materialDesign:ButtonAssist.CornerRadius="8"
+                            Command="{Binding LoginML}"
+                            CommandParameter="{Binding ElementName=Error}"    
+                            Click="btnLogin_Click">
                     </Button>
                 </StackPanel>
             </StackPanel>

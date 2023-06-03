@@ -97,8 +97,7 @@
                                                     HorizontalAlignment="Left"
                                                     Width="35" Height="35"
                                                     Command="{Binding DataContext.UpdatingBook,RelativeSource={RelativeSource AncestorType=DataGrid}}"
-                                                    CommandParameter="{Binding ElementName=dtg_manage}"
-                                                    ToolTip="MaterialDesignFloatingActionMiniButton">
+                                                    CommandParameter="{Binding ElementName=dtg_manage}">
                                     <materialDesign:PackIcon Kind="EditOutline" Width="15" Height="15"/>
                                 </Button>
 
@@ -108,7 +107,7 @@
                                                     Width="35" Height="35"
                                                     Command="{Binding DataContext.DeletingBook ,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                     CommandParameter="{Binding ElementName=dtg_manage}"
-                                                    ToolTip="MaterialDesignFloatingActionMiniButton" Margin="5 0 0 0">
+                                                    Margin="5 0 0 0">
                                     <materialDesign:PackIcon Kind="DeleteOutline" Width="15" Height="15"/>
                                 </Button>
                             </StackPanel>

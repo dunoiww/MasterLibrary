@@ -30,7 +30,7 @@ namespace MasterLibrary.Utils
         private Cloudinary cloudinary;
         private CloudinaryService()
         {
-            account = new Account("dsrqapm0a", "957237172661889", "-1RSpajRMHkAQicQdFuyhIJfogE");
+            account = new Account("dg0uneomp", "924294962494475", "Ahrb-2beUzb0TEJpKjHck2IYCGI");
             cloudinary = new Cloudinary(account);
             cloudinary.Api.Secure = true;
         }

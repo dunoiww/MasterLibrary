@@ -188,8 +188,7 @@
                                 Height="40"
                                 Command="{Binding UpdateInforAdmin}"
                                 CommandParameter="{Binding ElementName=btnsave}"
-                                Visibility="Hidden"
-                                ToolTip="Resource name: MaterialDesignRaisedButton">
+                                Visibility="Hidden">
                             Lưu thay đổi
                         </Button>
                     </Grid>

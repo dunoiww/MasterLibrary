@@ -51,7 +51,9 @@ namespace MasterLibrary.Models.DataProvider
                                        MaTang = (int)sach.VITRITANG,
                                        TenTang = t.TENTANG,
                                        MaDay = (int)sach.VITRIDAY,
-                                       TenDay = d.TENDAY
+                                       TenDay = d.TENDAY,
+                                       SOLUONGDANHGIA = (int)sach.SOLUONGDANHGIA,
+                                       AVGRATING = (double)sach.AVGRATING,
                                    }
                      ).ToListAsync();
                 }
@@ -127,6 +129,8 @@ namespace MasterLibrary.Models.DataProvider
                                          ImageSource = sach.IMAGESOURCE,
                                          MaTang = (int)sach.VITRITANG,
                                          MaDay = (int)sach.VITRIDAY,
+                                         AVGRATING = (double)sach.AVGRATING,
+                                         SOLUONGDANHGIA = (int)sach.SOLUONGDANHGIA,
                                          TenTang = (from tang in context.TANGs where tang.MATANG == sach.VITRITANG select tang.TENTANG).FirstOrDefault(),
                                          TenDay = (from day in context.DAYKEs where day.MADAY == sach.VITRIDAY select day.TENDAY).FirstOrDefault()
                                      }).FirstOrDefaultAsync();
@@ -134,11 +138,38 @@ namespace MasterLibrary.Models.DataProvider
                     return book;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return null;
+                throw e;
             }
 
+        }
+
+        public async Task<(bool, string)> UpdateReview(int _BookId, double _Rating)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var currentBook = context.SACHes.FirstOrDefault(s => s.MASACH == _BookId);
+                    currentBook.RATING += _Rating;
+                    currentBook.SOLUONGDANHGIA += 1;
+
+                    currentBook.AVGRATING = currentBook.RATING / currentBook.SOLUONGDANHGIA;
+
+                    context.SaveChanges();
+
+                    return (true, "");
+                }
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException)
+            {
+                return (false, "Không thể kết nối được với cơ sở dữ liệu.");
+            }
+            catch (Exception)
+            {
+                return (false, "Gặp lỗi trong việc thêm nhận xét.");
+            }
         }
     }
 }

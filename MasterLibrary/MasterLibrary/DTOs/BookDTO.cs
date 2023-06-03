@@ -31,5 +31,21 @@ namespace MasterLibrary.DTOs
                 return Helper.FormatVNMoney(Gia);
             }
         }
+        public int soluongban { get; set; }
+        public decimal tonggiaban { get; set; }
+        public string tonggiaStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(tonggiaban);
+            }
+        }
+
+        public int ISRECEIVED { get; set; }
+        public string REVIEW { get; set; }
+        public double RATINGSTAR { get; set; }
+        public double AVGRATING { get; set; }
+        public int SOLUONGDANHGIA { get; set; }
+
     }
 }

@@ -14,6 +14,7 @@
                     xmlns:viewmodel31 ="clr-namespace:MasterLibrary.ViewModel.CustomerVM.BuyBookVM"
                     xmlns:viewmodel32 ="clr-namespace:MasterLibrary.ViewModel.CustomerVM.SettingVM"
                     xmlns:viewmodel33 ="clr-namespace:MasterLibrary.ViewModel.CustomerVM.BookCartVM"
+                    xmlns:viewmodel36 ="clr-namespace:MasterLibrary.ViewModel.CustomerVM.DeliveryVM"
                     xmlns:viewmodel34="clr-namespace:MasterLibrary.ViewModel.CustomerVM.ReportTroubleVM"
                     xmlns:viewmodel35="clr-namespace:MasterLibrary.ViewModel.CustomerVM.BorrowBookCusVM"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
@@ -22,7 +23,7 @@
     <viewmodel1:ForgotPassViewModel x:Key= "ForgotPassVM"/>
     <viewmodel2:MainAdminViewModel x:Key= "AdminVM"/>
     <viewmodel2:BookManageViewModel x:Key="BookManageVM"/>
-    <viewmodel21:StatisticViewModel x:Key="StatisticVM"/>
+    <viewmodel21:StatisticManagementViewModel x:Key="StatisticVM"/>
     <viewmodel22:HistoryViewModel x:Key="HistoryVM"/>
     <viewmodel23:LocationViewModel x:Key="LocationVM"/>
     <viewmodel23:BookInRowViewModel x:Key="BookInRowVM"/>
@@ -36,6 +37,7 @@
     <viewmodel31:BuyBookViewModel x:Key="BuyBookVM"/>
     <viewmodel32:SettingViewModel x:Key="SettingVM"/>
     <viewmodel33:BookCartViewModel x:Key="BookCartVM"/>
+    <viewmodel36:DeliveryViewModel x:Key="DeliveryVM"/>
     <viewmodel34:ReportTroubleViewModel x:Key="ReportTroubleVM"/>
     <viewmodel35:BorrowBookViewModel x:Key="BorrowBookCusVM"/>
     <viewmodel:DetailBookViewModel x:Key="DetailBookMainVM"/>

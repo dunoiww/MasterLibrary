@@ -187,7 +187,7 @@
                                             <DataTemplate>
                                                 <TextBlock Text="{Binding NgayBaoCao, StringFormat='dd/MM/yyyy'}"
                                                            FontSize="20"
-                                                           Margin="0,30,0,0" />
+                                                           Margin="18,30,0,0" />
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>

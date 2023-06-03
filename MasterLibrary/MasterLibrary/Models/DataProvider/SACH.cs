@@ -21,6 +21,7 @@ namespace MasterLibrary.Models.DataProvider
             this.GIOHANGs = new HashSet<GIOHANG>();
             this.PHIEUMUONs = new HashSet<PHIEUMUON>();
             this.PHIEUTHUs = new HashSet<PHIEUTHU>();
+            this.REVIEWs = new HashSet<REVIEW>();
         }
     
         public int MASACH { get; set; }
@@ -36,6 +37,9 @@ namespace MasterLibrary.Models.DataProvider
         public Nullable<int> VITRIDAY { get; set; }
         public string NXB { get; set; }
         public Nullable<int> ISEXIST { get; set; }
+        public Nullable<int> SOLUONGDANHGIA { get; set; }
+        public Nullable<double> RATING { get; set; }
+        public Nullable<double> AVGRATING { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTHD> CTHDs { get; set; }
@@ -46,6 +50,8 @@ namespace MasterLibrary.Models.DataProvider
         public virtual ICollection<PHIEUMUON> PHIEUMUONs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUTHU> PHIEUTHUs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<REVIEW> REVIEWs { get; set; }
         public virtual TANG TANG { get; set; }
     }
 }

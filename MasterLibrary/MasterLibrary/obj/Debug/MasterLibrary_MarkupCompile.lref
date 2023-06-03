@@ -29,6 +29,8 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\SettingPage\ConfirmPas
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\SettingPage\InformationPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\SettingPage\RolePage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\SettingPage\SettingPageAdmin.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\StatisticalPage\RankingStatistical.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\StatisticalPage\StatisticalMainPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\StatisticalPage\StatisticalPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\TroublePage\DetailTroubleAdmin.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\TroublePage\ProcessTrouble.xaml;;
@@ -38,6 +40,10 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BookLocationPage\Bo
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BorrowBookPage\BorrowBookPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\BuyBookPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\DetailBookService.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeFinish.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeliveryPage.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeNotFinish.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\ReviewBook.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\MainCustomerWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\ReportTroublePage\AddRTrouble.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\ReportTroublePage\DetailTrouble.xaml;;
