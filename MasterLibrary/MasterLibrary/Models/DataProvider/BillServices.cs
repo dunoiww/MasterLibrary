@@ -211,6 +211,40 @@ namespace MasterLibrary.Models.DataProvider
             }
         }
 
+        public async Task<List<BillDTO>> GetBillByStatus(int _makh, string status)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var BillList = context.HOADONs.Where(s => s.MAKH == _makh && s.TRANGTHAI == status)
+                        .Join(
+                            context.CTHDs,
+                            s => s.MAHD,
+                            c => c.MAHD,
+                            (s, c) => new BillDTO
+                            {
+                                MAKH = (int)s.MAKH,
+                                cusId = (int)s.MAKH,
+                                cusName = s.KHACHHANG.TENKH,
+                                cusAdd = s.KHACHHANG.DIACHI,
+                                MAHD = s.MAHD,
+                                TRIGIA = (decimal)s.TRIGIA,
+                                NGHD = s.NGHD,
+                                TRANGTHAI = s.TRANGTHAI,
+                                TenSach = c.SACH.TENSACH
+                            }
+                        ).ToList();
+
+                    return BillList;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+        }
+
         public async Task<List<BillDTO>> GetAllBillByCusByMonth(int _makh, int month, int year)
         {
             try

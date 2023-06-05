@@ -36,15 +36,15 @@ namespace MasterLibrary.Utils.ConverterValue
 
             if (_TrangThai == "Đang trên đường vận chuyển")
             {
-                return "#808080";
+                return "#d9d9d9 ";
             }
             else if (_TrangThai == "Chờ xác nhận")
             {
-                return "#0f82af";
+                return "#98cbfa";
             }
             else
             {
-                return "#808080";
+                return "#d9d9d9 ";
             }
         }
 
@@ -63,15 +63,15 @@ namespace MasterLibrary.Utils.ConverterValue
 
             if (_TrangThai == "Đang trên đường vận chuyển")
             {
-                return "#808080";
+                return "#d9d9d9";
             }
             else if (_TrangThai == "Chờ xác nhận")
             {
-                return "#c24040";
+                return "#f07f7f";
             }
             else
             {
-                return "#808080";
+                return "#d9d9d9";
             }
         }
 

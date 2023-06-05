@@ -29,17 +29,24 @@ namespace MasterLibrary.Views.Admin.HistoryPage
             this.DragMove();
         }
 
-        private void Button_MouseEnter(object sender, MouseEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
-            btn.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFA5B9D6");
-            btn.Background = new SolidColorBrush(Colors.OrangeRed);
-        }
+            PrintDialog printDialog = new PrintDialog();
 
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            Button btn = sender as Button;
-            btn.Background = new SolidColorBrush(Colors.Transparent);
+            // Kiểm tra xem người dùng đã chọn máy in và các tùy chọn in khác chưa
+            if (printDialog.ShowDialog() == true)
+            {
+                // Chuyển đổi Window hiện tại thành hình ảnh (Visual)
+                var visual = new DrawingVisual();
+                using (var context = visual.RenderOpen())
+                {
+                    var brush = new VisualBrush(RevenueDetailML);
+                    context.DrawRectangle(brush, null, new Rect(new Point(), new Size(RevenueDetailML.ActualWidth, RevenueDetailML.ActualHeight)));
+                }
+
+                // In hình ảnh hoá đơn
+                printDialog.PrintVisual(visual, "Hoá đơn");
+            }
         }
     }
 }

@@ -15,7 +15,7 @@
         Background="Transparent"
         DataContext="{StaticResource DeliveryVM}">
 
-    
+
 
     <Border BorderThickness="0.5"
             BorderBrush="Black"
@@ -147,7 +147,7 @@
                                  x:Name="tbReview"
                                  Width="460"
                                  Height="200"
-                                 FontSize="22"
+                                 FontSize="18"
                                  MaxLength="500"
                                  BorderBrush="#593000"
                                  Margin="-5,15,0,0"
@@ -155,7 +155,7 @@
                                  VerticalScrollBarVisibility="Auto"
                                  HorizontalScrollBarVisibility="Disabled"
                                  IsReadOnly="False"
-                                 materialDesign:HintAssist.Hint="Nhận xét tối đa 500 từ."
+                                 materialDesign:HintAssist.Hint="Thêm lời nhận xét (tối đa 500 từ)."
                                  Text="{Binding ReviewText}" />
                     </StackPanel>
                 </StackPanel>
@@ -163,9 +163,3 @@
         </Grid>
     </Border>
 </Window>
-
-    
-    
-
-<!--SelectedItem="{Binding SelectedFinishFilter}"
-                                      SelectionChanged="filtercbb_SelectionChanged"-->

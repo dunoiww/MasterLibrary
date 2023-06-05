@@ -5,18 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterLibrary.Views.Admin.HistoryPage"
         mc:Ignorable="d"
-        Title="RevenueDetail" Height="520" Width="450"
+        Title="RevenueDetail" Height="700" Width="450"
         x:Name="RevenueDetailML"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Background="#00000000"
         WindowStyle="None"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextElement.FontWeight="Regular"
-    TextElement.FontSize="13"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    FontFamily="{DynamicResource MaterialDesignFont}"
-      DataContext="{StaticResource HistoryVM}"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterOwner"
+        AllowsTransparency="True"
+        DataContext="{StaticResource HistoryVM}" 
         MouseLeftButtonDown="RevenueDetailML_MouseLeftButtonDown">
 
     <Window.Triggers>
@@ -32,25 +34,38 @@
             </BeginStoryboard>
         </EventTrigger>
     </Window.Triggers>
-    <Border Background="#FFE5E5E5"
+    <Border Background="#fff"
             BorderBrush="Gray"
             BorderThickness="1"
             CornerRadius="10">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="26*"></RowDefinition>
-                <RowDefinition Height="196*"></RowDefinition>
+                <RowDefinition Height="25*"></RowDefinition>
+                <RowDefinition Height="210*"></RowDefinition>
                 <RowDefinition Height="37*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <!--Header-->
             <Grid Grid.Row="0">
+                <Button VerticalAlignment="Top"
+                        HorizontalAlignment="Left"
+                        Background="Transparent"
+                        Foreground="Black"
+                        BorderBrush="Transparent"
+                        ToolBar.OverflowMode="AsNeeded"
+                        ToolTip="In hoá đơn"
+                        Click="Button_Click"
+                        Panel.ZIndex="100">
+                    <materialDesign:PackIcon Kind="LocalPrintShop" Height="30" Width="30"/>
+                    
+                </Button>
+                
                 <Label Content="MASTER LIBRARY"
                        FontSize="25"
                        FontWeight="Bold"
                        BorderThickness="0 0 0 1"
                        BorderBrush="Black"
-                       Padding="20 20 0 0"
+                       Padding="0 20 0 0"
                        HorizontalContentAlignment="Center"/>
 
                 <StackPanel Orientation="Horizontal"
@@ -63,8 +78,6 @@
                             Background="Transparent"
                             Foreground="Black"
                             BorderBrush="Transparent"
-                            MouseEnter="Button_MouseEnter"
-                            MouseLeave="Button_MouseLeave"
                             materialDesign:ButtonAssist.CornerRadius="0,10,0,0">
                         <materialDesign:PackIcon Kind="WindowClose"
                                                  Padding="0" />
@@ -77,17 +90,17 @@
                         BorderThickness="0 0 1 0">
                     <Grid Margin="0,0,0,10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="69*"></RowDefinition>
-                            <RowDefinition Height="180*"></RowDefinition>
-                            <RowDefinition Height="116*"></RowDefinition>
-                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="30*"></RowDefinition>
+                            <RowDefinition Height="60*"></RowDefinition>
+                            <RowDefinition Height="140*"/>
+                            <RowDefinition Height="60*"></RowDefinition>
                         </Grid.RowDefinitions>
 
                         <Border Grid.Row="0" Margin="10 0 10 0"
                             BorderThickness="0 0 0 1"
                             BorderBrush="Gray">
                             <Label Content="Hoá đơn mua sách" FontSize="25"
-                               FontWeight="Bold" Padding="10 10 0 0" VerticalAlignment="Center" Height="48">
+                               FontWeight="Bold" Padding="5 10 0 0" VerticalAlignment="Center" Height="48" >
                             </Label>
                         </Border>
 
@@ -116,54 +129,74 @@
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
 
-                                        <Label Grid.Column="0" Content="Tên sách"
+                                        <Label Grid.Column="0" Content="Ngày mua hàng" ContentStringFormat="dd/mm/yyy"
                                            FontSize="15"></Label>
-                                        <Label Grid.Column="1" x:Name="bookName"
+                                        <Label Grid.Column="1" x:Name="ngmuahang"
                                            FontSize="15" HorizontalAlignment="Right"/>
                                     </Grid>
                                 </StackPanel>
-                                <StackPanel>
-                                    <Grid Margin="0 7 0 0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
 
-                                        <Label Grid.Column="0" Content="Ngày mua hàng"
-                                           FontSize="15"></Label>
-                                        <Label Grid.Column="1" x:Name="affordDay"
-                                           FontSize="15" HorizontalAlignment="Right"/>
-                                    </Grid>
-                                </StackPanel>
                                 <StackPanel>
-                                    <Grid Margin="0 7 0 0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="15*"></ColumnDefinition>
-                                            <ColumnDefinition Width="8*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Label Grid.Column="0" Content="Giá sách"
-                                           FontSize="15"></Label>
-                                        <Label Grid.Column="1" x:Name="bookPrice"
-                                           FontSize="15" HorizontalAlignment="Right"/>
-                                    </Grid>
-                                </StackPanel>
-                                <StackPanel>
-                                    <Grid Margin="0 7 0 0">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="15*"></ColumnDefinition>
-                                            <ColumnDefinition Width="8*"></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-
-                                        <Label Grid.Column="0" Content="Số lượng mua"
-                                           FontSize="15"></Label>
-                                        <Label Grid.Column="1" x:Name="quantityBuy"
-                                           FontSize="15" HorizontalAlignment="Right"/>
-                                    </Grid>
+                                    <Label Content="Danh sách sản phẩm" FontSize="15" Margin="0 7 0 0"></Label>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
+
                         <Border Grid.Row="2"
+                            BorderThickness="0,0,0,1"
+                            BorderBrush="Gray"
+                            Margin="10,0,10,0">
+                            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                      x:Name="scrollview">
+                                <ItemsControl ItemsSource="{Binding ListProduct}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border  Height="80"
+                                                 BorderBrush="LightGray"
+                                                 BorderThickness="0,0,0,1">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="70*"/>
+                                                        <ColumnDefinition Width="30*"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel Orientation="Horizontal"
+                                                            Grid.Column="0">
+                                                        <StackPanel>
+                                                            <TextBlock Text="{Binding TenSach}"
+                                                                   FontSize="15" />
+                                                            <StackPanel Orientation="Horizontal"
+                                                                    Margin="0,10,0,0">
+                                                                <TextBlock Text="{Binding SoLuong}"
+                                                                       FontSize="15" />
+                                                                <TextBlock Text="x"
+                                                                       FontSize="15"
+                                                                       VerticalAlignment="Bottom"
+                                                                       Margin="3,0,0,1" />
+                                                                <TextBlock Text="{Binding GiaMoiCaiStr}"
+                                                                       VerticalAlignment="Bottom"
+                                                                       FontSize="15"
+                                                                       Margin="5,0,0,1" />
+                                                            </StackPanel>
+                                                        </StackPanel>
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="1"
+                                                            Orientation="Horizontal"
+                                                            HorizontalAlignment="Right">
+                                                        <TextBlock Text="{Binding TongGiaMoiCaiStr}"
+                                                               FontSize="18" />
+                                                        <TextBlock Text=""
+                                                               FontSize="15" />
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Border>
+
+                        <Border Grid.Row="3"
                                 BorderThickness="0 0 0 1"
                                 BorderBrush="Gray" Margin="10,0,10,0">
                             <StackPanel Margin="0,0,0,-1">
@@ -212,17 +245,17 @@
                 </Border>
             </Grid>
 
-            <StackPanel Grid.Row="1" Margin="10,383,10,0" Grid.RowSpan="2">
-                <Grid Margin="0 0 0 5">
+            <StackPanel Grid.Row="2" Margin="0,0,0,0" Grid.RowSpan="2">
+                <Grid Margin="8 0 0 5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Label Grid.Column="0" Content="Tổng trị giá đơn hàng" FontSize="15"></Label>
-                    <Label Grid.Column="1" FontSize="15" x:Name="costBook" HorizontalAlignment="Right"></Label>
+                    <Label Grid.Column="1" FontSize="18" x:Name="TotalCost" HorizontalAlignment="Right"></Label>
                 </Grid>
 
-                <Grid Margin="0 5 0 0">
+                <Grid Margin="0 35 0 0">
                     <Label Grid.Column="0" Content="Hẹn gặp lại quý khách " FontSize="15" HorizontalAlignment="Center"></Label>
                 </Grid>
             </StackPanel>

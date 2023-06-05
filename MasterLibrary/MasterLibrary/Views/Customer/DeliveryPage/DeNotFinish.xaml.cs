@@ -35,45 +35,5 @@ namespace MasterLibrary.Views.Customer.DeliveryPage
                         ((item as BillDTO).TenSach.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
-
-        private void filtercbb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox cbb = sender as ComboBox;
-            if (cbbMonth != null)
-            {
-                switch (cbb.SelectedIndex)
-                {
-                    case 0:
-                        {
-                            cbbMonth.Visibility = Visibility.Collapsed;
-                            cbbYear.Visibility = Visibility.Collapsed;
-                            break;
-                        }
-                    case 1:
-                        {
-                            cbbMonth.Visibility = Visibility.Visible;
-                            cbbYear.Visibility = Visibility.Visible;
-                            break;
-                        }
-                }
-            }
-        }
-
-        private void cbbYear_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (cbbYear == null) return;
-
-            List<string> list = new List<string>();
-
-            int now = -1;
-            for (int i = 2021; i <= DateTime.Now.Year; i++)
-            {
-                now++;
-                list.Add(i.ToString());
-            }
-
-            cbbYear.ItemsSource = list;
-            cbbYear.SelectedIndex = now;
-        }
     }
 }

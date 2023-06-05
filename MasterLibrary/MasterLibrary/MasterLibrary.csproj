@@ -437,6 +437,9 @@
     <Compile Include="Views\Admin\HistoryPage\HistoryPage.xaml.cs">
       <DependentUpon>HistoryPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\HistoryPage\RevenueDetail.xaml.cs">
+      <DependentUpon>RevenueDetail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\HistoryPage\TroublePage_His.xaml.cs">
       <DependentUpon>TroublePage_His.xaml</DependentUpon>
     </Compile>
@@ -633,6 +636,10 @@
     <Page Include="Views\Admin\HistoryPage\HistoryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Admin\HistoryPage\RevenueDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\HistoryPage\TroublePage_His.xaml">
       <SubType>Designer</SubType>

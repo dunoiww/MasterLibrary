@@ -157,6 +157,8 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
             //Load dữ liệu ban đầu
             SelectedDeliveryMonth = DateTime.Now.Month;
             SelectedDeliveryYear = DateTime.Now.Year;
+            SelectedFinishMonth = DateTime.Now.Month - 1;
+            SelectedFinishYear = DateTime.Now.Year;
 
             MaskNameML = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
             closeML = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -191,15 +193,15 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
                 await checkDeliveryFilter();
             });
 
-            SelectedDeliveryMonthML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            {
-                await checkDeliveryMonthFilter();
-            });
+            //SelectedDeliveryMonthML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            //{
+            //    await checkDeliveryMonthFilter();
+            //});
 
-            SelectedDeliveryYearML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            {
-                await checkDeliveryMonthFilter();
-            });
+            //SelectedDeliveryYearML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
+            //{
+            //    await checkDeliveryMonthFilter();
+            //});
 
             ReceivedBook = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -252,9 +254,22 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
 
             CloseReviewBook = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                ReviewText = string.Empty;
-                RatingStar = 0;
-                p.Close();
+                if (!string.IsNullOrEmpty(ReviewText) || RatingStar != 0)
+                {
+                    MessageBoxML mb = new MessageBoxML("Thông báo", "Bạn đang nhận xét, có muốn thoát?", MessageType.Accept, MessageButtons.YesNo);
+                    mb.ShowDialog();
+
+                    if ((bool)mb.DialogResult)
+                    {
+                        ReviewText = string.Empty;
+                        RatingStar = 0;
+                        p.Close();
+                    }
+                }
+                else
+                {
+                    p.Close();
+                }
             });
 
             UpdateReviewBook = new RelayCommand<Window>((p) => { return true; }, async (p) =>
@@ -263,7 +278,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
             });
         }
 
-        
+
 
         #region Task Process
         public async Task GetListProcessSource(string s = "")
@@ -294,34 +309,73 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
                         }
                     }
 
-                case "month":
+                case "cxn":
                     {
-                        IsGettingSource = true;
-                        await checkDeliveryMonthFilter();
-                        IsGettingSource = false;
-                        return;
+                        try
+                        {
+                            IsGettingSource = true;
+                            ListProcess = new ObservableCollection<BillDTO>(await BillServices.Ins.GetBillByStatus(MainCustomerViewModel.CurrentCustomer.MAKH, "Chờ xác nhận"));
+                            IsGettingSource = false;
+                            return;
+                        }
+                        catch (System.Data.Entity.Core.EntityException e)
+                        {
+                            MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+                            mb.ShowDialog();
+                            throw;
+                        }
+                        catch
+                        {
+                            MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+                            mb.ShowDialog();
+                            throw;
+                        }
                     }
-            }
+                case "dgh":
+                    {
+                        try
+                        {
+                            IsGettingSource = true;
+                            ListProcess = new ObservableCollection<BillDTO>(await BillServices.Ins.GetBillByStatus(MainCustomerViewModel.CurrentCustomer.MAKH, "Đang trên đường vận chuyển"));
+                            IsGettingSource = false;
+                            return;
+                        }
+                        catch (System.Data.Entity.Core.EntityException e)
+                        {
+                            MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+                            mb.ShowDialog();
+                            throw;
+                        }
+                        catch
+                        {
+                            MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+                            mb.ShowDialog();
+                            throw;
+                        }
+                    }
 
-        }
-
-        public async Task checkDeliveryMonthFilter()
-        {
-            try
-            {
-                ListProcess = new ObservableCollection<BillDTO>(await BillServices.Ins.GetAllBillByCusByMonth(MainCustomerViewModel.CurrentCustomer.MAKH, SelectedDeliveryMonth, SelectedDeliveryYear));
-            }
-            catch (System.Data.Entity.Core.EntityException e)
-            {
-                MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
-                throw;
-            }
-            catch
-            {
-                MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-                mb.ShowDialog();
-                throw;
+                case "dbh":
+                    {
+                        try
+                        {
+                            IsGettingSource = true;
+                            ListProcess = new ObservableCollection<BillDTO>(await BillServices.Ins.GetBillByStatus(MainCustomerViewModel.CurrentCustomer.MAKH, "Đơn hàng đã bị huỷ"));
+                            IsGettingSource = false;
+                            return;
+                        }
+                        catch (System.Data.Entity.Core.EntityException e)
+                        {
+                            MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+                            mb.ShowDialog();
+                            throw;
+                        }
+                        catch
+                        {
+                            MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+                            mb.ShowDialog();
+                            throw;
+                        }
+                    }
             }
         }
 
@@ -335,9 +389,19 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
                         return;
                     }
 
-                case "Theo tháng":
+                case "Chờ xác nhận":
                     {
-                        await GetListProcessSource("month");
+                        await GetListProcessSource("cxn");
+                        return;
+                    }
+                case "Đang trên đường vận chuyển":
+                    {
+                        await GetListProcessSource("dgh");
+                        return;
+                    }
+                case "Đơn hàng đã bị huỷ":
+                    {
+                        await GetListProcessSource("dbh");
                         return;
                     }
             }
@@ -425,13 +489,13 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
         {
             try
             {
-                ListFinish = new ObservableCollection<BillDTO>(await BillServices.Ins.GetAllBillFinishByMonth(MainCustomerViewModel.CurrentCustomer.MAKH, SelectedDeliveryMonth, SelectedDeliveryYear));
+                ListFinish = new ObservableCollection<BillDTO>(await BillServices.Ins.GetAllBillFinishByMonth(MainCustomerViewModel.CurrentCustomer.MAKH, SelectedFinishMonth + 1, SelectedFinishYear));
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
                 MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
                 mb.ShowDialog();
-                throw;
+                throw e;
             }
             catch
             {

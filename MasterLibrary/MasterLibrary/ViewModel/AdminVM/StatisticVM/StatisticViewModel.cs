@@ -164,6 +164,7 @@ namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
                     Title = "Thu",
                     Values = new ChartValues<decimal>(MonthlyRevenue),
                     Fill = Brushes.Transparent,
+                    PointGeometry = DefaultGeometries.Square,
                 },
                 new LineSeries
                 {
@@ -176,14 +177,14 @@ namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
             catch (System.Data.Entity.Core.EntityException e)
             {
                 Console.WriteLine(e);
-                MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+                MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu.", MessageType.Error, MessageButtons.OK);
                 mb.ShowDialog();
                 throw;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
-                MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+                MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống.", MessageType.Error, MessageButtons.OK);
                 mb.ShowDialog();
                 throw;
             }

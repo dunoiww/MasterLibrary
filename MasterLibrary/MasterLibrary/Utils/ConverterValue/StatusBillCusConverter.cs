@@ -36,14 +36,44 @@ namespace MasterLibrary.Utils.ConverterValue
 
             if (_TrangThai == "Đang trên đường vận chuyển")
             {
-                return "#0f82af";
+                return "#ffde59";
             }
             else
             {
-                return "#808080";
+                return "#d9d9d9";
             }
         }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ForegroundConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo language)
+        {
+            // Retrieve the format string and use it to format the value.
+            string _TrangThai = value as string;
+
+            if (_TrangThai == "Chờ xác nhận")
+            {
+                return "#f1c232";
+            }
+            else if (_TrangThai == "Đơn hàng đã bị huỷ")
+            {
+                return "#BA1111";
+            }
+            else if (_TrangThai == "Giao hàng thành công")
+            {
+                return "#428720";
+            }
+            else
+            {
+                return "#DD000000";
+            }
+        }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();

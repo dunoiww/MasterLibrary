@@ -45,6 +45,7 @@
         <local1:StatusBillConverter x:Key="StatusBillConverter"/>
         <local1:ForegroundStatusBillConverter x:Key="ForegroundStatusBillConverter"/>
         <local1:ForegroundStatusDeleteBillConverter x:Key="ForegroundStatusDeleteBillConverter"/>
+        <local1:ForegroundConverter x:Key="ForegroundConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -165,7 +166,7 @@
                             Width="130"
                             FontFamily="arial"
                             FontWeight="Bold"
-                            Margin="46 10 0 0"
+                            Margin="70 10 0 0"
                             Padding="0"
                             materialDesign:ButtonAssist.CornerRadius="4"
                             Command="{Binding ExportFileML}">
@@ -191,7 +192,7 @@
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListRevenue}"
                       SelectedItem="{Binding SelectedItemRevenue}"
-                      HorizontalAlignment="Stretch">
+                      HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding LoadInforRevenueML}" />
@@ -200,7 +201,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã đơn"
-                                        Width="100">
+                                        Width="110">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding MAHD}"
@@ -211,7 +212,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Mã khách hàng"
-                                        Width="170">
+                                        Width="160">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding MAKH}"
@@ -266,12 +267,14 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Trạng thái"
-                                        Width="200">
+                                        Width="260">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TRANGTHAI}"
                                                 FontSize="18"
-                                                Margin="18,0,0,0" />
+                                                FontStyle="Italic"
+                                                Margin="18,0,0,0" 
+                                                Foreground="{Binding TRANGTHAI, Converter={StaticResource ForegroundConverter}}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -328,6 +331,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
+            <TextBlock HorizontalAlignment="Right" Text="Hello" FontSize="20"></TextBlock>
         </StackPanel>
 
         <!-- Mặt nạ làm mờ -->

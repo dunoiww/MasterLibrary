@@ -16,6 +16,10 @@ using MasterLibrary.Models.DataProvider;
 using System.Windows;
 using JetBrains.Annotations;
 using MessageBox = System.Windows.Forms.MessageBox;
+using MaterialDesignThemes.Wpf;
+using MasterLibrary.Views.Customer;
+using MasterLibrary.ViewModel.CustomerVM;
+using MasterLibrary.Utils;
 
 namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
 {
@@ -207,6 +211,13 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
         {
             get => _ListBorrow;
             set { _ListBorrow = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<BillDetailDTO> _ListProduct;
+        public ObservableCollection<BillDetailDTO> ListProduct
+        {
+            get => _ListProduct;
+            set { _ListProduct = value; OnPropertyChanged();}
         }
 
         #endregion
@@ -419,33 +430,47 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                 UpdateCancelBill();
             });
 
-            #region not use
-            //LoadInforRevenueML = new RelayCommand<object>((p) => { return true; }, async (p) =>
-            //{
-            //    if (SelectedItemRevenue != null)
-            //    {
-            //        try
-            //        {
-            //            IsGettingSource = true;
-            //            DetailRevenue = await Task.Run(() => BillServices.Ins.GetDetail(SelectedItemRevenue.MAHD));
-            //            IsGettingSource = false;
-            //        }
-            //        catch (System.Data.Entity.Core.EntityException e)
-            //        {
-            //            MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
-            //            mb.ShowDialog();
-            //            throw;
-            //        }
-            //        catch
-            //        {
-            //            MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
-            //            mb.ShowDialog();
-            //            throw;
-            //        }
-            //        RevenueDetail rd = new RevenueDetail();
-            //        rd.idBill.Content = DetailRevenue.MAHD;
-            //    }
-            //});
+            #region Load hoá đơn
+            LoadInforRevenueML = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                if (SelectedItemRevenue != null)
+                {
+                    try
+                    {
+                        IsGettingSource = true;
+                        ListProduct = new ObservableCollection<BillDetailDTO>(await Task.Run(() => BillDetailServices.Ins.GetAllProduct(SelectedItemRevenue.MAHD)));
+                        IsGettingSource = false;
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+                        mb.ShowDialog();
+                        throw;
+                    }
+                    catch
+                    {
+                        MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+                        mb.ShowDialog();
+                        throw;
+                    }
+                    decimal totalcost = 0;
+                    RevenueDetail rd = new RevenueDetail();
+                    rd.idBill.Content = SelectedItemRevenue.MAHD;
+                    rd.ngmuahang.Content = SelectedItemRevenue.NGHD;
+                    rd.cusID.Content = SelectedItemRevenue.MAKH;
+                    rd.cusName.Content = SelectedItemRevenue.cusName;
+                    rd.cusAdd.Content = SelectedItemRevenue.cusAdd;
+
+                    for (int i = 0; i < ListProduct.Count; i++)
+                    {
+                        totalcost += ListProduct[i].TongGiaMoiCai;
+                    }
+
+                    rd.TotalCost.Content = Helper.FormatVNMoney(totalcost);
+
+                    rd.ShowDialog();
+                }
+            });
             #endregion
         }
 

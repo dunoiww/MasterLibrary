@@ -96,7 +96,7 @@
             </StackPanel>
 
             <materialDesign:Card Background="White"
-                                 Margin="20,80,20,20"
+                                 Margin="5,80,5,5"
                                  UniformCornerRadius="5">
                 <Grid>
                     <Frame x:Name="MainListViewFrame">

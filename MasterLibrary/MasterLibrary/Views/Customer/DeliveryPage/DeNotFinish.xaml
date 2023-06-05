@@ -36,6 +36,7 @@
     <Page.Resources>
         <local1:StatusBillCusConverter x:Key="StatusBillCusConverter"/>
         <local1:ForegroundStatusBillCusConverter x:Key="ForegroundStatusBillCusConverter"/>
+        <local1:ForegroundConverter x:Key="ForegroundConverter"/>
     </Page.Resources>
 
     <Grid>
@@ -67,17 +68,16 @@
                              Height="30"
                              Margin="0 0 0 0"
                              TextChanged="FilterBox_TextChanged"
-                             HorizontalAlignment="Left"
-                             />
+                             HorizontalAlignment="Left"/>
 
                     <ComboBox Height="30" x:Name="filtercbb"
-                              Width="100"
+                              Width="auto"
                               Margin="10 0 0 0"
                               Padding="0 10 10 0"
                               FontSize="13"
                               SelectedIndex="0"
-                              SelectedItem="{Binding SelectedDeliveryFilter}"
-                              SelectionChanged="filtercbb_SelectionChanged">
+                              SelectedItem="{Binding SelectedDeliveryFilter}">
+
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding CheckSelectedDeliveryFilterML}"
@@ -86,94 +86,12 @@
                         </i:Interaction.Triggers>
 
                         <ComboBoxItem Content="Toàn bộ"/>
-                        <ComboBoxItem Content="Theo tháng"/>
-                    </ComboBox>
-                    <!--<ComboBox Height="30" x:Name="filtercbb"
-                              Width="100"
-                              Margin="10 0 0 0"
-                              Padding="0 10 10 0"
-                              FontSize="13"
-                              SelectedIndex="0"
-                              SelectedItem="{Binding a}"
-                              SelectionChanged="filtercbb_SelectionChanged">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding b}"
-                                                       CommandParameter="{Binding ElementName=filtercbb}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-
-                        <ComboBoxItem Content="Toàn bộ"/>
-                        <ComboBoxItem Content="Theo tháng"/>
-                    </ComboBox>-->
-
-                    <ComboBox Height="30"
-                              Width="100"
-                              Margin="10 0 0 0"
-                              Padding="0 10 10 0"
-                              FontSize="13"
-                              Visibility="Collapsed"
-                              x:Name="cbbMonth"
-                              SelectedIndex="{Binding SelectedDeliveryMonth, Mode=TwoWay}">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding SelectedDeliveryMonthML}"
-                                                       CommandParameter="{Binding ElementName=cbbMonth}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
-                        <ComboBoxItem Content="Tháng 1" />
-                        <ComboBoxItem Content="Tháng 2" />
-                        <ComboBoxItem Content="Tháng 3" />
-                        <ComboBoxItem Content="Tháng 4" />
-                        <ComboBoxItem Content="Tháng 5" />
-                        <ComboBoxItem Content="Tháng 6" />
-                        <ComboBoxItem Content="Tháng 7" />
-                        <ComboBoxItem Content="Tháng 8" />
-                        <ComboBoxItem Content="Tháng 9" />
-                        <ComboBoxItem Content="Tháng 10" />
-                        <ComboBoxItem Content="Tháng 11" />
-                        <ComboBoxItem Content="Tháng 12" />
-                    </ComboBox>
-
-                    <ComboBox Height="30"
-                              Width="100"
-                              Margin="10 0 0 0"
-                              Padding="0 10 10 0"
-                              FontSize="13"
-                              Visibility="Collapsed"
-                              x:Name="cbbYear"
-                              SelectedItem="{Binding SelectedDeliveryYear, Mode=TwoWay}"
-                              Loaded="cbbYear_Loaded">
-                        <i:Interaction.Triggers>
-                            <i:EventTrigger EventName="SelectionChanged">
-                                <i:InvokeCommandAction Command="{Binding SelectedDeliveryYearML}"
-                                                       CommandParameter="{Binding ElementName=cbbYear}" />
-                            </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        <ComboBoxItem Content="Chờ xác nhận"/>
+                        <ComboBoxItem Content="Đang trên đường vận chuyển"/>
+                        <ComboBoxItem Content="Đơn hàng đã bị huỷ"/>
                     </ComboBox>
                 </StackPanel>
-
-                <!--<StackPanel Grid.Column="1" Orientation="Horizontal">
-                    <Button Height="40"
-                            Width="130"
-                            FontFamily="arial"
-                            FontWeight="Bold"
-                            Margin="46 10 0 0"
-                            Padding="0"
-                            materialDesign:ButtonAssist.CornerRadius="4"
-                            Command="{Binding ExportFileML}">
-                        <Button.Content>
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="FileExport"
-                                                         Width="25"
-                                                         Height="23" />
-                                <Label  Content="Xuất file Excel"
-                                        Foreground="White"
-                                        Margin="-5,0,0,0" />
-                            </StackPanel>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>-->
+                
             </Grid>
         </StackPanel>
         <StackPanel Grid.Row="1">
@@ -183,7 +101,7 @@
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListProcess}"
                       SelectedItem="{Binding SelectedProcessItem}"
-                      HorizontalAlignment="Stretch">
+                      HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã đơn"
@@ -231,17 +149,19 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Trạng thái"
-                                        Width="auto">
+                                        Width="250">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TRANGTHAI}"
                                                 FontSize="18"
-                                                Margin="18,0,0,0" />
+                                                Margin="18,0,0,0" 
+                                                FontStyle="Italic"
+                                                Foreground="{Binding TRANGTHAI, Converter={StaticResource ForegroundConverter}}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn 
+                        <GridViewColumn
                                             Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

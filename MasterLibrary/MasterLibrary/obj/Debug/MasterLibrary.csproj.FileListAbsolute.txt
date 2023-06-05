@@ -907,3 +907,5 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\MasterLibrary.exe
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\MasterLibrary.pdb
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\ReviewBook.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\ReviewBook.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\RevenueDetail.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\RevenueDetail.baml
