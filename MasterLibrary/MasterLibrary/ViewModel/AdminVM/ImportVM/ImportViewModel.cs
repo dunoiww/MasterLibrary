@@ -14,6 +14,10 @@ using System.Windows.Media;
 using MasterLibrary.ViewModel.AdminVM;
 using System.Data.SqlClient;
 using MasterLibrary.ViewModel.LoginVM;
+using System.Windows.Forms;
+using DataGrid = System.Windows.Controls.DataGrid;
+using DataGridCell = System.Windows.Controls.DataGridCell;
+using TextBox = System.Windows.Controls.TextBox;
 
 namespace MasterLibrary.ViewModel.AdminVM.ImportVM
 {
@@ -118,6 +122,7 @@ namespace MasterLibrary.ViewModel.AdminVM.ImportVM
         {
             TenNhanVien = MasterLibrary.Models.DataProvider.AdminServices.TenNhanVien;
             MaNhanVien = MasterLibrary.Models.DataProvider.AdminServices.MaNhanVien;
+            NgayNhap = DateTime.Now.ToString();
 
             Loaded = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {

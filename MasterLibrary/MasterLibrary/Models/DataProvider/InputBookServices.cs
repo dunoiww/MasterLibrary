@@ -38,7 +38,7 @@ namespace MasterLibrary.Models.DataProvider
                                        {
                                            IDInput = ct.SOHD,
                                            TenSach = ct.TENSACH,
-                                           GiaNhap = (int)ct.NHAPKHO.TRIGIA,
+                                           GiaNhap = (int)(ct.GIANHAP * ct.SL),
                                            NgNhap = ct.NHAPKHO.NGNHAP,
                                            SoLuong = (int)ct.SL,
                                        }).ToListAsync();

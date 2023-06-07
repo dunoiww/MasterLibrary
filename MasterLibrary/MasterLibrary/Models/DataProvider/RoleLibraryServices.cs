@@ -37,7 +37,8 @@ namespace MasterLibrary.Models.DataProvider
                                      select new RoleLibraryDTO
                                      {
                                          Songaymuon = (int)ltv.SONGAYMUON,
-                                         TienTraTreMotNgay = (decimal)ltv.TIENTRASACHMUONMOTNGAY
+                                         TienTraTreMotNgay = (decimal)ltv.TIENTRASACHMUONMOTNGAY,
+                                         SoSachToiDa = (int)ltv.SOSACHTOIDA
                                      }
                      ).FirstOrDefaultAsync();
                 }

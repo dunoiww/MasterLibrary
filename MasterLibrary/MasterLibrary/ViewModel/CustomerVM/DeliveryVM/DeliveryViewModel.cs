@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -115,6 +116,8 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
             set { _ReviewText = value; OnPropertyChanged(); }   
         }
 
+        public static int flag = 0;
+
         private BookDTO _CurrentBook;
         public BookDTO CurrentBook
         {
@@ -122,12 +125,10 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
             set { _CurrentBook = value; OnPropertyChanged(); }
         }
 
-
-
         #endregion
 
-        #region Icommand
-        //Icommand của page chung
+            #region Icommand
+            //Icommand của page chung
         public ICommand LoadProcessPage { get; set; }
         public ICommand LoadFinishPage { get; set; }
         public ICommand MaskNameML { get; set; }
@@ -155,8 +156,6 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
         public DeliveryViewModel() {
 
             //Load dữ liệu ban đầu
-            SelectedDeliveryMonth = DateTime.Now.Month;
-            SelectedDeliveryYear = DateTime.Now.Year;
             SelectedFinishMonth = DateTime.Now.Month - 1;
             SelectedFinishYear = DateTime.Now.Year;
 
@@ -192,16 +191,6 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
             {
                 await checkDeliveryFilter();
             });
-
-            //SelectedDeliveryMonthML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            //{
-            //    await checkDeliveryMonthFilter();
-            //});
-
-            //SelectedDeliveryYearML = new RelayCommand<ComboBox>((p) => { return true; }, async (p) =>
-            //{
-            //    await checkDeliveryMonthFilter();
-            //});
 
             ReceivedBook = new RelayCommand<object>((p) => { return true; }, async (p) =>
             {
@@ -274,7 +263,16 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
 
             UpdateReviewBook = new RelayCommand<Window>((p) => { return true; }, async (p) =>
             {
+                flag = 0;
+                IsGettingSource = true;
                 updateReview();
+                IsGettingSource = false;
+                if (flag == 1)
+                {
+                    ReviewText = string.Empty;
+                    RatingStar = 0;
+                    p.Close();
+                }
             });
         }
 
@@ -546,17 +544,20 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
                     {
                         MessageBoxML mb = new MessageBoxML("Thông báo", lb2, MessageType.Accept, MessageButtons.OK);
                         mb.ShowDialog();
+                        flag = 1;
                     }
                     else
                     {
                         MessageBoxML mb = new MessageBoxML("Lỗi", lb2, MessageType.Accept, MessageButtons.OK);
                         mb.ShowDialog();
+                        flag = 0;
                     }
                 }
                 else
                 {
                     MessageBoxML mb = new MessageBoxML("Lỗi", lb, MessageType.Accept, MessageButtons.OK);
                     mb.ShowDialog();
+                    flag = 0;
                 }
             }
             

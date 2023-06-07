@@ -2,6 +2,8 @@
 using MasterLibrary.Models.DataProvider;
 using MasterLibrary.ViewModel.CustomerVM;
 using MasterLibrary.Views.Admin.BorrowBookPage;
+using MasterLibrary.Views.Admin.HistoryPage;
+using MasterLibrary.Views.MessageBoxML;
 using System;
 using System.Collections.ObjectModel;
 using System.Runtime.Remoting.Messaging;
@@ -43,7 +45,13 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
             set { _TenKH = value; OnPropertyChanged(); }
         }
 
-        
+        private int _Songaymuon;
+        public int Songaymuon
+        {
+            get => _Songaymuon;
+            set { _Songaymuon = value; OnPropertyChanged(); }
+        }
+
 
         #endregion
 
@@ -227,6 +235,7 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
             else
             {
                 TenKH = CustomerCurrent.TENKH;
+                CalAvailableSlot();
             }
         }
 

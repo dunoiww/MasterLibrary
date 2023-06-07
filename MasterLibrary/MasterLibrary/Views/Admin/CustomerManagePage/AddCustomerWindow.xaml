@@ -155,8 +155,8 @@
               Opacity="0.3"
               Visibility="Collapsed"
               x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
+              Height="800"
+              Width="1400"
               VerticalAlignment="Center"
               HorizontalAlignment="Center">
         </Grid>

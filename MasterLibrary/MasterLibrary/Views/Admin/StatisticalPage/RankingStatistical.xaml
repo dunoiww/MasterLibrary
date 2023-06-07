@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MasterLibrary.ViewModel.AdminVM.StatisticVM"
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="1130"
+      d:DesignHeight="700" d:DesignWidth="1200"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -104,7 +104,7 @@
                         Orientation="Horizontal"
                         Margin="10,10,0,10">
 
-                <materialDesign:Card Width="554"
+                <materialDesign:Card Width="610"
                                      UniformCornerRadius="5">
                     <Grid>
                         <!--<ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
@@ -116,10 +116,10 @@
                                      Foreground="#FF455345" />-->
                         <Image Source="/Resources/Images/rank1.png"
                                    HorizontalAlignment="Left"
-                                   Margin="210,-10,0,10"
-                                   Width="142" />
+                                   Margin="227,0,0,0"
+                                   Width="162" />
 
-                        <StackPanel   Margin="180,35,174,0"
+                        <StackPanel   Margin="180,45,174,0"
                                       Width="200"
                                       Background="Transparent">
                             <Label Content="{Binding Top5Customer[0].TENKH}"
@@ -130,17 +130,17 @@
                                    HorizontalContentAlignment="Center"
                                    FontSize="15" />
                             <Label Content="Hạng nhất"
-                                   Margin="0 35 0 0"
+                                   Margin="0 50 0 0"
                                    VerticalAlignment="Bottom"
                                    HorizontalContentAlignment="Center" />
                         </StackPanel>
 
                         <Image Source="/Resources/Images/rank2.png"
                                    HorizontalAlignment="Left"
-                                   Margin="30,10,0,10"
-                                   Width="142" />
+                                   Margin="42,19,0,1"
+                                   Width="152" />
 
-                        <StackPanel   Margin="-10,35,364,0"
+                        <StackPanel   Margin="-10,45,364,0"
                                       Width="200"
                                       Background="Transparent">
                             <Label Content="{Binding Top5Customer[1].TENKH}"
@@ -151,17 +151,17 @@
                                    HorizontalContentAlignment="Center"
                                    FontSize="15" />
                             <Label Content="Hạng hai"
-                                   Margin="0 27 0 0"
+                                   Margin="0 50 0 0"
                                    HorizontalContentAlignment="Center" 
                                    VerticalAlignment="Bottom"/>
                         </StackPanel>
 
                         <Image Source="/Resources/Images/rank3.png"
                                    HorizontalAlignment="Left"
-                                   Margin="385,-10,0,10"
-                                   Width="142" />
+                                   Margin="406,0,0,0"
+                                   Width="152" />
 
-                        <StackPanel   Margin="354,35,0,0"
+                        <StackPanel   Margin="354,45,0,0"
                                       Width="200"
                                       Background="Transparent">
                             <Label Content="{Binding Top5Customer[2].TENKH}"
@@ -172,7 +172,7 @@
                                    HorizontalContentAlignment="Center"
                                    FontSize="15" />
                             <Label Content="Hạng ba"
-                                   Margin="0 27 0 0"
+                                   Margin="0 50 0 0"
                                    VerticalAlignment="Bottom"
                                    HorizontalContentAlignment="Center" />
                         </StackPanel>
@@ -183,14 +183,14 @@
 
             </StackPanel>
 
-            <StackPanel Grid.Row="2"
+            <!--<StackPanel Grid.RowSpan="3"
                         Margin="10,0,20,10">
                 <Label Content="Top 5 khách hàng chi tiêu nhiều nhất"
                        FontSize="25"
                        FontWeight="bold"
-                       Margin="0,10,0,0" />
+                       Margin="0,10,0,50" />
                 <materialDesign:Card UniformCornerRadius="5"
-                                     Height="260"
+                                     Height="300"
                                      VerticalAlignment="Bottom">
                     <ListView ItemsSource="{Binding Top5Customer}">
                         <ListView.View>
@@ -242,7 +242,70 @@
                         </ListView.View>
                     </ListView>
                 </materialDesign:Card>
-            </StackPanel>
+            </StackPanel>-->
+
+            <Label Grid.RowSpan="3"
+                   Content="Top 5 khách hàng chi tiêu nhiều nhất"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontSize="25"
+                   Margin="10, 0, 0, 62" />
+            <materialDesign:Card Margin="10,4,10,18"
+                                 UniformCornerRadius="5"
+                                 Height="320"
+                                 VerticalAlignment="Bottom"
+                                 Grid.Row="2">
+                <ListView ItemsSource="{Binding Top5Customer}"
+                          ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                    <ListView.View>
+
+                        <GridView>
+                            <GridViewColumn Header="STT"
+                                            Width="90">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Text="{Binding RelativeSource={RelativeSource FindAncestor, 
+                                         AncestorType={x:Type ListViewItem}}, 
+                                         Converter={StaticResource IndexConverter}}"
+                                                    FontSize="18"
+                                                    Margin="24,0,0,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Mã khách hàng"
+                                            Width="160">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding MAKH}"
+                                                   FontSize="18"
+                                                   Height="34" 
+                                                   Margin="18, 0, 0, 0"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Tên khách hàng"
+                                            Width="160">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TENKH}"
+                                                   FontSize="18" 
+                                                   Margin="18, 0, 0, 0"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Chi tiêu">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding ExpenseStr}"
+                                                   FontSize="18"
+                                                   Margin="20,0,0,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </materialDesign:Card>
         </Grid>
 
 
@@ -306,7 +369,7 @@
                         Orientation="Horizontal"
                         Margin="10,10,10,10">
 
-                <materialDesign:Card Width="564"
+                <materialDesign:Card Width="610"
                                      UniformCornerRadius="5">
                     <Grid>
                         <lvc:CartesianChart Series="{Binding Top5BookData,UpdateSourceTrigger=PropertyChanged}">
@@ -336,10 +399,10 @@
                    VerticalAlignment="Center"
                    FontWeight="Bold"
                    FontSize="25"
-                   Margin="10, 0, 0, 52" />
-            <materialDesign:Card Margin="10,4,10,28"
+                   Margin="10, 0, 0, 62" />
+            <materialDesign:Card Margin="10,4,10,18"
                                  UniformCornerRadius="5"
-                                 Height="260"
+                                 Height="320"
                                  VerticalAlignment="Bottom"
                                  Grid.Row="2">
                 <ListView ItemsSource="{Binding Top5Book}"

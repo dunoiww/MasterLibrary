@@ -1,4 +1,6 @@
-﻿using MasterLibrary.DTOs;
+﻿using Avalonia.Utilities;
+using JetBrains.Annotations;
+using MasterLibrary.DTOs;
 using MasterLibrary.Models.DataProvider;
 using MasterLibrary.Views;
 using MasterLibrary.Views.MessageBoxML;
@@ -66,6 +68,27 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
             set { _ToTalBookInBorrow = value; OnPropertyChanged(); }
         }
 
+        private int _AvailableSlotBorrow;
+        public int AvailableSlotBorrow
+        {
+            get => _AvailableSlotBorrow;
+            set { _AvailableSlotBorrow = value; OnPropertyChanged(); }
+        }
+
+        private int _AllSlotBorrow;
+        public int AllSlotBorrow
+        {
+            get => _AllSlotBorrow;
+            set { _AllSlotBorrow = value; OnPropertyChanged(); }
+        }
+
+        private ObservableCollection<BookInBorrowDTO> _ListBorrowByCus;
+        public ObservableCollection<BookInBorrowDTO> ListBorrowByCus
+        {
+            get => _ListBorrowByCus;
+            set { _ListBorrowByCus = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region ICommand
@@ -77,6 +100,7 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
         public ICommand AddBookToListBorrowCM { get; set; }
         public ICommand BorrowAllBookCM { get; set; }
         public ICommand DeleteAllBookInBorrowCM { get; set; }
+        public ICommand closeML { get; set; }
 
         #endregion
 
@@ -86,6 +110,11 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
             IsLoading = true;
 
             RoleLibrary = await RoleLibraryServices.Ins.GetARoleLibrary();
+            Songaymuon = RoleLibrary.Songaymuon;
+            AllSlotBorrow = RoleLibrary.SoSachToiDa;
+
+            CalAvailableSlot();
+
 
             ListBookInBorrow = new ObservableCollection<BookInBorrowDTO>();
             ListBook = new ObservableCollection<BookDTO>(await BookServices.Ins.GetAllbook());
@@ -234,14 +263,23 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
             IsSaving = false;
         }
 
-        
+        async void CalAvailableSlot()
+        {
+            ListBorrowByCus = new ObservableCollection<BookInBorrowDTO>(await BookInBorrowServices.Ins.GetBookBorrowCustomer(MaKH));
+            int totalBookBorrow = 0;
+            for (int i = 0; i < ListBorrowByCus.Count; i++)
+            {
+                totalBookBorrow += ListBorrowByCus[i].SoLuong;
+            }
+            AvailableSlotBorrow = AllSlotBorrow - totalBookBorrow;
+        }
 
         void DeleteAllBookInBorrow()
         {
             MaskName.Visibility = Visibility.Visible;
             IsSaving = true;
 
-            MessageBoxML ms = new MessageBoxML("Cảnh báo", "Bạn muốn xoá tất cả", MessageType.Error, MessageButtons.YesNo);
+            MessageBoxML ms = new MessageBoxML("Cảnh báo", "Bạn muốn xoá tất cả?", MessageType.Error, MessageButtons.YesNo);
             
             if (ms.ShowDialog() == true)
             {
@@ -301,6 +339,15 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
             MaskName.Visibility = Visibility.Visible;
             IsSaving = true;
 
+            if (ToTalBookInBorrow > AvailableSlotBorrow)
+            {
+                MessageBoxML mb = new MessageBoxML("Thông báo", "Số lượng sách mượn còn lại không đủ.", MessageType.Error, MessageButtons.OK);
+                mb.ShowDialog();
+                MaskName.Visibility = Visibility.Collapsed;
+                IsSaving = false;
+                return;
+            }
+
             (bool isBorrow, string lb) = await BookInBorrowServices.Ins.CreateNewCallCard(MaKH, ExpirationDate, DateTime.Now, ListBookInBorrow);
 
             if (isBorrow == true)
@@ -308,6 +355,9 @@ namespace MasterLibrary.ViewModel.AdminVM.BorrowBookVM
                 ListBookInBorrow.Clear();
                 ListBook = new ObservableCollection<BookDTO>(await BookServices.Ins.GetAllbook());
                 FilterBookInBorrow();
+                CalAvailableSlot();
+                ToTalBookInBorrow = 0;
+
                 MessageBoxML ms = new MessageBoxML("Thông báo", lb, MessageType.Accept, MessageButtons.OK);
                 ms.ShowDialog();
             }

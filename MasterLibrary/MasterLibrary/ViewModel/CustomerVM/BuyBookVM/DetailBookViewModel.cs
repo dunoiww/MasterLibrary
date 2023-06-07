@@ -1,6 +1,7 @@
 ﻿using MasterLibrary.DTOs;
 using MasterLibrary.Models.DataProvider;
 using MasterLibrary.Utils;
+using MasterLibrary.Views.Customer;
 using MasterLibrary.Views.Customer.BuyBookPage;
 using MasterLibrary.Views.MessageBoxML;
 using System;

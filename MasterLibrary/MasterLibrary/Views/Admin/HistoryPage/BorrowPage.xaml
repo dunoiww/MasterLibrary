@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.HistoryPage"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="1130"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="BorrowPage"
     x:Name="BorrowPageML"
     xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
@@ -154,10 +154,16 @@
         <StackPanel Grid.Row="1">
             <ListView x:Name="lvBorrow"
                       Focusable="True"
-                      Height="460"
+                      Height="620"
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListBorrow}"
+                      SelectedItem="{Binding SelectedBorrowItem}"
                       HorizontalAlignment="Stretch">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding LoadInfoBorrow}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã phiếu"
@@ -172,7 +178,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Tên khách hàng"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TenKH}"
@@ -183,7 +189,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Tên sách"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding TenSach}"
@@ -194,7 +200,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Ngày mượn"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding NgayMuon, StringFormat='dd/MM/yyyy'}"
@@ -205,7 +211,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Ngày hết hạn"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding NgayHetHan, StringFormat='dd/MM/yyyy'}"
@@ -216,7 +222,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Số lượng"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding SoLuong}"
@@ -225,17 +231,6 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
-                        <!--<GridViewColumn Header="Giá sách"
-                                        Width="auto">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock  Text="{Binding Gia}"
-                                                FontSize="18"
-                                                Margin="10,0,0,0" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>-->
                     </GridView>
                 </ListView.View>
             </ListView>

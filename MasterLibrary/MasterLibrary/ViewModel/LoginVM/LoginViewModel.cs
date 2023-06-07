@@ -209,6 +209,15 @@ namespace MasterLibrary.ViewModel.LoginVM
                     return;
                 }
 
+                string pattern = ".{8,}$";
+                Regex regPassWord = new Regex(pattern);
+                if (regPassWord.IsMatch(Passwordreg) == false)
+                {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Mật khẩu không hợp lệ. Mật khẩu phải có ít nhất 8 kí tự.", MessageType.Error, MessageButtons.OK);
+                    ms.ShowDialog();
+                    return;
+                }
+
                 string fullname = Fullnamereg;
                 string email = Emailreg;
                 string usernamereg = Usernamereg;

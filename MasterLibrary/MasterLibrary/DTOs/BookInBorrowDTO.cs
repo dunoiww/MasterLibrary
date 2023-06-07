@@ -11,8 +11,11 @@ namespace MasterLibrary.DTOs
     {
         public int MaPhieuMuon { get; set; }
         public string TenKH { get; set; }
+        public int MAKH { get; set; }
         public int MaSach { get; set; }
         public string TenSach { get; set; }
+        public string TheLoai { get; set; }
+        public string TacGia { get; set; }
         public string img { get; set; }
         public int SoLuong { get; set; }
         public int SoLuongMax { get; set; }

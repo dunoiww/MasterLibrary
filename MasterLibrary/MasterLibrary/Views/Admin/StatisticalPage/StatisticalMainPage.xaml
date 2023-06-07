@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.StatisticalPage"
       mc:Ignorable="d" 
-      d:DesignHeight="630" d:DesignWidth="1170"
+      d:DesignHeight="700" d:DesignWidth="1200"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -45,8 +45,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="8*" />
-            <RowDefinition Height="92*" />
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="90*" />
         </Grid.RowDefinitions>
 
         <!--Filter-->

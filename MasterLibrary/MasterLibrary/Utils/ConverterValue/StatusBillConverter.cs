@@ -11,13 +11,13 @@ namespace MasterLibrary.Utils.ConverterValue
         {
             string _TrangThai = value as string;
 
-            if (_TrangThai == "Đang trên đường vận chuyển" || _TrangThai == "Đơn hàng đã bị huỷ")
+            if (_TrangThai == "Đang trên đường vận chuyển" || _TrangThai == "Đơn hàng đã bị huỷ" || _TrangThai == "Giao hàng thành công")
             {
-                return false;
+                return Visibility.Collapsed;
             }
             else
             {
-                return true;
+                return Visibility.Visible;
             }
         }
 

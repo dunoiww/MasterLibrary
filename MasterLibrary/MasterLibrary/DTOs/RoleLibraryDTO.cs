@@ -17,5 +17,6 @@ namespace MasterLibrary.DTOs
                 return Utils.Helper.FormatVNMoney(TienTraTreMotNgay);
             }
         }
+        public int SoSachToiDa { get; set; }
     }
 }

@@ -22,6 +22,10 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
+    <Window.Clip>
+        <RectangleGeometry Rect="0, 0, 950, 600" RadiusX="10" RadiusY="10"></RectangleGeometry>
+    </Window.Clip>
+
     <Window.Resources>
         <cv:NotNullValidationConverter x:Key="ConverterNotNullValue"/>
     </Window.Resources>

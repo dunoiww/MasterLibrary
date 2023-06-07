@@ -113,8 +113,10 @@ namespace MasterLibrary.Models.DataProvider
                                         select new BookInBorrowDTO
                                         {
                                             MaPhieuMuon = sm.MAPHIEUMUON,
+                                            MAKH = (int)sm.MAKH,
                                             TenKH = sm.KHACHHANG.TENKH,
                                             TenSach = sm.SACH.TENSACH,
+                                            MaSach = sm.SACH.MASACH,
                                             NgayMuon = (DateTime)sm.NGAYMUON,
                                             NgayHetHan = (DateTime)sm.NGAYHETHAN,
                                             SoLuong = (int)sm.SOLUONG,
@@ -127,6 +129,32 @@ namespace MasterLibrary.Models.DataProvider
 
             }
             return borrowList;
+        }
+
+        public async Task<List<BookInBorrowDTO>> GetListBookBorrow(int _makh, DateTime _dt)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    var listBorrow = (from b in context.PHIEUMUONs
+                                      where b.MAKH == _makh && b.NGAYMUON.Day == _dt.Day && b.NGAYMUON.Month == _dt.Month && b.NGAYMUON.Year == _dt.Year
+                                      select new BookInBorrowDTO
+                                      {
+                                          MaSach = b.SACH.MASACH,
+                                          TenSach = b.SACH.TENSACH,
+                                          TheLoai = b.SACH.THELOAI,
+                                          TacGia = b.SACH.TACGIA,
+                                          NgayMuon = b.NGAYMUON,
+                                      }).ToList();
+
+                    return listBorrow;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
 
         public async Task<List<BookInBorrowDTO>> GetBookBorrowByMonth(int month, int year)
@@ -142,6 +170,8 @@ namespace MasterLibrary.Models.DataProvider
                                         {
                                             MaPhieuMuon = sm.MAPHIEUMUON,
                                             TenKH = sm.KHACHHANG.TENKH,
+                                            MAKH = (int)sm.MAKH,
+                                            MaSach = sm.SACH.MASACH,
                                             TenSach = sm.SACH.TENSACH,
                                             NgayMuon = (DateTime)sm.NGAYMUON,
                                             NgayHetHan = (DateTime)sm.NGAYHETHAN,

@@ -162,11 +162,46 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
             set { _SelectedBorrowYear = value; OnPropertyChanged(); }
         }
 
+        private int _CountConfirm;
+        public int CountConfirm
+        {
+            get => _CountConfirm;
+            set { _CountConfirm = value; OnPropertyChanged(); }
+        }
+
+        private int _CountCancel;
+        public int CountCancel
+        {
+            get => _CountCancel;
+            set { _CountCancel = value; OnPropertyChanged(); }
+        }
+
+        private int _CountSuccess;
+        public int CountSuccess
+        {
+            get => _CountSuccess;
+            set { _CountSuccess = value; OnPropertyChanged(); }
+        }
+
+        private int _CountDelivery;
+        public int CountDelivery
+        {
+            get => _CountDelivery;
+            set { _CountDelivery = value; OnPropertyChanged(); }
+        }
+
         private BillDTO _SelectedItemRevenue;
         public BillDTO SelectedItemRevenue
         {
             get => _SelectedItemRevenue;
             set { _SelectedItemRevenue = value; OnPropertyChanged(); }
+        }
+
+        private BookInBorrowDTO _SelectedBorrowItem;
+        public BookInBorrowDTO SelectedBorrowItem
+        {
+            get => _SelectedBorrowItem;
+            set { _SelectedBorrowItem = value; OnPropertyChanged(); }
         }
 
         private BillDTO _DetailRevenue;
@@ -220,6 +255,13 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
             set { _ListProduct = value; OnPropertyChanged();}
         }
 
+        private ObservableCollection<BookInBorrowDTO> _ListBorrowByCus;
+        public ObservableCollection<BookInBorrowDTO> ListBorrowByCus
+        {
+            get => _ListBorrowByCus;
+            set { _ListBorrowByCus = value; OnPropertyChanged(); }
+        }
+
         #endregion
 
         #region Icommand
@@ -230,7 +272,6 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
         public ICommand LoadBorrowPage { get; set; }
         public ICommand ExportFileML { get; set; }
         public ICommand MaskNameML { get; set; }
-        public ICommand MaskNameRevenuePage { get; set; }
         public ICommand SelectedExpenseMonthML { get; set; }
         public ICommand SelectedExpenseYearML { get; set; }
         public ICommand CheckSelectedExpenseFilterML { get; set; }
@@ -248,6 +289,7 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
         public ICommand SelectedBorrowMonthML { get; set; }
         public ICommand SelectedBorrowYearML { get; set; }
         public ICommand LoadInforRevenueML { get; set; }
+        public ICommand LoadInfoBorrow { get; set; }
         public ICommand closeML { get; set; }
 
         public ICommand ConfirmBill { get; set; }
@@ -272,7 +314,6 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
             #endregion
 
             MaskNameML = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
-            MaskNameRevenuePage = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
             closeML = new RelayCommand<Window>((p) => { return true; }, (p) =>
             { 
                 MaskName.Visibility = Visibility.Collapsed;
@@ -467,8 +508,40 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                     }
 
                     rd.TotalCost.Content = Helper.FormatVNMoney(totalcost);
-
+                    MaskName.Visibility = Visibility.Visible;
                     rd.ShowDialog();
+                }
+            });
+            #endregion
+
+            #region Load sách được mượn bởi khách hàng
+            LoadInfoBorrow = new RelayCommand<Window>((p) => { return true; }, async (p) =>
+            {
+                if (SelectedBorrowItem != null)
+                {
+                    try
+                    {
+                        IsGettingSource = true;
+                        ListBorrowByCus = new ObservableCollection<BookInBorrowDTO>(await Task.Run(() => BookInBorrowServices.Ins.GetListBookBorrow(SelectedBorrowItem.MAKH, SelectedBorrowItem.NgayMuon)));
+                        IsGettingSource = false;
+                    }
+                    catch (System.Data.Entity.Core.EntityException e)
+                    {
+                        MessageBoxML mb = new MessageBoxML("Lỗi", "Mất kết nối cơ sở dữ liệu", MessageType.Error, MessageButtons.OK);
+                        mb.ShowDialog();
+                        throw;
+                    }
+                    catch
+                    {
+                        MessageBoxML mb = new MessageBoxML("Lỗi", "Lỗi hệ thống", MessageType.Error, MessageButtons.OK);
+                        mb.ShowDialog();
+                        throw;
+                    }
+                    BorrowDetail bd = new BorrowDetail();
+                    bd.cusName.Content = SelectedBorrowItem.TenKH;
+                    bd.ngmuonsach.Content = SelectedBorrowItem.NgayMuon;
+                    MaskName.Visibility = Visibility.Visible;
+                    bd.ShowDialog();
                 }
             });
             #endregion
@@ -575,6 +648,29 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
             try
             {
                 ListRevenue = new ObservableCollection<BillDTO>(await BillServices.Ins.GetBillByMonth(SelectedRevenueMonth + 1, SelectedRevenueYear));
+                CountConfirm = 0;
+                CountCancel = 0;
+                CountSuccess = 0;
+                CountDelivery = 0;
+                for (int i = 0; i < ListRevenue.Count; i++)
+                {
+                    if (ListRevenue[i].TRANGTHAI == "Chờ xác nhận")
+                    {
+                        CountConfirm++;
+                    }
+                    if (ListRevenue[i].TRANGTHAI == "Đơn hàng đã bị huỷ")
+                    {
+                        CountCancel++;
+                    }
+                    if (ListRevenue[i].TRANGTHAI == "Giao hàng thành công")
+                    {
+                        CountSuccess++;
+                    }
+                    if (ListRevenue[i].TRANGTHAI == "Đang trên đường vận chuyển")
+                    {
+                        CountDelivery++;
+                    }
+                }
             }
             catch (System.Data.Entity.Core.EntityException e)
             {
@@ -662,6 +758,29 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                         {
                             IsGettingSource = true;
                             ListRevenue = new ObservableCollection<BillDTO>((System.Collections.Generic.IEnumerable<BillDTO>)await BillServices.Ins.GetBillByDate(SelectedRevenueDate));
+                            CountConfirm = 0;
+                            CountCancel = 0;
+                            CountSuccess = 0;
+                            CountDelivery = 0;
+                            for (int i = 0; i < ListRevenue.Count; i++)
+                            {
+                                if (ListRevenue[i].TRANGTHAI == "Chờ xác nhận")
+                                {
+                                    CountConfirm++;
+                                }
+                                if (ListRevenue[i].TRANGTHAI == "Đơn hàng đã bị huỷ")
+                                {
+                                    CountCancel++;
+                                }
+                                if (ListRevenue[i].TRANGTHAI == "Giao hàng thành công")
+                                {
+                                    CountSuccess++;
+                                }
+                                if (ListRevenue[i].TRANGTHAI == "Đang trên đường vận chuyển")
+                                {
+                                    CountDelivery++;
+                                }
+                            }
                             IsGettingSource = false;
                             return;
                         }
@@ -691,6 +810,29 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                         {
                             IsGettingSource = true;
                             ListRevenue = new ObservableCollection<BillDTO>((System.Collections.Generic.IEnumerable<BillDTO>)await BillServices.Ins.GetAllBill());
+                            CountConfirm = 0;
+                            CountCancel = 0;
+                            CountSuccess = 0;
+                            CountDelivery = 0;
+                            for (int i = 0; i < ListRevenue.Count; i++)
+                            {
+                                if (ListRevenue[i].TRANGTHAI == "Chờ xác nhận")
+                                {
+                                    CountConfirm++;
+                                }
+                                if (ListRevenue[i].TRANGTHAI == "Đơn hàng đã bị huỷ")
+                                {
+                                    CountCancel++;
+                                }
+                                if (ListRevenue[i].TRANGTHAI == "Giao hàng thành công")
+                                {
+                                    CountSuccess++;
+                                }
+                                if (ListRevenue[i].TRANGTHAI == "Đang trên đường vận chuyển")
+                                {
+                                    CountDelivery++;
+                                }
+                            }
                             IsGettingSource = false;
                             return;
                         }
@@ -1021,6 +1163,7 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                             ws.Cells[1, 3] = "Tên khách hàng";
                             ws.Cells[1, 4] = "Ngày bán";
                             ws.Cells[1, 5] = "Tổng giá";
+                            ws.Cells[1, 6] = "Trạng thái";
 
                             int count = 2;
                             foreach (var item in ListRevenue)
@@ -1030,6 +1173,7 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                                 ws.Cells[count, 3] = item.cusName;
                                 ws.Cells[count, 4] = item.NGHD;
                                 ws.Cells[count, 5] = item.TRIGIAStr;
+                                ws.Cells[count, 6] = item.TRANGTHAI;
 
                                 count++;
                             }

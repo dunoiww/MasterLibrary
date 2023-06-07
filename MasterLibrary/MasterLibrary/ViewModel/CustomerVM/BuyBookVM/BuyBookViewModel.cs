@@ -9,6 +9,12 @@ using System.Windows.Input;
 using MasterLibrary.Utils;
 using System.Windows.Controls;
 using MasterLibrary.Views.Customer.BuyBookPage;
+using System.Collections.Generic;
+using System.Windows.Media.Imaging;
+using Avalonia.Threading;
+using System.Windows.Media.Animation;
+using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
 {
@@ -57,6 +63,24 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
             set { _IsLoading = value; OnPropertyChanged(); }
         }
 
+        private System.Windows.Threading.DispatcherTimer timer;
+        private int currentIndex;
+        private ImageSource _CurrentImage;
+        public ImageSource CurrentImage
+        {
+            get => _CurrentImage;
+            set { _CurrentImage = value; OnPropertyChanged(); }
+        }
+
+        private List<string> imagePaths = new List<string>()
+        {
+            "/Resources/BuyBook/img1.png",
+            "/Resources/BuyBook/img2.jpg",
+            "/Resources/BuyBook/img3.jpg",
+            "/Resources/BuyBook/img4.jpg",
+            "/Resources/BuyBook/img5.jpg",
+        };
+
         #endregion
 
         #region ICommand
@@ -67,6 +91,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
         public ICommand SaveIconAscending { get; set; }
         public ICommand SaveIconDecreasing { get; set; }
         public ICommand LoadDetailBook { get; set; }
+        public ICommand LoadNews { get; set; }
         
 
         #endregion
@@ -78,6 +103,23 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
 
         public BuyBookViewModel()
         {
+
+            
+
+            LoadNews = new RelayCommand<Image>((p) => { return p != null; }, (p) =>
+            {
+                timer = new System.Windows.Threading.DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(3);
+                timer.Tick += new EventHandler(Timer_Tick); 
+
+                currentIndex = 0;
+                string firstImagePath = imagePaths[currentIndex];
+                CurrentImage = new BitmapImage(new Uri(firstImagePath, UriKind.RelativeOrAbsolute));
+
+                timer.Start();
+            });
+
+            #region Triển khai icommand
             // Load ban đầu
             FirstLoadBuyBook = new RelayCommand<Frame>((p) => { return true; }, async (p) =>
             {
@@ -148,6 +190,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                 iconDecreasing = p;
                 p.Visibility = Visibility.Collapsed;
             });
+            #endregion
         }
 
         public async Task LoadMainListBox(int func)
@@ -211,6 +254,33 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                 if (ascending) ListBook = new ObservableCollection<BookDTO>(tmpListBook.OrderBy(a => a.Gia));
                 else ListBook = new ObservableCollection<BookDTO>(tmpListBook.OrderByDescending(a => a.Gia));
             });
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            currentIndex++;
+            if (currentIndex >= imagePaths.Count)
+            {
+                currentIndex = 0;
+            }
+
+           
+
+            //DoubleAnimation fadeIn = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(1));
+            //Storyboard.SetTarget(fadeIn, CurrentImage);
+            //Storyboard.SetTargetProperty(fadeIn, new PropertyPath(UIElement.OpacityProperty));
+
+            //DoubleAnimation fadeOut = new DoubleAnimation(0, 1, TimeSpan.FromSeconds(1));
+            //Storyboard.SetTarget(fadeOut, CurrentImage);
+            //Storyboard.SetTargetProperty(fadeOut, new PropertyPath(UIElement.OpacityProperty));
+
+            //Storyboard storyboard = new Storyboard();
+            //storyboard.Children.Add(fadeOut);
+            //storyboard.Children.Add(fadeIn);
+            //storyboard.Begin();
+
+            string imagePath = imagePaths[currentIndex];
+            CurrentImage = new BitmapImage(new Uri(imagePath, UriKind.RelativeOrAbsolute));
         }
     }
 }

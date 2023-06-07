@@ -158,6 +158,13 @@ namespace MasterLibrary.ViewModel.AdminVM
             get { return _isLoading; }
             set { _isLoading = value; OnPropertyChanged();}
         }
+
+        private TangDTO _SelectedTang;
+        public TangDTO SelectedTang
+        {
+            get => _SelectedTang;
+            set { _SelectedTang = value; OnPropertyChanged(); }
+        }
         #endregion
 
         #region Icommand
@@ -205,7 +212,7 @@ namespace MasterLibrary.ViewModel.AdminVM
                     if (!String.IsNullOrEmpty(TenSach) && !String.IsNullOrEmpty(TacGia) && !String.IsNullOrEmpty(NamXuatBan) && !String.IsNullOrEmpty(NhaXuatBan) && !String.IsNullOrEmpty(SoLuong) && !String.IsNullOrEmpty(Gia) && !String.IsNullOrEmpty(ImgSource) && !String.IsNullOrEmpty(TheLoai) && !String.IsNullOrEmpty(MoTa) && !String.IsNullOrEmpty(Day) && !String.IsNullOrEmpty(Tang))
                     {
                         command.CommandText = "UPDATE SACH " +
-                                              "SET TENSACH = @tensach, TACGIA = @tacgia, NAMXB = @namxb, NXB = @nxb, SL = @sl, GIA = @gia, IMAGESOURCE = @imagesource, THELOAI = @theloai, MOTA = @mota, VITRITANG = @tang, VITRIDAY = @day, RATING = @ratingstar, SOLUONGDANHGIA = @soluongdanhgia, AVGRATING = @avgrating" +
+                                              "SET TENSACH = @tensach, TACGIA = @tacgia, NAMXB = @namxb, NXB = @nxb, SL = @sl, GIA = @gia, IMAGESOURCE = @imagesource, THELOAI = @theloai, MOTA = @mota, VITRITANG = @tang, VITRIDAY = @day, RATING = @ratingstar, SOLUONGDANHGIA = @soluongdanhgia, AVGRATING = @avgrating " +
                                               "WHERE MASACH = @masach";
                         context.SaveChanges();
                         int a = command.ExecuteNonQuery();
@@ -349,9 +356,8 @@ namespace MasterLibrary.ViewModel.AdminVM
             {
                 try
                 {
-                    TangDTO m = p.SelectedItem as TangDTO;
-                    Tang = m.TenTang;
-                    MaTang = m.MaTang;
+                    Tang = SelectedTang.TenTang;
+                    MaTang = SelectedTang.MaTang;
                     Day = null;
                     DsDay = LayDay();
                 }

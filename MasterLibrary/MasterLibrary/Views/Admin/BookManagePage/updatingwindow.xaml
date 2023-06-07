@@ -21,7 +21,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         Height="602" Width="828">
     <Window.Clip>
-        <RectangleGeometry Rect="0, 0, 1300, 700" RadiusX="10" RadiusY="10"></RectangleGeometry>
+        <RectangleGeometry Rect="0, 0, 828, 602" RadiusX="10" RadiusY="10"></RectangleGeometry>
     </Window.Clip>
     <Grid>
         
@@ -232,6 +232,7 @@
                             materialDesign:HintAssist.Hint="Tầng"
                             Text="{Binding Tang}"
                             ItemsSource="{Binding DsTang}"
+                            SelectedItem="{Binding SelectedTang}"
                             DisplayMemberPath="TenTang"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="10 10 10 10"

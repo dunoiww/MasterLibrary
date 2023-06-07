@@ -29,7 +29,9 @@ namespace MasterLibrary.Views.Admin.HistoryPage
             else
             {
                 return ((item as BookInBorrowDTO).MaPhieuMuon.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        ((item as BookInBorrowDTO).MaSach.ToString().IndexOf(FilterBox.Text, StringComparison.Ordinal) >= 0);
+                        ((item as BookInBorrowDTO).MaSach.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        ((item as BookInBorrowDTO).TenKH.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                        ((item as BookInBorrowDTO).MAKH.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
 

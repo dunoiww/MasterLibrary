@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.HistoryPage"
       xmlns:local1="clr-namespace:MasterLibrary.Utils.ConverterValue"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="1130"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="RevenuePage"
       x:Name="RevenuePageML"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
@@ -32,13 +32,6 @@
             </BeginStoryboard>
         </EventTrigger>
     </Page.Triggers>
-
-    <i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding MaskNameRevenuePage}"
-                                   CommandParameter="{Binding ElementName=ShadowMask}" />
-        </i:EventTrigger>
-    </i:Interaction.Triggers>
 
 
     <Page.Resources>
@@ -166,7 +159,7 @@
                             Width="130"
                             FontFamily="arial"
                             FontWeight="Bold"
-                            Margin="70 10 0 0"
+                            Margin="46 10 0 0"
                             Padding="0"
                             materialDesign:ButtonAssist.CornerRadius="4"
                             Command="{Binding ExportFileML}">
@@ -187,12 +180,14 @@
 
         <StackPanel Grid.Row="1">
             <ListView x:Name="lvRevenue"
-                      Focusable="True"
-                      Height="460"
+                      Focusable="False"
+                      Height="500"
+                      Margin="10"
+                      ToolTip="Nhấn đúp để xem chi tiết hoá đơn."
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListRevenue}"
                       SelectedItem="{Binding SelectedItemRevenue}"
-                      HorizontalAlignment="Stretch" d:ItemsSource="{d:SampleData ItemCount=5}">
+                      HorizontalAlignment="Stretch" BorderThickness="1,1,1,1">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding LoadInforRevenueML}" />
@@ -295,7 +290,7 @@
                                                 Background="{Binding TRANGTHAI,Converter={StaticResource ForegroundStatusBillConverter}}"
                                                 Width="25"
                                                 Height="25"
-                                                IsEnabled="{Binding TRANGTHAI, Converter={StaticResource StatusBillConverter}}">
+                                                Visibility="{Binding TRANGTHAI, Converter={StaticResource StatusBillConverter}}">
                                             <materialDesign:PackIcon Kind="Check"
                                                                      Width="25"
                                                                      Height="25"/>
@@ -314,7 +309,7 @@
                                                 Background="{Binding TRANGTHAI,Converter={StaticResource ForegroundStatusDeleteBillConverter}}"
                                                 Width="25"
                                                 Height="25"
-                                                IsEnabled="{Binding TRANGTHAI, Converter={StaticResource StatusBillConverter}}">
+                                                Visibility="{Binding TRANGTHAI, Converter={StaticResource StatusBillConverter}}">
                                             <materialDesign:PackIcon Kind="Close"
                                                                          Width="25"
                                                                          Height="25" />
@@ -332,19 +327,21 @@
                 </ListView.View>
             </ListView>
 
-            <TextBlock HorizontalAlignment="Right" Text="Hello" FontSize="20"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock HorizontalAlignment="Right" Text="Chờ xác nhận: " FontStyle="Italic" FontSize="13" Foreground="#f1c232"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Text="{Binding CountConfirm}" FontStyle="Italic" FontSize="13"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Right" Text="Đã huỷ: " FontStyle="Italic" FontSize="13" Margin="20 0 0 0" Foreground="#BA1111"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Text="{Binding CountCancel}" FontStyle="Italic" FontSize="13"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Right" Text="Đang vận chuyển: " FontStyle="Italic" FontSize="13" Margin="20 0 0 0" Foreground="#783f04"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Text="{Binding CountDelivery}" FontStyle="Italic" FontSize="13"></TextBlock>
+
+                <TextBlock HorizontalAlignment="Right" Text="Giao hàng thành công: " FontStyle="Italic" FontSize="13" Margin="20 0 0 0" Foreground="#428720"></TextBlock>
+                <TextBlock HorizontalAlignment="Right" Text="{Binding CountSuccess}" FontStyle="Italic" FontSize="13"></TextBlock>
+            </StackPanel>
+
         </StackPanel>
 
-        <!-- Mặt nạ làm mờ -->
-        <Grid Background="Gray"
-              Opacity="0.3"
-              Visibility="Collapsed"
-              x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
-              VerticalAlignment="Center"
-              HorizontalAlignment="Center">
-        </Grid>
-        
     </Grid>
 </Page>

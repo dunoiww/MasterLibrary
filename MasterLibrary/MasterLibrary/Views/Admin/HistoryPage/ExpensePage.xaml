@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.HistoryPage"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="1130"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="ExpensePage"
       x:Name="ExpensePageML"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
@@ -155,7 +155,7 @@
         <StackPanel Grid.Row="1">
             <ListView x:Name="lvExpesne"
                       Focusable="True"
-                      Height="460"
+                      Height="620"
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListExpense}"
                       HorizontalAlignment="Stretch">
@@ -173,7 +173,7 @@
                         </GridViewColumn>
                         
                         <GridViewColumn Header="Tên sách"
-                                        Width="200">
+                                        Width="400">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TenSach}"

@@ -7,7 +7,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Name="BuyBookPageML"
       Title="BuyBookPage"
       DataContext="{StaticResource BuyBookVM}">
@@ -157,51 +157,93 @@
             
 
             <!-- Hiển thị các sách -->
-            <Grid Grid.Row="1">
-                <ListBox ItemsSource="{Binding ListBook}"
-                         Grid.Row="1"
-                         x:Name="MainListBox"
-                         SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
-                    <ListBox.ItemContainerStyle>
-                        <Style TargetType="ListBoxItem"
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                          x:Name="scrollview"
+                          Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"></RowDefinition>
+                        <RowDefinition Height="9*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Border Grid.Row="0"
+                            BorderThickness="0 1 0 1"
+                            BorderBrush="Black"
+                            Margin="0 0 0 20">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="7*"></ColumnDefinition>
+                                <ColumnDefinition Width="3*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid>
+                                <Image Name="imageControl" 
+                                       Grid.Column="0"
+                                       Source="{Binding CurrentImage}"
+                                       Height="350"
+                                       Margin="10 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       Stretch="Uniform" />
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Loaded">
+                                        <i:InvokeCommandAction Command="{Binding LoadNews}"
+                                                               CommandParameter="{Binding ElementName=imageControl}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </Grid>
+                            
+                            <Image Grid.Column="1"
+                                   Source="/Resources/BuyBook/img6.png" 
+                                   Height="350"
+                                   Margin="10"
+                                   Stretch="UniformToFill"/>
+
+                        </Grid>
+                    </Border>
+
+                    <ListBox ItemsSource="{Binding ListBook}"
+                             Grid.Row="1"
+                             x:Name="MainListBox"
+                             PreviewMouseWheel="MainListBox_PreviewMouseWheel"
+                             SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem"
                                BasedOn="{StaticResource styleListBoxItems}" />
-                    </ListBox.ItemContainerStyle>
-                    
-                    <ListBox.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <UniformGrid Columns="4" />
-                        </ItemsPanelTemplate>
-                    </ListBox.ItemsPanel>
-                    
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <materialDesign:Card UniformCornerRadius="10"
+                        </ListBox.ItemContainerStyle>
+
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="4" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <materialDesign:Card UniformCornerRadius="10"
                                                  Cursor="Hand"
                                                  Width="250"
                                                  VerticalAlignment="Top">
-                                <materialDesign:Card.Style>
-                                    <Style TargetType="materialDesign:Card">
-                                        <Setter Property="Background"
+                                    <materialDesign:Card.Style>
+                                        <Style TargetType="materialDesign:Card">
+                                            <Setter Property="Background"
                                                 Value="White" />
-                                        <Style.Triggers>
-                                            <Trigger Property="IsMouseOver"
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver"
                                                      Value="True">
-                                                <Setter Property="Background"
+                                                    <Setter Property="Background"
                                                         Value="LightGray" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </materialDesign:Card.Style>
-                                <StackPanel>
-                                    <Image Source="{Binding ImageSource}"
-                                           HorizontalAlignment="Left"
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </materialDesign:Card.Style>
+                                    <StackPanel>
+                                        <Image Source="{Binding ImageSource}"
+                                           HorizontalAlignment="Center"
                                            VerticalAlignment="Top"
                                            Height="270"
                                            Width="220"
                                            Margin="10"
                                            Stretch="Fill">
-                                    </Image>
-                                    <TextBlock Text="{Binding TenSach}"
+                                        </Image>
+                                        <TextBlock Text="{Binding TenSach}"
                                                FontSize="17"
                                                Foreground="#3f2016"
                                                FontWeight="Bold"
@@ -210,59 +252,60 @@
                                                HorizontalAlignment="Left"
                                                TextWrapping="Wrap"
                                                Margin="10,0"/>
-                                    
-                                    <StackPanel Orientation ="Horizontal"
+
+                                        <StackPanel Orientation ="Horizontal"
                                                 Margin="10,0,0,0">
-                                        <TextBlock Text="Tác giả: "
+                                            <TextBlock Text="Tác giả: "
                                                FontSize="14"
                                                Foreground="#3f2016"
                                                TextAlignment="Left"/>
-                                        
-                                        <TextBlock Text="{Binding TacGia}"
+
+                                            <TextBlock Text="{Binding TacGia}"
                                                FontSize="14"
                                                FontWeight="Bold"
                                                Foreground="#a47100"
                                                TextAlignment="Left"/>
-                                    </StackPanel>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation ="Horizontal"
+                                        <StackPanel Orientation ="Horizontal"
                                                 Margin="10,0,0,0">
-                                        <TextBlock Text="Giá/quyển: "
+                                            <TextBlock Text="Giá/quyển: "
                                                FontSize="14"
                                                Foreground="#3f2016"
                                                TextAlignment="Left"/>
 
-                                        <TextBlock Text="{Binding GiaStr}"
+                                            <TextBlock Text="{Binding GiaStr}"
                                                FontSize="14"
                                                FontWeight="Bold"
                                                Foreground="#a47100"
                                                TextAlignment="Left"/>
-                                    </StackPanel>
+                                        </StackPanel>
 
-                                    <StackPanel Orientation ="Horizontal"
-                                                Margin="10,10,0,0">
-                                        <TextBlock Text="Đánh giá: "
+                                        <StackPanel Orientation ="Horizontal"
+                                                Margin="10,0,0,0">
+                                            <TextBlock Text="Đánh giá: "
                                                FontSize="14"
                                                Foreground="#3f2016"
                                                TextAlignment="Left"/>
 
-                                        <materialDesign:RatingBar Value="{Binding AVGRATING}"
+                                            <materialDesign:RatingBar Value="{Binding AVGRATING}"
                                                                   x:Name="BasicRatingBar" 
                                                                   FontSize="15"
                                                                   IsReadOnly="True"
-                                                                  Padding="0 0 0 15"/>
+                                                                  Padding="0 0 0 10"/>
+                                        </StackPanel>
                                     </StackPanel>
-                                </StackPanel>
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="MouseUp">
-                                        <i:InvokeCommandAction Command="{Binding ElementName=MainListBox, Path=DataContext.LoadDetailBook}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </materialDesign:Card>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </Grid>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseUp">
+                                            <i:InvokeCommandAction Command="{Binding ElementName=MainListBox, Path=DataContext.LoadDetailBook}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </materialDesign:Card>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </ScrollViewer>
         </Grid>
 
         <!-- Mặt nạ làm mờ -->
@@ -270,8 +313,8 @@
               Opacity="0.3"
               Visibility="Collapsed"
               x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
+              Height="800"
+              Width="1400"
               VerticalAlignment="Center"
               HorizontalAlignment="Center">
         </Grid>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MasterLibrary.Views.Customer"
         xmlns:uc="clr-namespace:MasterLibrary.UserControlML"
         mc:Ignorable="d"
-        Title="Khách hàng" Height="700" Width="1300"
+        Title="Khách hàng" Height="800" Width="1400"
         Name="MainCustomer"
         xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -27,13 +27,14 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding FirstLoadCustomer}" />
+            <i:InvokeCommandAction Command="{Binding LoadQuantity}"/>
             <i:InvokeCommandAction Command="{Binding LoadBuyBookPageML}"
                                    CommandParameter="{Binding ElementName=mainFrame}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     
     <Window.Clip>
-        <RectangleGeometry Rect="0, 0, 1300, 700" RadiusX="10" RadiusY="10"></RectangleGeometry>
+        <RectangleGeometry Rect="0, 0, 1400, 800" RadiusX="10" RadiusY="10"></RectangleGeometry>
     </Window.Clip>
     
     <Grid>
@@ -58,7 +59,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="8*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 <!-- Logo -->
                 <StackPanel Grid.Row="0"
@@ -319,7 +320,9 @@
                     <!--Button đăng xuất-->
                     <Border CornerRadius="25"
                             Cursor="Hand"
-                             Background="#9b3409">
+                            Background="#9b3409"
+                            Margin="0 12 0 0"
+                            Height="65">
                         <StackPanel Orientation="Horizontal"
                                     Height="60"
                                     Width="130"
@@ -394,7 +397,7 @@
                                                  Cursor="Hand"
                                                  Foreground="#ffd940" >
                             <!--<hw:BadgeSetter.Badge>
-                                <hw:Badge Label = "99+" 
+                                <hw:Badge Label = "{Binding CountItem}" 
                                           Background="#ff1616" 
                                           Foreground="White" 
                                           MarginY="5"/>

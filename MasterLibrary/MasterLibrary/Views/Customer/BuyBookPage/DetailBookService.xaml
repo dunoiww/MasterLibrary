@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MasterLibrary.Views.Customer.BuyBookPage"
-      xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
-        
+        xmlns:local1="clr-namespace:MasterLibrary.Utils.ConverterValue"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="DetailBookService" Height="550" Width="800"
@@ -21,6 +21,11 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadML}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
+    <Window.Resources>
+        <local1:DecimalConverter x:Key="DecimalConverter"/>
+        <local1:OutOfStockNotify x:Key="OutOfStockNotify"/>
+    </Window.Resources>
 
     <Border BorderThickness="0.5"
             BorderBrush="Black"
@@ -54,7 +59,7 @@
                     </Label>
 
                     <Image Source="{Binding BookCurrent.ImageSource}"
-                           Height="300"
+                           Height="320"
                            Width="300"
                            Margin="5"
                            Stretch="Fill">
@@ -325,6 +330,14 @@
                                    FontWeight="Bold"
                                    Foreground="#a47100"
                                    TextAlignment="Left"/>
+                        <TextBlock Text="(Hết hàng. Mong quý khách thông cảm!)"
+                                   FontStyle="Italic"
+                                   FontSize="10"
+                                   Foreground="#BA1111"
+                                   TextAlignment="Right"
+                                   VerticalAlignment="Bottom"
+                                   Margin="5 0 0 2"
+                                   Visibility="{Binding soluongBook, Converter={StaticResource OutOfStockNotify}}"/>
                     </StackPanel>
 
                     <Grid Margin="10,10,0,0">
@@ -375,17 +388,25 @@
                                                                   FontSize="16"
                                                                   IsReadOnly="True"/>
 
+                        <TextBlock Text="{Binding BookCurrent.AVGRATING,Converter={StaticResource DecimalConverter}}"
+                                   FontSize="10"
+                                   Margin="10 8 0 0"
+                                   FontStyle="Italic"/>
+
                         <TextBlock Text="/"
                                    FontSize="10"
-                                   Margin="10 8 0 0"/>
+                                   Margin="4 8 0 0"
+                                   FontStyle="Italic"/>
                         
                         <TextBlock Text="{Binding BookCurrent.SOLUONGDANHGIA}"
                                    FontSize="10"
-                                   Margin="2 8 0 0"/>
+                                   Margin="2 8 0 0"
+                                   FontStyle="Italic"/>
 
                         <TextBlock Text="lượt"
                                    FontSize="10"
-                                   Margin="10 8 0 0"/>
+                                   Margin="4 8 0 0"
+                                   FontStyle="Italic"/>
                     </StackPanel>
                     <Grid>
                         <ListView x:Name="lvReview"
@@ -396,8 +417,8 @@
                                   HorizontalAlignment="Stretch">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Tên người nhận xét"
-                                                    Width="200">
+                                    <GridViewColumn Header="Tên khách hàng"
+                                                    Width="160">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <TextBlock  Text="{Binding TenKH}"

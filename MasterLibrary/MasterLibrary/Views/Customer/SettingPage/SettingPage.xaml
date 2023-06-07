@@ -9,7 +9,7 @@
       xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
       xmlns:cv="clr-namespace:MasterLibrary.Utils.ConverterValue"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1170"
+      d:DesignHeight="700" d:DesignWidth="1200"
       DataContext="{StaticResource SettingVM}"
       Name="SettingPageML"
       Title="SettingPage">
@@ -56,17 +56,24 @@
                 </Grid.ColumnDefinitions>
 
                 <!-- Bên trái -->
-                <materialDesign:Card
-                    Grid.Row="0"
-                    Background="#FFFFFFFF"
-                    Margin="0"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Width="400"
-                    Height="410">
-                    <StackPanel>
-                        <Grid Margin="0 10 0 0">
-                            <TextBlock
+                <StackPanel Grid.Row="0"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Center" Margin="0,37,0,0">
+
+                    <TextBlock Text="Setting" FontSize="40"
+                               Foreground="#a47100" 
+                               FontWeight="Bold"
+                               VerticalAlignment="Top"
+                               TextAlignment="Center"
+                               Margin="0 0 0 20"/>
+                    <materialDesign:Card Background="#FFFFFFFF"
+                                         Margin="0 0 0 0"
+                                         Width="400"
+                                         UniformCornerRadius="8"
+                                         Height="410">
+                        <StackPanel>
+                            <Grid Margin="0 10 0 0">
+                                <TextBlock
                             Text="Đổi mật khẩu"
                             HorizontalAlignment="Left"
                             TextWrapping="Wrap" 
@@ -76,7 +83,7 @@
                             Foreground="#a47100" 
                             FontWeight="Bold"/>
 
-                            <materialDesign:PackIcon  
+                                <materialDesign:PackIcon  
                             Kind="Lock"
                             Width="50" 
                             Height="50" 
@@ -86,9 +93,9 @@
                             HorizontalAlignment="Right" 
                             Margin="0,0,20,0" />
 
-                        </Grid>
+                            </Grid>
 
-                        <PasswordBox x:Name="FloatingCurrentPassword"
+                            <PasswordBox x:Name="FloatingCurrentPassword"
                                  Margin="10 30 10 0"
                                 materialDesign:HintAssist.Hint="Mật khẩu hiện tại"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
@@ -99,15 +106,15 @@
                                 Width="350"
                                 VerticalAlignment="Center" 
                                 Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding CurrentPasswordChange}"
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding CurrentPasswordChange}"
                                                        CommandParameter="{Binding ElementName=FloatingCurrentPassword}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </PasswordBox>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
 
-                        <PasswordBox x:Name="FloatingNewPassword"
+                            <PasswordBox x:Name="FloatingNewPassword"
                                  Margin="10 20 10 0"
                                 materialDesign:HintAssist.Hint="Mật khẩu mới"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
@@ -118,15 +125,15 @@
                                 Width="350"
                                 VerticalAlignment="Center" 
                                 Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding NewPasswordChange}"
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding NewPasswordChange}"
                                                        CommandParameter="{Binding ElementName=FloatingNewPassword}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </PasswordBox>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
 
-                        <PasswordBox x:Name="FloatingConfirmNewPassword"
+                            <PasswordBox x:Name="FloatingConfirmNewPassword"
                                 Margin="10 20 10 0"
                                  materialDesign:HintAssist.Hint="Xác nhận mật khẩu mới"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
@@ -137,30 +144,30 @@
                                 Width="350"
                                 VerticalAlignment="Center" 
                                 Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}">
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding ConfirmNewPasswordChange}"
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding ConfirmNewPasswordChange}"
                                                        CommandParameter="{Binding ElementName=FloatingConfirmNewPassword}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </PasswordBox>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
 
-                        <TextBlock Text="Vui lòng xác nhận mật khẩu"
+                            <TextBlock Text="Vui lòng xác nhận mật khẩu"
                            Foreground="#FFF44336"
                            FontWeight="DemiBold"
                            Margin="7,4,30,0"
                            HorizontalAlignment="Right"
                            FontSize="14">
-                            <TextBlock.Visibility>
-                                <MultiBinding Converter="{StaticResource ConverterChangePasswordMultiValue}">
-                                    <Binding Path="CurrentPassword" />
-                                    <Binding Path="NewPassword" />
-                                    <Binding Path="ConfirmNewPassword" />
-                                </MultiBinding>
-                            </TextBlock.Visibility>
-                        </TextBlock>
-                        
-                        <Button
+                                <TextBlock.Visibility>
+                                    <MultiBinding Converter="{StaticResource ConverterChangePasswordMultiValue}">
+                                        <Binding Path="CurrentPassword" />
+                                        <Binding Path="NewPassword" />
+                                        <Binding Path="ConfirmNewPassword" />
+                                    </MultiBinding>
+                                </TextBlock.Visibility>
+                            </TextBlock>
+
+                            <Button
                             x:Name="btnSavePassword"
                             Command="{Binding SaveNewPasswordCommand}"
                             Height="40" 
@@ -175,8 +182,10 @@
                             VerticalAlignment="Center"
                             Padding="0" />
 
-                    </StackPanel>
-                </materialDesign:Card>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </StackPanel>
+
 
                 <!-- Bên phải -->
                 <materialDesign:Card
@@ -440,7 +449,7 @@
                     Content="Đăng xuất"
                     Command="{Binding Logout}"
                     FontSize="20"/>
-           
+
         </Grid>
 
         <!--Hiện lên đang xử lí-->
@@ -478,8 +487,8 @@
               Opacity="0.3"
               Visibility="Collapsed"
               x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
+              Height="800"
+              Width="1400"
               VerticalAlignment="Center"
               HorizontalAlignment="Center">
         </Grid>

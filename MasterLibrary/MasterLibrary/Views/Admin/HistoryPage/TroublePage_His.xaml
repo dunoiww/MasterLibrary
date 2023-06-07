@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.HistoryPage"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="1130"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="TroublePage_His"
       x:Name="TroublePage_HisML"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
@@ -160,14 +160,14 @@
         <StackPanel Grid.Row="1">
             <ListView x:Name="lvTrouble"
                       Focusable="True"
-                      Height="460"
+                      Height="620"
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListTrouble}"
                       HorizontalAlignment="Stretch">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã sự cố"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding MaSC}"
@@ -178,7 +178,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Tên loại sự cố"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding TenLoaiSuCo}"
@@ -189,7 +189,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Thời gian báo"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding NgayBaoCao, StringFormat='dd/MM/yyyy'}"
@@ -200,7 +200,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Chi phí"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding ChiPhistr}"
@@ -211,7 +211,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Mô tả"
-                                        Width="auto">
+                                        Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding MoTa}"

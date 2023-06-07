@@ -363,7 +363,9 @@
     <Compile Include="Utils\ConverterValue\BookInBorrowConverter.cs" />
     <Compile Include="Utils\ConverterValue\BoolValueConverter.cs" />
     <Compile Include="Utils\ConverterValue\ChangePasswordMultiValueConverter.cs" />
+    <Compile Include="Utils\ConverterValue\DecimalConverter.cs" />
     <Compile Include="Utils\ConverterValue\NotNullValidationConverter.cs" />
+    <Compile Include="Utils\ConverterValue\OutOfStockNotify.cs" />
     <Compile Include="Utils\ConverterValue\StatusBillConverter.cs" />
     <Compile Include="Utils\ConverterValue\StatusBillCusConverter.cs" />
     <Compile Include="Utils\Helper.cs" />
@@ -424,6 +426,9 @@
     </Compile>
     <Compile Include="Views\Admin\CustomerManagePage\EditCustomerWindow.xaml.cs">
       <DependentUpon>EditCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\HistoryPage\BorrowDetail.xaml.cs">
+      <DependentUpon>BorrowDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\HistoryPage\BorrowPage.xaml.cs">
       <DependentUpon>BorrowPage.xaml</DependentUpon>
@@ -618,6 +623,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Admin\CustomerManagePage\EditCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\HistoryPage\BorrowDetail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -912,6 +921,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\BuyBook\img6.png" />
+    <Resource Include="Resources\BuyBook\img1.png" />
+    <Resource Include="Resources\BuyBook\img2.jpg" />
+    <Resource Include="Resources\BuyBook\img3.jpg" />
+    <Resource Include="Resources\BuyBook\img4.jpg" />
+    <Resource Include="Resources\BuyBook\img5.jpg" />
     <Resource Include="Resources\Images\rank1.png" />
     <Resource Include="Resources\Images\rank2.png" />
     <Resource Include="Resources\Images\rank3.png" />

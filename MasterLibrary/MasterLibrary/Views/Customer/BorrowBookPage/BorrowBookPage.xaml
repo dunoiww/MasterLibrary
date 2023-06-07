@@ -8,7 +8,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1170"
+      d:DesignHeight="700" d:DesignWidth="1200"
       x:Name="BorrowBookPageML"
       Title="BorrowBookPage"
       DataContext="{StaticResource BorrowBookCusVM}">
@@ -215,7 +215,7 @@
                                                 <TextBlock Text="{Binding NgayHetHan, Converter={StaticResource CoverterTextDay}}"
                                                                FontSize="20"
                                                                FontStyle="Italic"
-                                                               Margin="7"
+                                                               Margin="7 20 0 0"
                                                                FontWeight="Medium"
                                                                Foreground="{Binding NgayHetHan, Converter={StaticResource CoverterForeground}}"/>
                                             </DataTemplate>
@@ -229,7 +229,7 @@
 
                 <!--Bên phải-->
                 <Border BorderBrush="#bfad97"
-                        Margin="0 85 0 0"
+                        Margin="0 98 0 0"
                         VerticalAlignment="Top"
                         Grid.Column="1"
                         BorderThickness="2"
@@ -285,8 +285,8 @@
               Opacity="0.3"
               Visibility="Collapsed"
               x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
+              Height="800"
+              Width="1400"
               VerticalAlignment="Center"
               HorizontalAlignment="Center">
         </Grid>

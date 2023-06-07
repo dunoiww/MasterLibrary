@@ -909,3 +909,5 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPa
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\DeliveryPage\ReviewBook.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\RevenueDetail.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\RevenueDetail.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\BorrowDetail.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\BorrowDetail.baml

@@ -9,7 +9,7 @@
       xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
       xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1170"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="BookCartPage"
       Name="BookCartPageML"
       DataContext="{StaticResource BookCartVM}">
@@ -321,7 +321,7 @@
                     </StackPanel>
                 </Border>
 
-                <Button Margin="20,315,20,0"
+                <Button Margin="20,412,20,0"
                         Height="50"
                         FontSize="17"
                         FontWeight="Bold"
@@ -382,8 +382,8 @@
               Opacity="0.3"
               Visibility="Collapsed"
               x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
+              Height="800"
+              Width="1400"
               VerticalAlignment="Center"
               HorizontalAlignment="Center">
         </Grid>

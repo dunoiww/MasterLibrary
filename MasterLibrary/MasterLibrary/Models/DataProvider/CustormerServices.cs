@@ -82,7 +82,7 @@ namespace MasterLibrary.Models.DataProvider
 
             if (await Task.Run(() => Ins.CheckUserNameCustormer(username, -1)))
             {
-                MessageBoxML ms = new MessageBoxML("Thông báo", "Tên tài khoản đã tồn tại", MessageType.Error, MessageButtons.OK);
+                MessageBoxML ms = new MessageBoxML("Thông báo", "Tên tài khoản đã tồn tại.", MessageType.Error, MessageButtons.OK);
                 ms.ShowDialog();
                 return;
             }
@@ -283,8 +283,6 @@ namespace MasterLibrary.Models.DataProvider
                 if (await Task.Run(() => Ins.CheckEmailCustormer(_email, _makh)))
                 {
                     return (false, "Email đã tồn tại");
-
-
                 }
 
                 if (await Task.Run(() => Ins.CheckUserNameCustormer(username, _makh)))

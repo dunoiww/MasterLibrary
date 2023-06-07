@@ -8,7 +8,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
-      d:DesignHeight="600" d:DesignWidth="1170"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Name="ReportTroublePageML"
       Title="ReportTroublePage"
       DataContext="{StaticResource ReportTroubleVM}">
@@ -267,7 +267,7 @@
                             BorderThickness="0.5"
                             Height="220"
                             DockPanel.Dock="Top"
-                            Margin="30,85,25,0">
+                            Margin="30,98,25,0">
                         <StackPanel>
                             <TextBlock Text="Sự cố"
                                    Foreground="#593000"
@@ -354,8 +354,8 @@
               Opacity="0.3"
               Visibility="Collapsed"
               x:Name="ShadowMask"
-              Height="630"
-              Width="1170"
+              Height="800"
+              Width="1400"
               VerticalAlignment="Center"
               HorizontalAlignment="Center">
         </Grid>

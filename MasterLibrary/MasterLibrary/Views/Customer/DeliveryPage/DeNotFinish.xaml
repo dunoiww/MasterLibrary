@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:MasterLibrary.Views.Customer.DeliveryPage"
       xmlns:local1="clr-namespace:MasterLibrary.Utils.ConverterValue"
       mc:Ignorable="d" 
-      d:DesignHeight="530" d:DesignWidth="1130"
+      d:DesignHeight="700" d:DesignWidth="1200"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -97,7 +97,7 @@
         <StackPanel Grid.Row="1">
             <ListView x:Name="lvProcess"
                       Focusable="True"
-                      Height="460"
+                      Height="620"
                       VerticalAlignment="Top"
                       ItemsSource="{Binding ListProcess}"
                       SelectedItem="{Binding SelectedProcessItem}"
@@ -105,7 +105,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã đơn"
-                                        Width="200">
+                                        Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding MAHD}"
@@ -116,7 +116,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Tên khách hàng"
-                                        Width="200">
+                                        Width="250">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding cusName}"
@@ -149,7 +149,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Trạng thái"
-                                        Width="250">
+                                        Width="260">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TRANGTHAI}"

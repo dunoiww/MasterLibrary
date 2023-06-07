@@ -7,76 +7,47 @@
       mc:Ignorable="d" 
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="700" d:DesignWidth="1200"
       DataContext="{StaticResource BookManageVM}"
       Title="BookManagePage1">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.2*"/>
-            <RowDefinition Height="8*"/>
-            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
-        <materialDesign:ColorZone
-                Mode="PrimaryMid"
-                Padding="16 16 16 16"
-                Background="White">
-            <DockPanel>
-                <StackPanel
-                            Orientation="Horizontal"
-                             materialDesign:RippleAssist.IsCentered="True">
-                    <ToggleButton
-                            Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
+        <StackPanel Grid.Row="0">
+            <Grid>
+                <StackPanel Orientation="Horizontal" Height="53">
+                    <materialDesign:PackIcon Kind="Magnify"
+                                             Width="25"
+                                             Height="35"
+                                             Foreground="Black"
+                                             VerticalAlignment="Center" 
+                                             Margin="10 0 0 0"/>
+                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" 
+                             x:Name="txbFilter"
+                             FontSize="20"
+                             Foreground="#DD000000"
+                             FontFamily="arial"
+                             Width="300"
+                             Height="30"
+                             Margin="0 0 0 0"
+                             TextChanged="TextBox_TextChanged_Find"
+                             HorizontalAlignment="Left" />
 
-                    <!--Khung tìm kiếm sách theo từ khóa-->
-                    <materialDesign:ColorZone
-                            Width="991"
-                            Mode="Standard"
-                            Padding="8 0 8 4" 
-                            CornerRadius="2"
-                            Panel.ZIndex="1"
-                            Margin="16 0 0 0"
-                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition
-                                         Width="Auto" />
-                                <ColumnDefinition
-                                         Width="*" />
-                                <ColumnDefinition
-                                         Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Button
-                                    Style="{DynamicResource MaterialDesignToolButton}">
-                                <materialDesign:PackIcon
-                                        Margin="0 4"
-                                        Kind="Magnify"
-                                        Opacity=".56" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Button>
-                            <TextBox
-                                    TextChanged="TextBox_TextChanged_Find"
-                                    Grid.Column="1"
-                                    Name="txbFilter"
-                                    Margin="8,7,0,0"
-                                    materialDesign:HintAssist.Hint="Tìm kiếm sách"
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    BorderThickness="0"
-                                    MinWidth="200"
-                                    VerticalAlignment="Center" Height="32" />
-                        </Grid>
-                    </materialDesign:ColorZone>
                 </StackPanel>
-            </DockPanel>
-        </materialDesign:ColorZone>
+            </Grid>
+        </StackPanel>
 
-        <DataGrid ItemContainerStyle="{StaticResource IncompleteRowStyle}"
-                Grid.Row="1" 
-                x:Name="dtg_manage" 
-                ItemsSource="{Binding Listbookmanage}" 
-                AutoGenerateColumns="False"
-                CanUserAddRows="False"
-                IsReadOnly="True"
-                >
+        <DataGrid Grid.Row="1" 
+                  x:Name="dtg_manage" 
+                  ItemsSource="{Binding Listbookmanage}" 
+                  AutoGenerateColumns="False"
+                  Margin="10"
+                  CanUserAddRows="False"
+                  IsReadOnly="True"
+                  Background="Transparent" BorderThickness="1,1,1,1">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding MaSach}"/>
                 <DataGridTextColumn Header="Sách" FontSize="14" Binding="{Binding TenSach}" Width="180"/>

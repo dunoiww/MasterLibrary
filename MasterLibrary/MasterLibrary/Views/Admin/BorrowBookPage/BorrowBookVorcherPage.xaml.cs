@@ -53,5 +53,13 @@ namespace MasterLibrary.Views.Admin.BorrowBookPage
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListBoxBook.ItemsSource);
             view.Filter = Filter;
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbMAKH.Text))
+            {
+                tbMAKH.Text = "0";
+            }
+        }
     }
 }

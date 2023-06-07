@@ -163,14 +163,12 @@ namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
                 {
                     Title = "Thu",
                     Values = new ChartValues<decimal>(MonthlyRevenue),
-                    Fill = Brushes.Transparent,
                     PointGeometry = DefaultGeometries.Square,
                 },
                 new LineSeries
                 {
                     Title = "Chi",
                     Values = new ChartValues<decimal>(MonthlyExpense),
-                    Fill = Brushes.Transparent,
                 }
             };
             }

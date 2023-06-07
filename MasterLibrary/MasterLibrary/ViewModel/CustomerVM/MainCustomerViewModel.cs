@@ -12,6 +12,9 @@ using MasterLibrary.Views.MessageBoxML;
 using MasterLibrary.Views.Customer.BorrowBookPage;
 using System;
 using MasterLibrary.Views.Customer.DeliveryPage;
+using System.Collections.ObjectModel;
+using MasterLibrary.Models.DataProvider;
+using System.Threading.Tasks;
 
 namespace MasterLibrary.ViewModel.CustomerVM
 {
@@ -34,6 +37,20 @@ namespace MasterLibrary.ViewModel.CustomerVM
             get { return _CurrentTime; }
             set { _CurrentTime = value; OnPropertyChanged(); }
         }
+
+        private ObservableCollection<BookInCartDTO> _ListBooksInCart;
+        public ObservableCollection<BookInCartDTO> ListBooksInCart
+        {
+            get { return _ListBooksInCart; }
+            set { _ListBooksInCart = value; OnPropertyChanged(); }
+        }
+
+        private int _CountItem;
+        public int CountItem
+        {
+            get => _CountItem;
+            set { _CountItem = value; OnPropertyChanged(); }
+        }
         #endregion
 
         #region ICommand
@@ -53,6 +70,7 @@ namespace MasterLibrary.ViewModel.CustomerVM
         public ICommand LoadBorrowBookPageML { get; set; }
         public ICommand TurnOnBorrowBook { get; set; }
         public ICommand SignOutML { get; set; }
+        public ICommand LoadQuantity { get; set; }
         #endregion
 
         public MainCustomerViewModel()
@@ -62,6 +80,8 @@ namespace MasterLibrary.ViewModel.CustomerVM
             Timer.Tick += new EventHandler(Timer_Click);
             Timer.Interval = new TimeSpan(0, 0, 1);
             Timer.Start();
+
+
 
             // Load trang mua sách
             LoadBuyBookPageML = new RelayCommand<Frame>((p) => { return true; }, async (p) =>

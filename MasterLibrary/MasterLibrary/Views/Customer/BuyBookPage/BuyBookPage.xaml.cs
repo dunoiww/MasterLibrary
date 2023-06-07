@@ -1,4 +1,5 @@
-﻿using MasterLibrary.DTOs;
+﻿using Avalonia.Controls;
+using MasterLibrary.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace MasterLibrary.Views.Customer.BuyBookPage
 {
@@ -45,6 +48,22 @@ namespace MasterLibrary.Views.Customer.BuyBookPage
         {
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(MainListBox.ItemsSource);
             view.Filter = Filter;
+        }
+
+        private void MainListBox_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta < 0)
+            {
+                scrollview.LineDown();
+                scrollview.LineDown();
+                scrollview.LineDown();
+            }
+            else
+            {
+                scrollview.LineUp();
+                scrollview.LineUp();
+                scrollview.LineUp();
+            }
         }
     }
 }

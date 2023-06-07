@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasterLibrary.Views.Admin.HistoryPage"
       mc:Ignorable="d" 
-      d:DesignHeight="630" d:DesignWidth="1170"
+      d:DesignHeight="700" d:DesignWidth="1200"
       Title="HistoryPage"
       x:Name="HistoryPageML"
       xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
@@ -136,12 +136,18 @@
 
             </materialDesign:Card>
         </Grid>
-        
-        
-        
+
+
+
         <Grid Background="Gray"
               Opacity="0.3"
               Visibility="Collapsed"
-              x:Name="ShadowMask" />
+              x:Name="ShadowMask"
+              Height="800"
+              Width="1400"
+              Panel.ZIndex="1000"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+        </Grid>
     </Grid>
 </Page>

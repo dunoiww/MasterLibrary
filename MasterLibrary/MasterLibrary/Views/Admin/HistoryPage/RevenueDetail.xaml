@@ -16,7 +16,7 @@
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        WindowStartupLocation="CenterOwner"
+        WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         DataContext="{StaticResource HistoryVM}" 
         MouseLeftButtonDown="RevenueDetailML_MouseLeftButtonDown">
