@@ -20,6 +20,7 @@ namespace MasterLibrary.Utils
         {
             "Chính trị",
             "Khoa học",
+            "Xã hội",
             "Kinh tế",
             "Văn học",
             "Lịch sử",

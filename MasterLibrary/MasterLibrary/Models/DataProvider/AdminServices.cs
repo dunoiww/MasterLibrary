@@ -149,7 +149,7 @@ namespace MasterLibrary.Models.DataProvider
                     PasswordNhanVien = adm.USERPASSWORD;
 
                     context.SaveChanges();
-                    return (true, "đổi mật khẩu thành công");
+                    return (true, "Đổi mật khẩu thành công");
                 }
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)

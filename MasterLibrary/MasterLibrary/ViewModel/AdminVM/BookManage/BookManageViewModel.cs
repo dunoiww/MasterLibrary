@@ -165,6 +165,9 @@ namespace MasterLibrary.ViewModel.AdminVM
             get => _SelectedTang;
             set { _SelectedTang = value; OnPropertyChanged(); }
         }
+
+        public static Grid MaskName { get; set; }
+
         #endregion
 
         #region Icommand
@@ -178,9 +181,12 @@ namespace MasterLibrary.ViewModel.AdminVM
         public ICommand FloorChangeML { get; set; }
         public ICommand TypeChangeML { get; set; }
         public ICommand ShelvesChangeML { get; set; }
+        public ICommand MaskNameML { get; set; }
         #endregion
         public BookManageViewModel()
         {
+
+            MaskNameML = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
             //Nút update của chức năng chỉnh sửa
             Updating = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -306,12 +312,13 @@ namespace MasterLibrary.ViewModel.AdminVM
 
             UpdatingBook = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
+                MaskName.Visibility = Visibility.Visible;
                 BookDTO item = p.Items[p.SelectedIndex] as BookDTO;
                 var masach = item.MaSach.ToString();
                 updatingwindow window = new updatingwindow(masach);
-                TheLoai = null;
-                Tang = null;
-                Day = null;
+                //TheLoai = null;
+                //Tang = null;
+                //Day = null;
                 DsTang = LayTang();
 
                 if (item.ImageSource == null)
@@ -348,6 +355,7 @@ namespace MasterLibrary.ViewModel.AdminVM
                     window.image_img.Source = img;
                 }
                 window.ShowDialog();
+                MaskName.Visibility = Visibility.Collapsed;
                 //load lại trang quản lý sách
                 Loaded(p);
             });

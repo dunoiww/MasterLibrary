@@ -9,23 +9,51 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="700" d:DesignWidth="1200"
       DataContext="{StaticResource BookManageVM}"
-      Title="BookManagePage1">
+      Title="BookManagePage1"
+      Name="BookManagePageML">
+
+    <Page.Triggers>
+        <EventTrigger RoutedEvent="Page.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetName="BookManagePageML"
+                                     Storyboard.TargetProperty="Opacity"
+                                     From="0"
+                                     To="1"
+                                     Duration="0:0:0.5" />
+
+
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Page.Triggers>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding MaskNameML}"
+                                   CommandParameter="{Binding ElementName=ShadowMask}" />
+            <i:InvokeCommandAction Command="{Binding LoadManageBookData}"
+                                       CommandParameter="{Binding ElementName=dtg_manage}" />
+            
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="9*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <Grid>
-                <StackPanel Orientation="Horizontal" Height="53">
-                    <materialDesign:PackIcon Kind="Magnify"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0">
+                <Grid>
+                    <StackPanel Orientation="Horizontal" Height="53">
+                        <materialDesign:PackIcon Kind="Magnify"
                                              Width="25"
                                              Height="35"
                                              Foreground="Black"
                                              VerticalAlignment="Center" 
                                              Margin="10 0 0 0"/>
-                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" 
+                        <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" 
                              x:Name="txbFilter"
                              FontSize="20"
                              Foreground="#DD000000"
@@ -36,11 +64,13 @@
                              TextChanged="TextBox_TextChanged_Find"
                              HorizontalAlignment="Left" />
 
-                </StackPanel>
-            </Grid>
-        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
 
-        <DataGrid Grid.Row="1" 
+
+
+            <DataGrid Grid.Row="1" 
                   x:Name="dtg_manage" 
                   ItemsSource="{Binding Listbookmanage}" 
                   AutoGenerateColumns="False"
@@ -48,52 +78,58 @@
                   CanUserAddRows="False"
                   IsReadOnly="True"
                   Background="Transparent" BorderThickness="1,1,1,1">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding MaSach}"/>
-                <DataGridTextColumn Header="Sách" FontSize="14" Binding="{Binding TenSach}" Width="180"/>
-                <DataGridTextColumn Header="Tác giả" FontSize="14" Binding="{Binding TacGia}"  Width="150"/>
-                <DataGridTextColumn Header="Nhà xuất bản" FontSize="14" Binding="{Binding NXB}"  Width="200"/>
-                <DataGridTextColumn Header="Giá" FontSize="14" Binding="{Binding Gia}"/>
-                <DataGridTextColumn Header="Thể loại" FontSize="14" Binding="{Binding TheLoai}"/>
-                <DataGridTextColumn Header="Năm xuất bản" FontSize="14" Binding="{Binding NamXB}"/>
-                <DataGridTextColumn Header="SL" FontSize="14" Binding="{Binding SoLuong}"/>
-                <DataGridTextColumn Header="Tầng" FontSize="14" Binding="{Binding TenTang}"/>
-                <DataGridTextColumn Header="Dãy" FontSize="14" Binding="{Binding TenDay}"/>
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Background="#512da8"  BorderBrush="#4a148c" Foreground="#ffffff"
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding MaSach}"/>
+                    <DataGridTextColumn Header="Sách" FontSize="14" Binding="{Binding TenSach}" Width="180"/>
+                    <DataGridTextColumn Header="Tác giả" FontSize="14" Binding="{Binding TacGia}"  Width="150"/>
+                    <DataGridTextColumn Header="Nhà xuất bản" FontSize="14" Binding="{Binding NXB}"  Width="200"/>
+                    <DataGridTextColumn Header="Giá" FontSize="14" Binding="{Binding Gia}"/>
+                    <DataGridTextColumn Header="Thể loại" FontSize="14" Binding="{Binding TheLoai}"/>
+                    <DataGridTextColumn Header="Năm xuất bản" FontSize="14" Binding="{Binding NamXB}"/>
+                    <DataGridTextColumn Header="SL" FontSize="14" Binding="{Binding SoLuong}"/>
+                    <DataGridTextColumn Header="Tầng" FontSize="14" Binding="{Binding TenTang}"/>
+                    <DataGridTextColumn Header="Dãy" FontSize="14" Binding="{Binding TenDay}"/>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Background="#512da8"  BorderBrush="#4a148c" Foreground="#ffffff"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                                     HorizontalAlignment="Left"
                                                     Width="35" Height="35"
                                                     Command="{Binding DataContext.UpdatingBook,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                     CommandParameter="{Binding ElementName=dtg_manage}">
-                                    <materialDesign:PackIcon Kind="EditOutline" Width="15" Height="15"/>
-                                </Button>
+                                        <materialDesign:PackIcon Kind="EditOutline" Width="15" Height="15"/>
+                                    </Button>
 
-                                <Button Background="#d32f2f"  BorderBrush="#b71c1c" Foreground="#ffffff"
+                                    <Button Background="#d32f2f"  BorderBrush="#b71c1c" Foreground="#ffffff"
                                                     Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                                     HorizontalAlignment="Left"
                                                     Width="35" Height="35"
                                                     Command="{Binding DataContext.DeletingBook ,RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                                     CommandParameter="{Binding ElementName=dtg_manage}"
                                                     Margin="5 0 0 0">
-                                    <materialDesign:PackIcon Kind="DeleteOutline" Width="15" Height="15"/>
-                                </Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-            
-        </DataGrid>
-        <i:Interaction.Triggers>
-            <i:EventTrigger EventName="Loaded">
-                <i:InvokeCommandAction Command="{Binding LoadManageBookData}"
-                                       CommandParameter="{Binding ElementName=dtg_manage}" />
-            </i:EventTrigger>
-        </i:Interaction.Triggers>
+                                        <materialDesign:PackIcon Kind="DeleteOutline" Width="15" Height="15"/>
+                                    </Button>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
         
+        <Grid Background="Gray"
+              Opacity="0.3"
+              Visibility="Collapsed"
+              x:Name="ShadowMask"
+              Panel.ZIndex="10000"
+              Height="800"
+              Width="1400"
+              VerticalAlignment="Center"
+              HorizontalAlignment="Center">
+
+        </Grid>
     </Grid>
 </Page>

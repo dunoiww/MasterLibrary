@@ -138,6 +138,20 @@ namespace MasterLibrary.ViewModel.AdminVM.SettingVM
             set { _newMoneyForLate = value; OnPropertyChanged(); }
         }
 
+        private string _MaxBorrow;
+        public string MaxBorrow
+        {
+            get => _MaxBorrow;
+            set { _MaxBorrow = value; OnPropertyChanged(); }
+        }
+
+        private string _NewMaxBorrow;
+        public string NewMaxBorrow
+        {
+            get => _NewMaxBorrow;
+            set { _NewMaxBorrow = value; OnPropertyChanged(); }
+        }
+
         private string _soNgayMuon;
         public string SoNgayMuon
         {
@@ -197,6 +211,7 @@ namespace MasterLibrary.ViewModel.AdminVM.SettingVM
                 {
                     SoNgayMuon = (from s in context.LUATTHUVIENs select s.SONGAYMUON).FirstOrDefault().ToString();
                     MoneyForLate = ((int)(from s in context.LUATTHUVIENs select s.TIENTRASACHMUONMOTNGAY).FirstOrDefault()).ToString();
+                    MaxBorrow = ((int)(from s in context.LUATTHUVIENs select s.SOSACHTOIDA).FirstOrDefault()).ToString();
                 }    
                 p.Content = new RolePage();
             });
@@ -206,6 +221,7 @@ namespace MasterLibrary.ViewModel.AdminVM.SettingVM
                 RolFr.Content = new ChangeRolePage();
                 NewMoneyForLate = MoneyForLate;
                 NewSoNgayMuon = SoNgayMuon;
+                NewMaxBorrow = MaxBorrow;
             });
 
             BackChangePass = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -404,9 +420,10 @@ namespace MasterLibrary.ViewModel.AdminVM.SettingVM
                             var rol = context.LUATTHUVIENs.SingleOrDefault(s => s.MALUAT == 1);
                             rol.SONGAYMUON = int.Parse(NewSoNgayMuon);
                             rol.TIENTRASACHMUONMOTNGAY = decimal.Parse(NewMoneyForLate);
+                            rol.SOSACHTOIDA = int.Parse(NewMaxBorrow);
                             context.SaveChanges();
                         }
-                        SoNgayMuon = NewSoNgayMuon; MoneyForLate = NewMoneyForLate;
+                        SoNgayMuon = NewSoNgayMuon; MoneyForLate = NewMoneyForLate; MaxBorrow = NewMaxBorrow;
                         RolFr.Content = new RolePage();
                         MessageBoxML msb1 = new MessageBoxML("Thông báo", "Sửa đổi thông tin thành công!", MessageType.Waitting, MessageButtons.OK);
                         msb1.ShowDialog();

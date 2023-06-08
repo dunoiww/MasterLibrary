@@ -30,6 +30,7 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
@@ -51,11 +52,22 @@
                                    Số tiền trễ / 1 ngày
                     </TextBlock>
                 </Grid>
+
+                <Grid Grid.Row="2">
+                    <TextBlock FontSize="20"
+                               HorizontalAlignment="Left"
+                               TextAlignment="Center"
+                               VerticalAlignment="Center"
+                               Style="{StaticResource MaterialDesignButtonTextBlock}">
+                                   Số sách mượn tối đa
+                    </TextBlock>
+                </Grid>
             </Grid>
 
             <Grid Grid.Column="1"
                   Margin="0 0 15 0">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
@@ -88,6 +100,19 @@
                 </Grid>
 
                 <Grid Grid.Row="2">
+                    <TextBox Foreground="Black"
+                             FontSize="15"
+                             Height="54"
+                             Text="{Binding NewMaxBorrow}"
+                             IsReadOnly="False"
+                             Width="auto"
+                             VerticalContentAlignment="Center"
+                             BorderBrush="LightGray"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             VerticalAlignment="Center" />
+                </Grid>
+
+                <Grid Grid.Row="3">
                     <Button x:Name="btnBack"
                             Command="{Binding BackRolePage}"
                             Height="40"
