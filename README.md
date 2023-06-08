@@ -126,6 +126,8 @@ Hỗ trợ các thư viện dễ dàng hơn trong quản lý sách và giúp ng�
 
     * Giỏ hàng: thanh toán tất cả sách đã chọn mua tại giỏ hàng.​
 
+    * Nhận xét: Nhận xét những sản phẩm đã mua.​
+
     * Vị trí sách: chứa thông tin vị trí sách trong thư viện giúp khách hàng có thể dễ dàng tìm những cuốn sách theo nhu cầu mà không cần phải đến trực tiếp quầy.​
 
     * Sách mượn: hiển thị thông tin những cuốn sách khác hàng đang mượn của thư viện.​
@@ -138,23 +140,23 @@ Hỗ trợ các thư viện dễ dàng hơn trong quản lý sách và giúp ng�
 
 ## III. Tác giả
 
-* [Huỳnh Mai Cao Nhân](https://github.com/HuynhNhan0330) - 21522401
-    * Vai trò: Team learder, frontend developer, backend developer
-
-* [Nguyễn Hoàng Minh](https://github.com/hoangmindrespect) - 21522343
-    * Vai trò: Database design, frontend developer, backend developer
-
 * [Ngô Phương Nam](https://github.com/dunoiww) - 21522361
-    * Vai trò: Tester, frontend developer, backend developer
+    * Vai trò: Team learder, frontend developer, backend developer, Database designer
+
+* [Vũ Đức Minh](https://github.com/dvcminh) - 21522348
+    * Vai trò: Tester, Document preparer, Report preparer
+
+* [Võ Hữu](https://github.com/QuickyBooster) - 21522133
+    * Vai trò: Tester, Document preparer, Report preparer
 
 * [Phạm Nguyễn](https://github.com/kazei1211) - 21522394
-    * Vai trò: UI/UX designer, frontend developer, backend developer
+    * Vai trò: UI/UX designer, Tester, Document preparer, Report preparer
 
 <!-- NGƯỜI HƯỚNG DẪN -->
 <div id="Nguoihuongdan"></div>
 
 ## IV. Người hướng dẫn
-* Giảng viên: Nguyễn Tấn Toàn
+* Giảng viên: Nguyễn Thị Thanh Trúc
 
 <!-- TỔNG KẾT -->
 <div id="Tongket"></div>
@@ -162,9 +164,11 @@ Hỗ trợ các thư viện dễ dàng hơn trong quản lý sách và giúp ng�
 ## V. Tổng kết
 * Một sản phẩm là kết quả của một dự án được hoàn thành bởi các thành viên trong nhóm. Qua quá trình này, các thành viên đã có được những kiến ​​thức và kỹ năng chuyên môn nhất định về quy trình lập trình thực tế, hiểu rõ hơn về lập trình, đồng thời tích lũy cho mình những kinh nghiệm và bài học quý báu cho công việc sau này.
 
-* Ngoài ra, nhóm cũng xin gửi lời cảm ơn chân thành và sâu sắc đến thầy giáo hướng dẫn Nguyễn Tấn Toàn đã đồng hành cùng nhóm để đạt được kết quả như ngày hôm nay trong suốt quá trình thực hiện đề tài.
+* Ngoài ra, nhóm cũng xin gửi lời cảm ơn chân thành và sâu sắc đến giảng viên hướng dẫn Nguyễn Thị Thanh Trúc đã đồng hành cùng nhóm để đạt được kết quả như ngày hôm nay trong suốt quá trình thực hiện đề tài.
 
-* Sản phẩm của một nhóm có thể để lại nhiều điều mong muốn khi nó được xây dựng và phát triển. Vì vậy, đừng ngần ngại gửi đề xuất hoặc nhận xét của bạn tới email helperCusML@gmail.com. Mỗi đóng góp của bạn sẽ được ghi nhận và là động lực để đội ngũ hoàn thiện sản phẩm hơn nữa.
+* Sản phẩm của một nhóm có thể để lại nhiều điều mong muốn khi nó được xây dựng và phát triển. Vì vậy, đừng ngần ngại gửi đề xuất hoặc nhận xét của bạn tới email helperCusML@gmail.com. Mỗi đóng góp của bạn sẽ được ghi nhận và là động lực để nhóm mình hoàn thiện sản phẩm hơn nữa.
+
+* Đây là link tải sản phẩm của nhóm: https://drive.google.com/file/d/16lWa2InILc1FbhB3zXVptwqpBYEmJE-t/view?usp=drivesdk
 
 * Cám ơn vì sự quan tâm của bạn!
 
