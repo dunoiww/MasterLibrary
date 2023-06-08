@@ -232,7 +232,7 @@
                             materialDesign:HintAssist.Hint="Tầng"
                             Text="{Binding Tang}"
                             ItemsSource="{Binding DsTang}"
-                            SelectedItem="{Binding SelectedTang}"
+                            SelectedItem="{Binding SelectedTang, Mode=TwoWay}"
                             DisplayMemberPath="TenTang"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                             Margin="10 10 10 10"
