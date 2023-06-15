@@ -1,177 +1,174 @@
 ﻿<div id="Top"></div>
 
-# QUẢN LÝ THƯ VIỆN
-Hỗ trợ các thư viện dễ dàng hơn trong quản lý sách và giúp người mượn mua sách thuận lợi hơn.
+# Library management application – Master Library
+Facilitating the management of libraries by providing enhanced support for book organization and enabling borrowers to conveniently purchase books.
 
-## Mục lục
+## Table of contents:
 
- [I. Mở đầu](#Modau)
+ [I. Introduction](#Introduction)
 
- [II. Mô tả](#Mota)
+ [II. Description](#Description)
 
-> [1. Ý tưởng](#Ytuong)
+> [1. The concepts](#Theconcepts)
 >
-> [2. Công nghệ](#Congnghe)
+> [2. Technologies](#Technologies)
 >
-> [3. Người dùng](#Doituongsudung)
+> [3. Targeted users](#Targetedusers)
 >
-> [4. Mục tiêu](#Muctieu)
+> [4. Goals](#Goals)
 >
-> [5. Tính năng](#Tinhnang)
+> [5. Features](#Features)
 
-[III. Tác giả](#Tacgia)
+[III. Author](#Author)
 
-[IV. Người hướng dẫn](#Nguoihuongdan)
+[IV. Instructor](#Instructor)
 
-[V. Tổng kết](#Tongket)
-
-
-<!-- MỞ ĐẦU -->
-<div id="Modau"></div>
-
-## I. Mở đầu
-* Sách là một nguồn tài nguyên tuyệt vời cho kiến ​​thức và phát triển cá nhân. Tuy nhiên, đôi khi chúng ta cũng gặp phải những trở ngại nhất định trong việc tìm kiếm cuốn sách phù hợp với mức giá hợp lý nhất. Và người bán hàng gặp khó khăn trong việc quản lý sách và khách hàng với số lượng lớn. Chính vì vậy nhóm đã quyết định phát triển một phần mềm có tên là Masterlibrary để giải quyết các vấn đề trên.
-
-* Hiện tại, Masterlibrary đã trang bị cho mình đầy đủ các thể loại sách đáp ứng mọi nhu cầu của bạn đọc từ giải trí đến học tập hay các dịch vụ như khoa học, nghiên cứu,… Cực kỳ thuận tiện khi mua sách trực tuyến, hỗ trợ phân phối tới 64 tỉnh thành và các thành phố lớn trên cả nước, cá nhân ở gần thư viện cũng có thể sử dụng dịch vụ cho thuê sách hoặc đến thư viện đọc sách. Và quan trọng nhất là nó cũng giúp thủ thư quản lý sách dễ dàng hơn.
-
-<!-- MÔ TẢ -->
-<div id="Mota"></div>
-
-## II. Mô tả
-
-<!-- Ý TƯỞNG -->
-<div id="Ytuong"></div>
-
-### 1. Ý tưởng
-* Với mục tiêu nâng cao trải nghiệm người dùng, công nghệ WPF được áp dụng, ngôn ngữ XAML đáp ứng yêu cầu khắt khe hơn, giao diện cập nhật, hiện đại, trực quan hơn, phù hợp với chuẩn mực hiện hành, ngôn ngữ lập trình dễ hiểu, dễ tiếp cận và dễ dàng tạo và chỉnh sửa giao diện người dùng đồ họa.
-
-* Sử dụng mô hình MVVM để tách giao diện và xử lý, tăng khả năng sử dụng lại các thành phần hoặc thay đổi giao diện chương trình mà không cần viết lại quá nhiều mã, bạn có thể phát triển ứng dụng, nâng cấp, bảo trì, mở rộng hoặc sửa chữa một cách nhanh chóng và dễ dàng.
-
-* Lập trình theo hướng đa luồng (MultiThreading), tối ưu hóa phần cứng, tăng tốc độ xử lý, tăng tốc độ ứng dụng.
-
-* Sử dụng nền tảng quản lý cơ sở dữ liệu đám mây Azure SQL Database để đồng bộ dữ liệu giữa các thiết bị người dùng nhằm đảm bảo tính thống nhất và chính xác của dữ liệu.
-* Công nghệ mã hóa Base64 được sử dụng trong quản lý tài khoản người dùng nhằm đảm bảo an toàn trong quá trình sử dụng và hạn chế tối đa tổn thất khi dữ liệu không may bị thất thoát ra bên ngoài.
+[V. Summary](#Summary)
 
 
-<div id="Congnghe"></div>
+<!-- Introduction -->
+<div id="Introduction"></div>
 
-### 2. Công nghệ
-* Ngôn ngữ: C# nền tảng .Net FrameWork v4.6.2
+## I. Introduction
+* Books constitute an exceptional repository of knowledge and a catalyst for personal development. Nevertheless, individuals occasionally encounter specific impediments when seeking books that align with their preferences at the most competitive prices. Similarly, book vendors face challenges in effectively managing their inventory, while customers are often overwhelmed by the extensive selection available. Consequently, our team has made a resolute determination to develop a cutting-edge software solution named "Master Library" to address these intricate concerns comprehensively.
+
+* Presently, Master Library is equipped with an extensive collection of book genres, catering to diverse readers' needs, ranging from entertainment to education and even encompassing specialized fields such as science and research. The online book purchasing process has been remarkably streamlined, providing the utmost convenience. With nationwide distribution coverage spanning across 64 provinces and major cities, individuals residing near libraries can also benefit from the book rental service or visit the library for reading purposes. Most importantly, Master Library significantly facilitates the management of books for librarians, enabling them to perform their tasks with utmost ease.
+
+<!-- Description -->
+<div id="Description"></div>
+
+## II. Description
+
+<!-- The concepts -->
+<div id="Theconcepts"></div>
+
+### 1. The concepts
+* With the aim of enhancing user experience, the WPF (Windows Presentation Foundation) technology has been implemented, utilizing the XAML (eXtensible Application Markup Language) language to meet more stringent requirements. The interface has been updated to a modern and visually appealing design, aligning with current standards. The programming language used is intuitive, easily accessible, and allows for effortless creation and modification of graphical user interfaces.
+* The MVVM (Model-View-View Model) architectural pattern is employed to separate the user interface from the underlying processing logic. This approach enhances the reusability of components and allows for easier modification of the program's interface without the need for extensive code rewriting. With MVVM, you can develop, upgrade, maintain, expand, or troubleshoot the application swiftly and effortlessly.
+
+* Programming in a multithreaded manner optimizes hardware utilization, enhances processing speed, and improves application performance.
+
+* The Azure SQL Database cloud-based management platform is utilized to synchronize data across user devices, ensuring data consistency and accuracy.
+* Base64 encoding technology is employed in user account management to ensure security during usage and minimize potential data loss in case of accidental data exposure.
+
+
+<div id="Technologies"></div>
+
+### 2. Technologies
+* Programing language: C# 
+* Platform: .Net Framework v4.6.2
 * UI Framework: Windows Presentation Foundation (WPF)
-* Mô hình MVVM
+* Model: MVVM
 * IDE: Visual Studio 2022
 * Database: SQL Server, Azure SQL Database
-* Công cụ quản lý sourcecode: Git, GitHub
+* Source code/version control platform: Git, GitHub
 * Cloud: Cloudinary
-* Khác: Office365, OneDrive, Microsoft Teams, Facebook
+* Other tools: Star UML, Figma, Canva, office 365...
 
-<div id="Doituongsudung"></div>
+<div id="Targetedusers"></div>
 
-### 3. Đối tượng sử dụng
-* Quản lý thư viện hoặc nhân viên thư viện: vai trò quản lý
-* Khách hàng
+### 3. Targeted users
+* Management Role: Library Management or Library Staff
+* Customer Role: buyer, borrower.
 
-<div id="Muctieu"></div>
+<div id="Goals"></div>
 
-### 4. Mục tiêu
+### 4. Goals
 
-* <strong>Ứng dụng thực tế</strong>
+* <strong>Practical Application</strong>
     
-    * Đáp ứng yêu cầu của khách hàng, hệ thống có tính ổn định cao, dễ sử dụng, không gây khó khăn cho người dùng, được thiết kế đặc biệt cho khách hàng Việt Nam.
+    * The system effectively addresses customer requirements by delivering a highly stable and user-friendly experience. It is thoughtfully designed specifically for the Vietnamese customer base, ensuring seamless usability and minimizing any potential challenges for users.
 
-    * Được sử dụng rộng rãi trong các hệ thống thư viện, thay thế các ứng dụng cũ còn nhiều hạn chế, giao diện lỗi thời hay hình thức quản lý thủ công truyền thống cồng kềnh, khó quản lý, dễ xảy ra lỗi không đáng có.
+    * Widely adopted in library systems, this application serves as a comprehensive replacement for outdated software with limited functionality, obsolete interfaces, and cumbersome manual management methods prone to unnecessary errors. It will establish itself as a preferred and trusted choice among customers, gaining their confidence and loyalty.
 
-    * Trở thành một trong những ứng dụng được khách hàng lựa chọn và tin tưởng.
-
- * <strong>Yêu cầu ứng dụng</strong>
+ * <strong>Application Requirements:</strong>
  
-    * Đáp ứng chức năng tiêu chuẩn theo yêu cầu của các ứng dụng quản lý thư viện hiện có trên thị trường. Ngoài ra, các chức năng mới được mở rộng và phát triển nhằm hỗ trợ tối đa người dùng, tự động hóa hoạt động quản lý sân khấu, nhà hát, khắc phục những hạn chế, yếu kém của các hệ thống quản lý hiện tại.
+    * The application must effectively meet the standard functionality requirements of existing library management applications in the market. Additionally, it should extensively expand and develop new features to provide optimal user support, automating stage and theater management operations, while effectively addressing limitations and deficiencies found in current management systems.
 
-    * Nâng cao tính chính xác và bảo mật trong quản lý thông tin doanh nghiệp và khách hàng.
+    * Furthermore, the application should significantly enhance the accuracy and security of managing business and customer information. It should seamlessly facilitate the generation of reports, statistical analysis, data updates, and seamless synchronization across multiple computer systems, ensuring swift and precise execution.
+      
+    * Effortless searching and retrieval of relevant information pertaining to books, stages, customers, and customer purchase history should be seamlessly integrated into the application.
+      
+    * The application user interface must be friendly, well-organized, visually appealing, high synchronization capability. And users should be granted through account-based authorization.
+      
+    * The application must be compatible with wide range of devices as well as operating system such as Windows Vista SP1, Windows 8.1, Windows 10, Windows 11, etc.
 
-    * Việc lập báo cáo, thống kê, cập nhật dữ liệu, đồng bộ giữa các máy tính đều phải diễn ra nhanh chóng, chính xác.
+<div id="Features"></div>
 
-    * Dễ dàng tìm kiếm và tra cứu các thông tin liên quan đến sách, sàn, khách hàng... và lịch sử mua hàng của khách hàng.
+### 5. Features
+* User Management: Implement a login system and provide support for account recovery in case users forget their passwords.
 
-    * Giao diện thân thiện, dễ sử dụng, bố cục hợp lý, màu sắc hài hòa, tính đồng bộ cao, phân quyền cho người dùng thông qua tài khoản.
+* For the Admin role:
+    * Statistics: Calculate the library's revenue, with the ability to filter by month or year based on specific requirements.
 
-    * Ứng dụng phải tương thích với hầu hết các hệ điều hành phổ biến như Windows Vista SP1, Window 8.1, Window 10, v.v.
+    * Book Management: Administer all types of books available in the library.
 
-<div id="Tinhnang"></div>
+    * Book importing: Add new books to the library.
 
-### 5. Tính năng
-* Quản lý đăng nhập, hỗ trợ việc khôi phục tài khoản cho người dùng khi quên mật khẩu.
+    * Transaction History: Record all transactions that occur during the management process, including book purchases, sales, fines, borrowing information, and more.
 
-* Với vai trò quản lý (admin):
-    * Thống kê: tính doanh thu của thư viện (có thể lọc theo tháng hoặc theo năm tuỳ nhu cầu).​
+    * Shelf Management: Store information about the location of each book so that customers can easily find the books they need without having to inquire at the counter.
 
-    * Quản lý sách: quản lý tất các loại sách có trong thư viện.​
+    * Borrowing Books: Record the borrower's information and the books they borrow.
 
-    * Nhập sách: nhập thêm sách cho thư viện.​
+    * Issue Management: Receive and handle customer-contributed issues or incidents related to the library's operations.
 
-    * Lịch sử: ghi lại tất cả các giao dịch xảy ra trong quá trình quản lý (tiền nhập sách, bán sách, thu phạt, thông tin mượn sách, …).​
+    * Settings: Allow administrators to modify management information such as passwords and other relevant settings.
 
-    * Tầng dãy: lưu lại thông tin vị trí của từng quyển sách để khách hàng có thể dễ dàng tìm sách mình đang cần mà không phải tới quầy để hỏi.​
-
-    * Mượn sách: ghi lại thông tin của người mượn và sách mượn.​
-
-    * Sự cố: tiếp nhận những sự cố được đóng góp bởi khách hang và xử lý tình trạng sự cố.​
-
-    * Cài đặt: thay đổi thông tin quản lý (mật khẩu,...)​
-
-    * Quản lý khách hàng: lưu lại thông tin của tất cả các khách hàng. 
+    * Customer Management: Store information about all customers, including their personal details and transaction history.
  
-* Với vai trò khách hàng:
-    * Mua sách: bao gồm tất cả sách có trong thư viện và thông tin sách đang sẵn sàng để được bán đi.​
+* As a customer:
+    * Purchase Books: Browse and purchase books available in the library, along with information on books ready for sale.
 
-    * Giỏ hàng: thanh toán tất cả sách đã chọn mua tại giỏ hàng.​
+    * Shopping Cart: Manage and complete the payment for the selected books in the shopping cart.
 
-    * Nhận xét: Nhận xét những sản phẩm đã mua.​
+    * Reviews: Provide feedback and reviews for the purchased products.
 
-    * Vị trí sách: chứa thông tin vị trí sách trong thư viện giúp khách hàng có thể dễ dàng tìm những cuốn sách theo nhu cầu mà không cần phải đến trực tiếp quầy.​
+    * Book Locations: Access information about the location of books in the library, enabling customers to easily find books according to their needs without the need to visit the counter.
 
-    * Sách mượn: hiển thị thông tin những cuốn sách khác hàng đang mượn của thư viện.​
+    * Book Borrowing: Display information about books that other customers are currently borrowing from the library.
 
-    * Báo cáo sự cố: report lại thông tin những thứ cần sửa chữa và nâng cấp để cải thiện trải nghiệm của người dùng tại thư viện.​
+    * Report Issues: Report any problems or issues that need to be addressed or improved to enhance the user experience at the library.
 
-    * Cài đặt: đổi mật khẩu, và thay đổi thông tin khách hàng (tên, email, địa chỉ).
+    * Settings: Change password and update customer information such as name, email, and address.
+  
 <!-- TÁC GIẢ -->
-<div id="Tacgia"></div>
+<div id="Author"></div>
 
-## III. Tác giả
+## III. Authors
 
 * [Ngô Phương Nam](https://github.com/dunoiww) - 21522361
-    * Vai trò: Team learder, frontend developer, backend developer, Database designer
+    * Role: Team learder, frontend developer, backend developer, Database designer
 
 * [Vũ Đức Minh](https://github.com/dvcminh) - 21522348
-    * Vai trò: Tester, Document preparer, Report preparer
+    * Role: Tester, Document preparer, Report preparer
 
 * [Võ Hữu](https://github.com/QuickyBooster) - 21522133
-    * Vai trò: Tester, Document preparer, Report preparer
+    * Role: Tester, Document preparer, Report preparer
 
 * [Phạm Nguyễn](https://github.com/kazei1211) - 21522394
-    * Vai trò: UI/UX designer, Tester, Document preparer, Report preparer
+    * Role: UI/UX designer, Tester, Document preparer, Report preparer
 
 <!-- NGƯỜI HƯỚNG DẪN -->
-<div id="Nguoihuongdan"></div>
+<div id="Instructor"></div>
 
-## IV. Người hướng dẫn
-* Giảng viên: Nguyễn Thị Thanh Trúc
+## IV. Instructor
+* Lecturer: Nguyễn Thị Thanh Trúc
 
 <!-- TỔNG KẾT -->
-<div id="Tongket"></div>
+<div id="Summary"></div>
 
-## V. Tổng kết
-* Một sản phẩm là kết quả của một dự án được hoàn thành bởi các thành viên trong nhóm. Qua quá trình này, các thành viên đã có được những kiến ​​thức và kỹ năng chuyên môn nhất định về quy trình lập trình thực tế, hiểu rõ hơn về lập trình, đồng thời tích lũy cho mình những kinh nghiệm và bài học quý báu cho công việc sau này.
+## V. Summary
+* A product is the culmination of a project successfully accomplished by the members within a team. Throughout this process, the team members have gained specialized knowledge and skills in real-world programming procedures, fostering a comprehensive understanding of programming while accumulating invaluable experiences and lessons for future endeavors.
 
-* Ngoài ra, nhóm cũng xin gửi lời cảm ơn chân thành và sâu sắc đến giảng viên hướng dẫn Nguyễn Thị Thanh Trúc đã đồng hành cùng nhóm để đạt được kết quả như ngày hôm nay trong suốt quá trình thực hiện đề tài.
+* Furthermore, the team extends deep and heartfelt gratitude to the guiding instructor, Nguyen Thi Thanh Truc, for their unwavering support and guidance throughout the entire project, leading to the achievement of the present outcome.
 
-* Sản phẩm của một nhóm có thể để lại nhiều điều mong muốn khi nó được xây dựng và phát triển. Vì vậy, đừng ngần ngại gửi đề xuất hoặc nhận xét của bạn tới email helperCusML@gmail.com. Mỗi đóng góp của bạn sẽ được ghi nhận và là động lực để nhóm mình hoàn thiện sản phẩm hơn nữa.
+* A team's product can yield numerous desired outcomes when meticulously built and developed. Therefore, we wholeheartedly encourage you to share your proposals or provide feedback by reaching out to us via email at helperCusML@gmail.com. Every contribution will be duly acknowledged and serve as a driving force for our team to further refine and enhance the product.
 
-* Đây là link tải sản phẩm của nhóm: https://drive.google.com/file/d/16lWa2InILc1FbhB3zXVptwqpBYEmJE-t/view?usp=drivesdk
+* This is the download link for our team project: https://drive.google.com/file/d/16lWa2InILc1FbhB3zXVptwqpBYEmJE-t/view?usp=drivesdk
 
-* Cám ơn vì sự quan tâm của bạn!
+* Thank you for your interest and attention!
 
 ---
 
-<p align="right"><a href="#Top">Quay lại đầu trang</a></p>
+<p align="right"><a href="#Top">Back to the top</a></p>
