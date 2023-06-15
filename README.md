@@ -138,10 +138,10 @@ Facilitating the management of libraries by providing enhanced support for book 
 ## III. Authors
 
 * [Ngô Phương Nam](https://github.com/dunoiww) - 21522361
-    * Role: Team learder, frontend developer, backend developer, Database designer
+    * Role: Frontend developer, backend developer, Database designer
 
 * [Vũ Đức Minh](https://github.com/dvcminh) - 21522348
-    * Role: Tester, Document preparer, Report preparer
+    * Role: Team leader, Tester, Document preparer, Report preparer
 
 * [Võ Hữu](https://github.com/QuickyBooster) - 21522133
     * Role: Tester, Document preparer, Report preparer
@@ -153,7 +153,7 @@ Facilitating the management of libraries by providing enhanced support for book 
 <div id="Instructor"></div>
 
 ## IV. Instructor
-* Lecturer: Nguyễn Thị Thanh Trúc
+* Lecturer: Mrs.Nguyễn Thị Thanh Trúc
 
 <!-- TỔNG KẾT -->
 <div id="Summary"></div>
