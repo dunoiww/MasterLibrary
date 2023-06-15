@@ -144,10 +144,10 @@ Facilitating the management of libraries by providing enhanced support for book 
     * Role: Team leader, Tester, Document preparer, Report preparer
 
 * [Võ Hữu](https://github.com/QuickyBooster) - 21522133
-    * Role: Tester, Document preparer, Report preparer
+    * Role: Tester, Document preparer, Report preparer, System Analyst
 
 * [Phạm Nguyễn](https://github.com/kazei1211) - 21522394
-    * Role: UI/UX designer, Tester, Document preparer, Report preparer
+    * Role: UI/UX designer, Tester, Document preparer, Report preparer, System Analyst
 
 <!-- NGƯỜI HƯỚNG DẪN -->
 <div id="Instructor"></div>
