@@ -105,7 +105,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Mã đơn"
-                                        Width="150">
+                                        Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding MAHD}"
@@ -116,7 +116,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Tên khách hàng"
-                                        Width="250">
+                                        Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding cusName}"
@@ -127,7 +127,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Địa chỉ"
-                                        Width="200">
+                                        Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding cusAdd}"
@@ -138,7 +138,7 @@
                         </GridViewColumn>
 
                         <GridViewColumn Header="Tên sản phẩm"
-                                        Width="200">
+                                        Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TenSach}"
@@ -148,8 +148,19 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
+                        <GridViewColumn Header="Số lượng"
+                                        Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Text="{Binding SoLuong}"
+                                                FontSize="18"
+                                                Margin="18,0,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                         <GridViewColumn Header="Trạng thái"
-                                        Width="260">
+                                        Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock  Text="{Binding TRANGTHAI}"

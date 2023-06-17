@@ -127,6 +127,7 @@
     <Property Name="NHANXET" Type="nvarchar" MaxLength="500" />
     <Property Name="MAKH" Type="int" />
     <Property Name="MASACH" Type="int" />
+    <Property Name="RATINGSTAR" Type="float" />
   </EntityType>
   <EntityType Name="SACH">
     <Key>

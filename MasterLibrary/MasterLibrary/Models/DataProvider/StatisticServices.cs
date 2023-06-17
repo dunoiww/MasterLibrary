@@ -36,7 +36,7 @@ namespace MasterLibrary.Models.DataProvider
 
             using (var context = new MasterlibraryEntities())
             {
-                var billList = context.HOADONs.Where(b => b.NGHD.Year == year);
+                var billList = context.HOADONs.Where(b => b.NGHD.Year == year && b.ISRECEIVED == 1);
 
                 if (billList.ToList().Count != 0)
                 {
@@ -132,7 +132,7 @@ namespace MasterLibrary.Models.DataProvider
 
             using (var context = new MasterlibraryEntities())
             {
-                var billList = context.HOADONs.Where(b => b.NGHD.Year == year && b.NGHD.Month == month);
+                var billList = context.HOADONs.Where(b => b.NGHD.Year == year && b.NGHD.Month == month && b.ISRECEIVED == 1);
 
                 if (billList.ToList().Count != 0)
                 {
@@ -233,7 +233,7 @@ namespace MasterLibrary.Models.DataProvider
             {
                 using (var context = new MasterlibraryEntities())
                 {
-                    var cusStatistic = await context.HOADONs.Where(b => b.NGHD.Year == year && b.MAKH != null)
+                    var cusStatistic = await context.HOADONs.Where(b => b.NGHD.Year == year && b.MAKH != null && b.ISRECEIVED == 1)
                         .GroupBy(b => b.MAKH)
                         .Select(grC => new
                         {
@@ -274,7 +274,7 @@ namespace MasterLibrary.Models.DataProvider
             {
                 using (var context = new MasterlibraryEntities())
                 {
-                    var cusStatistic = await context.HOADONs.Where(b => b.NGHD.Month == month && b.NGHD.Year == year && b.MAKH != null)
+                    var cusStatistic = await context.HOADONs.Where(b => b.NGHD.Month == month && b.NGHD.Year == year && b.MAKH != null && b.ISRECEIVED == 1)
                         .GroupBy(b => b.MAKH)
                         .Select(grC => new
                         {
@@ -310,12 +310,12 @@ namespace MasterLibrary.Models.DataProvider
             {
                 using (var context = new MasterlibraryEntities())
                 {
-                    var bookStatis = context.CTHDs.Where(s => s.HOADON.NGHD.Year == year)
+                    var bookStatis = context.CTHDs.Where(s => s.HOADON.NGHD.Year == year && s.HOADON.ISRECEIVED == 1)
                         .GroupBy(s => s.MASACH)
                         .Select(gr => new
                         {
                             MASACH = gr.Key,
-                            Revenue = gr.Sum(s => s.HOADON.TRIGIA),
+                            Revenue = gr.Sum(s => s.SACH.GIA),
                             soluong = gr.Sum(b => b.SOLUONG)
                         })
                         .OrderByDescending(m => m.Revenue).Take(5)
@@ -326,7 +326,8 @@ namespace MasterLibrary.Models.DataProvider
                             (statis, sach) => new BookDTO
                             {
                                 TenSach = sach.TENSACH,
-                                tonggiaban = (decimal)statis.Revenue,
+                                //tonggiaban = (decimal)statis.Revenue,
+                                tonggiaban = (decimal)(statis.soluong * sach.GIA),
                                 soluongban = (int)statis.soluong
                             }
                          ).ToList();
@@ -346,12 +347,12 @@ namespace MasterLibrary.Models.DataProvider
             {
                 using (var context = new MasterlibraryEntities())
                 {
-                    var bookStatis = context.CTHDs.Where(s => s.HOADON.NGHD.Month == month && s.HOADON.NGHD.Year == year)
+                    var bookStatis = context.CTHDs.Where(s => s.HOADON.NGHD.Month == month && s.HOADON.NGHD.Year == year && s.HOADON.ISRECEIVED == 1)
                         .GroupBy(s => s.MASACH)
                         .Select(gr => new
                         {
                             MASACH = gr.Key,
-                            Revenue = gr.Sum(s => s.HOADON.TRIGIA),
+                            Revenue = gr.Sum(s => s.SACH.GIA),
                             soluong = gr.Sum(b => b.SOLUONG)
                         })
                         .OrderByDescending(r => r.Revenue).Take(5)

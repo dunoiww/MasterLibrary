@@ -1,0 +1,99 @@
+﻿<Window x:Class="MasterLibrary.Views.Customer.BuyBookPage.DetailReviewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MasterLibrary.Views.Customer.BuyBookPage"
+        xmlns:uc="clr-namespace:MasterLibrary.UserControlML"
+        mc:Ignorable="d"
+        Title="Đánh giá chi tiết" Height="450" Width="800"
+        x:Name="DetailReviewWindowML"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
+        Background="#00000000"
+        WindowStyle="None"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        DataContext="{StaticResource DetailBookVM}" >
+    
+    <Border Background="#fff"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <uc:controlbar_uc Tag="{Binding Title, ElementName=DetailReviewWindowML}"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1">
+                <ListView x:Name="lvReview"
+                      Focusable="False"
+                      Height="400"
+                      Margin="10"
+                      VerticalAlignment="Top"
+                      ItemsSource="{Binding ListReview}"
+                      HorizontalAlignment="Stretch" BorderThickness="1,1,1,1">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Mã khách hàng"
+                                        Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Text="{Binding MAKH}"
+                                                FontSize="18"
+                                                Margin="18,0,0,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Tên khách hàng"
+                                        Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding TenKH}"
+                                                FontSize="18"
+                                                Margin="18,0,0,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Đánh giá"
+                                        Width="180">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <materialDesign:RatingBar Value="{Binding ratingStar}"
+                                                      x:Name="BasicRatingBar"
+                                                      Margin="16,0,0,0" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Nhận xét"
+                                        Width="300">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock  Text="{Binding NHANXET}"
+                                                    FontSize="18"
+                                                    Margin="18,0,0,0" 
+                                                    TextWrapping="Wrap"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

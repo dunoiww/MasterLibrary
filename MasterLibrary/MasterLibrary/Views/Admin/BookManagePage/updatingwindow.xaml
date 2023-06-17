@@ -104,6 +104,7 @@
                             x:Name="NamXuatBan_txb"
                             FontSize="14"
                             materialDesign:HintAssist.Hint="Năm xuất bản"
+                            PreviewTextInput="NamXuatBan_txb_PreviewTextInput"
                             BorderBrush="#b29e84"
                             Text="{Binding NamXuatBan}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -120,6 +121,7 @@
                         <TextBox
                             x:Name="SoLuong_txb"
                             FontSize="14"
+                            IsReadOnly="True"
                             materialDesign:HintAssist.Hint="Số lượng trong kho"
                             BorderBrush="#b29e84"
                             Text ="{Binding SoLuong}"
@@ -137,6 +139,7 @@
                         <TextBox
                             x:Name="Gia_txb"
                             FontSize="14"
+                            PreviewTextInput="Gia_txb_PreviewTextInput"
                             materialDesign:HintAssist.Hint="Giá"
                             Text="{Binding Gia}"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
@@ -238,8 +241,7 @@
                             SelectedItem="{Binding SelectedTang, Mode=TwoWay}"
                             DisplayMemberPath="TenTang"
                             Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                            Margin="10 10 10 10"
-                            >
+                            Margin="10 10 10 10">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction Command="{Binding FloorChangeML}"

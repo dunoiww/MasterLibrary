@@ -132,6 +132,7 @@
           <Property Name="NHANXET" Type="nvarchar" MaxLength="500" />
           <Property Name="MAKH" Type="int" />
           <Property Name="MASACH" Type="int" />
+          <Property Name="RATINGSTAR" Type="float" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -794,6 +795,7 @@
           <Property Name="NHANXET" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MAKH" Type="Int32" />
           <Property Name="MASACH" Type="Int32" />
+          <Property Name="RATINGSTAR" Type="Double" />
           <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__REVIEW__MAKH__17036CC0" FromRole="REVIEW" ToRole="KHACHHANG" />
           <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__REVIEW__MASACH__17F790F9" FromRole="REVIEW" ToRole="SACH" />
         </EntityType>
@@ -1251,6 +1253,7 @@
           <EntitySetMapping Name="REVIEWs">
             <EntityTypeMapping TypeName="MasterlibraryModel.REVIEW">
               <MappingFragment StoreEntitySet="REVIEW">
+                <ScalarProperty Name="RATINGSTAR" ColumnName="RATINGSTAR" />
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
                 <ScalarProperty Name="MAKH" ColumnName="MAKH" />
                 <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />

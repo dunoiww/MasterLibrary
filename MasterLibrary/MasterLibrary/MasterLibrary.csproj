@@ -526,6 +526,9 @@
     <Compile Include="Views\Customer\BuyBookPage\DetailBookService.xaml.cs">
       <DependentUpon>DetailBookService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customer\BuyBookPage\DetailReviewWindow.xaml.cs">
+      <DependentUpon>DetailReviewWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customer\DeliveryPage\DeFinish.xaml.cs">
       <DependentUpon>DeFinish.xaml</DependentUpon>
     </Compile>
@@ -761,6 +764,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Customer\BuyBookPage\DetailBookService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Customer\BuyBookPage\DetailReviewWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

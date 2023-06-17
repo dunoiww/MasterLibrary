@@ -915,3 +915,5 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\CustomerManag
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\CustomerManagePage\CustomerCardWindow.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\BookManagePage\DetailBookWindow.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\BookManagePage\DetailBookWindow.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BuyBookPage\DetailReviewWindow.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Customer\BuyBookPage\DetailReviewWindow.baml

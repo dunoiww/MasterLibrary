@@ -91,6 +91,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
         public ICommand BuyIt { get; set; }
         public ICommand QuantityChange { get; set; }
         public ICommand CheckNullTxb { get; set; }
+        public ICommand OpenDetailReview { get; set; }
 
         #endregion
 
@@ -110,6 +111,12 @@ namespace MasterLibrary.ViewModel.CustomerVM.BuyBookVM
                 Quantity = 0;
                 TotalTien = 0;
                 TotalTienStr = Helper.FormatVNMoney(TotalTien);
+            });
+
+            OpenDetailReview = new RelayCommand<object>((p) => { return true; }, (p) =>
+            {
+                DetailReviewWindow drw = new DetailReviewWindow();
+                drw.ShowDialog();
             });
 
             // Đóng trang detailBook

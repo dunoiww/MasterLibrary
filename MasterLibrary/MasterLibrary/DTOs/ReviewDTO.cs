@@ -13,5 +13,6 @@ namespace MasterLibrary.DTOs
         public int MAKH { get; set; }
         public int MASACH { get; set; }
         public string TenKH { get; set; }
+        public double ratingStar { get; set; }
     }
 }

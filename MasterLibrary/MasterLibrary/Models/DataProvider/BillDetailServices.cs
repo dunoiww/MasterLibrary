@@ -39,6 +39,7 @@ namespace MasterLibrary.Models.DataProvider
                             (s, c) => new BillDetailDTO
                             {
                                 MaHD = s.MAHD,
+                                MaSach = s.MASACH,
                                 TenSach = s.SACH.TENSACH,
                                 NGMuaHang = c.NGHD,
                                 SoLuong = (int)s.SOLUONG,

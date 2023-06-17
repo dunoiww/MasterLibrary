@@ -329,6 +329,7 @@ namespace MasterLibrary.ViewModel.AdminVM
                 //TheLoai = null;
                 //Tang = null;
                 //Day = null;
+                //MessageBox.Show(item.ToString());
                 DsTang = LayTang();
 
                 if (item.ImageSource == null)
@@ -357,7 +358,7 @@ namespace MasterLibrary.ViewModel.AdminVM
                     MoTa = item.MoTa.ToString();
                     TheLoai = item.TheLoai;
                    
-                    //Load ảnh hiện tai lên trang chỉnh sửa
+                    //Load ảnh hiện tại lên trang chỉnh sửa
                     BitmapImage img = new BitmapImage();
                     img.BeginInit();
                     img.UriSource = new Uri(item.ImageSource);
@@ -374,8 +375,9 @@ namespace MasterLibrary.ViewModel.AdminVM
             {
                 try
                 {
-                    Tang = SelectedTang.TenTang;
-                    MaTang = SelectedTang.MaTang;
+                    TangDTO m = p.SelectedItem as TangDTO;
+                    Tang = m.TenTang;
+                    MaTang = m.MaTang;
                     Day = null;
                     DsDay = LayDay();
                 }

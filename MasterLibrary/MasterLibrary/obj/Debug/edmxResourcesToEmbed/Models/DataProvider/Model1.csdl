@@ -251,6 +251,7 @@
     <Property Name="NHANXET" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MAKH" Type="Int32" />
     <Property Name="MASACH" Type="Int32" />
+    <Property Name="RATINGSTAR" Type="Double" />
     <NavigationProperty Name="KHACHHANG" Relationship="MasterlibraryModel.FK__REVIEW__MAKH__17036CC0" FromRole="REVIEW" ToRole="KHACHHANG" />
     <NavigationProperty Name="SACH" Relationship="MasterlibraryModel.FK__REVIEW__MASACH__17F790F9" FromRole="REVIEW" ToRole="SACH" />
   </EntityType>

@@ -18,6 +18,7 @@ namespace MasterLibrary.Models.DataProvider
         public string NHANXET { get; set; }
         public Nullable<int> MAKH { get; set; }
         public Nullable<int> MASACH { get; set; }
+        public Nullable<double> RATINGSTAR { get; set; }
     
         public virtual KHACHHANG KHACHHANG { get; set; }
         public virtual SACH SACH { get; set; }

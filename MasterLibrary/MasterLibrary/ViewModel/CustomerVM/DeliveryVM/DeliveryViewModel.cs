@@ -538,7 +538,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.DeliveryVM
 
                 if (isRating)
                 {
-                    (bool isReviewed, string lb2) = await ReviewServices.Ins.AddReview(MainCustomerViewModel.CurrentCustomer.MAKH, CurrentBook.MaSach, reviewText);
+                    (bool isReviewed, string lb2) = await ReviewServices.Ins.AddReview(MainCustomerViewModel.CurrentCustomer.MAKH, CurrentBook.MaSach, reviewText, RatingStar);
 
                     if (isReviewed)
                     {

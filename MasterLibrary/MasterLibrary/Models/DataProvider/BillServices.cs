@@ -62,10 +62,11 @@ namespace MasterLibrary.Models.DataProvider
                                             cusName = s.KHACHHANG.TENKH,
                                             cusAdd = s.KHACHHANG.DIACHI,
                                             MAHD = s.MAHD,
-                                            TRIGIA = (decimal)s.TRIGIA,
+                                            TRIGIA = (decimal)c.SACH.GIA,
                                             NGHD = s.NGHD,
                                             TRANGTHAI = s.TRANGTHAI,
                                             TenSach = c.SACH.TENSACH,
+                                            SoLuong = (int)c.SOLUONG,
                                         }).ToListAsync();
 
                     return await BillList;
@@ -112,10 +113,11 @@ namespace MasterLibrary.Models.DataProvider
                                             cusName = s.KHACHHANG.TENKH,
                                             cusAdd = s.KHACHHANG.DIACHI,
                                             MAHD = s.MAHD,
-                                            TRIGIA = (decimal)s.TRIGIA,
+                                            TRIGIA = (decimal)c.SACH.GIA,
                                             NGHD = s.NGHD,
                                             TRANGTHAI = s.TRANGTHAI,
                                             TenSach = c.SACH.TENSACH,
+                                            SoLuong = (int)c.SOLUONG,
                                         }).ToListAsync();
 
                     return await BillList;
@@ -160,10 +162,11 @@ namespace MasterLibrary.Models.DataProvider
                                             cusName = s.KHACHHANG.TENKH,
                                             cusAdd = s.KHACHHANG.DIACHI,
                                             MAHD = s.MAHD,
-                                            TRIGIA = (decimal)s.TRIGIA,
+                                            TRIGIA = (decimal)c.SACH.GIA,
                                             NGHD = s.NGHD,
                                             TRANGTHAI = s.TRANGTHAI,
                                             TenSach = c.SACH.TENSACH,
+                                            SoLuong = (int)c.SOLUONG,
                                         }).ToListAsync();
 
                     return await BillList;
@@ -194,10 +197,11 @@ namespace MasterLibrary.Models.DataProvider
                                 cusName = s.KHACHHANG.TENKH,
                                 cusAdd = s.KHACHHANG.DIACHI,
                                 MAHD = s.MAHD,
-                                TRIGIA = (decimal)s.TRIGIA,
+                                TRIGIA = (decimal)c.SACH.GIA,
                                 NGHD = s.NGHD,
                                 TRANGTHAI = s.TRANGTHAI,
-                                TenSach = c.SACH.TENSACH
+                                TenSach = c.SACH.TENSACH,
+                                SoLuong = (int)c.SOLUONG,
                             }
                         ).ToList();
 
@@ -229,10 +233,11 @@ namespace MasterLibrary.Models.DataProvider
                                 cusName = s.KHACHHANG.TENKH,
                                 cusAdd = s.KHACHHANG.DIACHI,
                                 MAHD = s.MAHD,
-                                TRIGIA = (decimal)s.TRIGIA,
+                                TRIGIA = (decimal)c.SACH.GIA,
                                 NGHD = s.NGHD,
                                 TRANGTHAI = s.TRANGTHAI,
-                                TenSach = c.SACH.TENSACH
+                                TenSach = c.SACH.TENSACH,
+                                SoLuong = (int)c.SOLUONG,
                             }
                         ).ToList();
 
@@ -263,10 +268,11 @@ namespace MasterLibrary.Models.DataProvider
                                 cusName = s.KHACHHANG.TENKH,
                                 cusAdd = s.KHACHHANG.DIACHI,
                                 MAHD = s.MAHD,
-                                TRIGIA = (decimal)s.TRIGIA,
+                                TRIGIA = (decimal)c.SACH.GIA,
                                 NGHD = s.NGHD,
                                 TRANGTHAI = s.TRANGTHAI,
-                                TenSach = c.SACH.TENSACH
+                                TenSach = c.SACH.TENSACH,
+                                SoLuong = (int)c.SOLUONG,
                             }
                         ).ToList();
 
@@ -298,11 +304,12 @@ namespace MasterLibrary.Models.DataProvider
                                 cusName = s.KHACHHANG.TENKH,
                                 cusAdd = s.KHACHHANG.DIACHI,
                                 MAHD = s.MAHD,
-                                TRIGIA = (decimal)s.TRIGIA,
+                                TRIGIA = (decimal)c.SACH.GIA,
                                 NGHD = s.NGHD,
                                 TRANGTHAI = s.TRANGTHAI,
                                 TenSach = c.SACH.TENSACH,
-                                MASACH = c.SACH.MASACH
+                                MASACH = c.SACH.MASACH,
+                                SoLuong = (int)c.SOLUONG,
                             }
                         ).ToList();
 
@@ -333,11 +340,12 @@ namespace MasterLibrary.Models.DataProvider
                                 cusName = s.KHACHHANG.TENKH,
                                 cusAdd = s.KHACHHANG.DIACHI,
                                 MAHD = s.MAHD,
-                                TRIGIA = (decimal)s.TRIGIA,
+                                TRIGIA = (decimal)c.SACH.GIA,
                                 NGHD = s.NGHD,
                                 TRANGTHAI = s.TRANGTHAI,
                                 TenSach = c.SACH.TENSACH,
-                                MASACH = c.SACH.MASACH
+                                MASACH = c.SACH.MASACH,
+                                SoLuong = (int)c.SOLUONG,
                             }
                         ).ToList();
 
@@ -423,8 +431,21 @@ namespace MasterLibrary.Models.DataProvider
                     if (billCancel != null)
                     {
                         billCancel.TRANGTHAI = currentBill.TRANGTHAI;
-                        context.SaveChanges();
+
+                        var billList = await BillDetailServices.Ins.GetAllProduct(currentBill.MAHD);
+                        for (int i = 0; i < billList.Count; i++)
+                        {
+                            var _sach = await context.SACHes.FindAsync(billList[i].MaSach);
+                            if (_sach != null)
+                            {
+                                _sach.SL += billList[i].SoLuong;
+                            }
+                        }
                     }
+
+                    
+                    context.SaveChanges();
+
 
                     return (true, "Huỷ đơn hàng thành công");
                 }

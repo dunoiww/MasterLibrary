@@ -129,6 +129,7 @@
     <EntitySetMapping Name="REVIEWs">
       <EntityTypeMapping TypeName="MasterlibraryModel.REVIEW">
         <MappingFragment StoreEntitySet="REVIEW">
+          <ScalarProperty Name="RATINGSTAR" ColumnName="RATINGSTAR" />
           <ScalarProperty Name="MASACH" ColumnName="MASACH" />
           <ScalarProperty Name="MAKH" ColumnName="MAKH" />
           <ScalarProperty Name="NHANXET" ColumnName="NHANXET" />

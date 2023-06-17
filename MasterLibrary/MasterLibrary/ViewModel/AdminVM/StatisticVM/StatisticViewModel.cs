@@ -135,9 +135,16 @@ namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
 
             try
             {
+                //tiền bán sách
                 (List<decimal> MonthlyRevenue, decimal totalin) = await Task.Run(() => StatisticServices.Ins.GetRevenueByYear(int.Parse(SelectedTime)));
+
+                //tiền chi ra(mua sách)
                 (List<decimal> MonthlyExpense, decimal totalout) = await Task.Run(() => StatisticServices.Ins.GetExpenseByYear(int.Parse(SelectedTime)));
+
+                //tiền sửa chữa
                 (List<decimal> MonthlyTrouble, decimal troublemoney) = await Task.Run(() => StatisticServices.Ins.GetExpenseTroubleByYear(int.Parse(SelectedTime)));
+
+                //tính tiền thu sách
                 decimal collectMoney = await Task.Run(() => StatisticServices.Ins.GetRevenueCollectByYear(int.Parse(SelectedTime)));
                 List<BookInCollectDTO> feeBook = await Task.Run(() => BookInBorrowServices.Ins.GetCollectFeeBook());
                 decimal inputMoney = await Task.Run(() => InputBookServices.Ins.GetInputMoneyList(feeBook));
@@ -225,13 +232,12 @@ namespace MasterLibrary.ViewModel.AdminVM.StatisticVM
                     {
                         Title = "Thu",
                         Values = new ChartValues<decimal> (DailyRevenue),
-                        Fill = Brushes.Transparent
+                        PointGeometry = DefaultGeometries.Square,
                     },
                     new LineSeries
                     {
                         Title = "Chi",
                         Values = new ChartValues<decimal> (DailyExpense),
-                        Fill = Brushes.Transparent
                     }
                 };
             }

@@ -48,7 +48,7 @@ namespace MasterLibrary.Models.DataProvider
             }
         }
 
-        public async Task<(bool, string)> AddReview(int _makh, int _bookId, string _reviewText)
+        public async Task<(bool, string)> AddReview(int _makh, int _bookId, string _reviewText, double _ratingStar)
         {
             try
             {
@@ -65,7 +65,8 @@ namespace MasterLibrary.Models.DataProvider
                         {
                             MAKH = _makh,
                             MASACH = _bookId,
-                            NHANXET = _reviewText
+                            NHANXET = _reviewText,
+                            RATINGSTAR = _ratingStar
                         };
 
                         context.REVIEWs.Add(newReview);
@@ -96,8 +97,10 @@ namespace MasterLibrary.Models.DataProvider
                                          where rv.SACH.MASACH == _masach
                                          select new ReviewDTO
                                          {
+                                             MAKH = (int)rv.MAKH,
                                              TenKH = rv.KHACHHANG.TENKH,
                                              NHANXET = rv.NHANXET,
+                                             ratingStar = (double)rv.RATINGSTAR,
                                          }).ToListAsync();
 
                     return await allReviewList;

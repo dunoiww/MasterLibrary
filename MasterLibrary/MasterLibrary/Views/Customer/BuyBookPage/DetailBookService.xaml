@@ -407,6 +407,20 @@
                                    FontSize="10"
                                    Margin="4 8 0 0"
                                    FontStyle="Italic"/>
+
+                        <Button Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="0"
+                                Margin="14 0 0 0"
+                                Command="{Binding OpenDetailReview}"
+                                CommandParameter="{Binding ElementName=DetailBookServiceML}"
+                                >
+                            <TextBlock Text="Xem tất cả"
+                                       FontSize="10"
+                                       Cursor="Hand"
+                                       TextDecorations="Underline"
+                                       Foreground="Black"/>
+                        </Button>
                     </StackPanel>
                     <Grid>
                         <ListView x:Name="lvReview"

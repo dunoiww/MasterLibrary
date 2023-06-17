@@ -2,7 +2,11 @@
 
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\BookManagePage1.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\DetailBookWindow.xaml;;
-FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\CustomerManagePage\CustomerCardWindow.xaml;;
-FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\CustomerManagePage\CustomerManagePage.xaml;;
-FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\HistoryPage\BorrowDetail.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\updatingwindow.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\HistoryPage\RevenuePage.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\StatisticalPage\RankingStatistical.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\DetailBookService.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\DetailReviewWindow.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeFinish.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeNotFinish.xaml;;
 
