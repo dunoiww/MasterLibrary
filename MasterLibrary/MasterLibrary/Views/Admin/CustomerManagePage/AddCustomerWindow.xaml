@@ -26,6 +26,9 @@
             <i:InvokeCommandAction Command="{Binding FirstLoadAddCustomerCM}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
+    <Window.Clip>
+        <RectangleGeometry Rect="0, 0, 400, 315" RadiusX="10" RadiusY="10"></RectangleGeometry>
+    </Window.Clip>
     
     <Grid>
 

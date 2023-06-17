@@ -71,19 +71,26 @@
 
 
             <DataGrid Grid.Row="1" 
-                  x:Name="dtg_manage" 
-                  ItemsSource="{Binding Listbookmanage}" 
-                  AutoGenerateColumns="False"
-                  Margin="10"
-                  CanUserAddRows="False"
-                  IsReadOnly="True"
-                  Background="Transparent" BorderThickness="1,1,1,1">
+                      x:Name="dtg_manage" 
+                      ItemsSource="{Binding Listbookmanage}" 
+                      SelectedItem="{Binding SelectedBook}"
+                      AutoGenerateColumns="False"
+                      Margin="10"
+                      CanUserAddRows="False"
+                      IsReadOnly="True"
+                      ToolTip="Nhấp đúp để xem chi tiết sách."
+                      Background="Transparent" BorderThickness="1,1,1,1">
+                <DataGrid.Resources>
+                    <Style TargetType="DataGridRow">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridRow_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding MaSach}"/>
+                    <DataGridTextColumn Header="Mã" FontSize="14" Binding="{Binding MaSach}" x:Name="col_1"/>
                     <DataGridTextColumn Header="Sách" FontSize="14" Binding="{Binding TenSach}" Width="180"/>
                     <DataGridTextColumn Header="Tác giả" FontSize="14" Binding="{Binding TacGia}"  Width="150"/>
                     <DataGridTextColumn Header="Nhà xuất bản" FontSize="14" Binding="{Binding NXB}"  Width="200"/>
-                    <DataGridTextColumn Header="Giá" FontSize="14" Binding="{Binding Gia}"/>
+                    <DataGridTextColumn Header="Giá" FontSize="14" Binding="{Binding GiaStr}"/>
                     <DataGridTextColumn Header="Thể loại" FontSize="14" Binding="{Binding TheLoai}"/>
                     <DataGridTextColumn Header="Năm xuất bản" FontSize="14" Binding="{Binding NamXB}"/>
                     <DataGridTextColumn Header="SL" FontSize="14" Binding="{Binding SoLuong}"/>

@@ -99,7 +99,13 @@
                 <ListView ItemsSource="{Binding ListCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           x:Name="lvCustomer"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ToolTip="Nhấp đúp để xem phiếu độc giả.">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding LoadInforCusML}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Mã khách hàng"

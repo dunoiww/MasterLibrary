@@ -911,3 +911,7 @@ D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\R
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\RevenueDetail.baml
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\BorrowDetail.g.cs
 D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\HistoryPage\BorrowDetail.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\CustomerManagePage\CustomerCardWindow.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\CustomerManagePage\CustomerCardWindow.baml
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\BookManagePage\DetailBookWindow.g.cs
+D:\MasterLibrary\MasterLibrary\MasterLibrary\obj\Debug\Views\Admin\BookManagePage\DetailBookWindow.baml

@@ -26,6 +26,13 @@ namespace MasterLibrary.ViewModel.AdminVM
             set { _listbookmanage = value; OnPropertyChanged(); }
         }
 
+        private BookDTO _SelectedBook;
+        public BookDTO SelectedBook
+        {
+            get => _SelectedBook;
+            set { _SelectedBook = value; OnPropertyChanged(); }
+        }
+
         private string _masach;
         public string MaSach
         {
@@ -172,6 +179,7 @@ namespace MasterLibrary.ViewModel.AdminVM
 
         #region Icommand
         public ICommand LoadManageBookData { get; set; }
+        public ICommand LoadInforBookML { get; set; }
         public ICommand SavingData { get; set; }
         public ICommand Updating { get; set; }
         public ICommand DeletingBook { get; set; }
@@ -181,12 +189,14 @@ namespace MasterLibrary.ViewModel.AdminVM
         public ICommand FloorChangeML { get; set; }
         public ICommand TypeChangeML { get; set; }
         public ICommand ShelvesChangeML { get; set; }
+        public ICommand closeML { get; set; }
         public ICommand MaskNameML { get; set; }
         #endregion
         public BookManageViewModel()
         {
 
             MaskNameML = new RelayCommand<Grid>((p) => { return true; }, (p) => { MaskName = p; });
+            closeML = new RelayCommand<Window>((p) => { return true; }, (p) => { p.Close(); });
             //Nút update của chức năng chỉnh sửa
             Updating = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

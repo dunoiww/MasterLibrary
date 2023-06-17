@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,7 +56,9 @@ namespace MasterLibrary.Models.DataProvider
                                        SOLUONGDANHGIA = (int)sach.SOLUONGDANHGIA,
                                        AVGRATING = (double)sach.AVGRATING,
                                    }
-                     ).ToListAsync();
+                     )
+                     .OrderByDescending(sach => sach.AVGRATING)
+                     .ToListAsync();
                 }
             }
             catch (Exception)

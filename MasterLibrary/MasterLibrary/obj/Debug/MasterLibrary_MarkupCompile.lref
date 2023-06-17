@@ -9,6 +9,7 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BorrowBookPage\BorrowB
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BorrowBookPage\BorrowBookVorcherPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BorrowBookPage\CollectionBookVorcherPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\CustomerManagePage\AddCustomerWindow.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\CustomerManagePage\CustomerCardWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\CustomerManagePage\CustomerManagePage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\CustomerManagePage\EditCustomerWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\HistoryPage\BorrowDetail.xaml;;
@@ -60,4 +61,5 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\LoginWindow\LoginWindow.xaml
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\LoginWindow\RegisterWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\LoginWindow\VerificationPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\MessageBoxML\MessageBoxML.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\DetailBookWindow.xaml;;
 

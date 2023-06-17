@@ -406,6 +406,9 @@
     <Compile Include="Views\Admin\BookManagePage\BookManagePage1.xaml.cs">
       <DependentUpon>BookManagePage1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Admin\BookManagePage\DetailBookWindow.xaml.cs">
+      <DependentUpon>DetailBookWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Admin\BookManagePage\updatingwindow.xaml.cs">
       <DependentUpon>updatingwindow.xaml</DependentUpon>
     </Compile>
@@ -420,6 +423,9 @@
     </Compile>
     <Compile Include="Views\Admin\CustomerManagePage\AddCustomerWindow.xaml.cs">
       <DependentUpon>AddCustomerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\CustomerManagePage\CustomerCardWindow.xaml.cs">
+      <DependentUpon>CustomerCardWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Admin\CustomerManagePage\CustomerManagePage.xaml.cs">
       <DependentUpon>CustomerManagePage.xaml</DependentUpon>
@@ -598,6 +604,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Admin\BookManagePage\DetailBookWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Admin\BookManagePage\updatingwindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -615,6 +625,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Admin\CustomerManagePage\AddCustomerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\CustomerManagePage\CustomerCardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

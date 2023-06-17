@@ -1,6 +1,7 @@
 ﻿using MasterLibrary.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,5 +48,20 @@ namespace MasterLibrary.Views.Admin.BookManagePage
             CreateTextBoxFilter();
         }
         #endregion
+
+        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedbook = dtg_manage.SelectedItem as BookDTO;
+            DetailBookWindow dbw = new DetailBookWindow();
+            dbw.bookName.Content = selectedbook.TenSach;
+            dbw.bookGenre.Content = selectedbook.TheLoai;
+            dbw.bookAuthor.Content = selectedbook.TacGia;
+            dbw.bookPublishing.Content = selectedbook.NamXB;
+            dbw.bookNXB.Content = selectedbook.NXB;
+            dbw.bookPrice.Content = selectedbook.GiaStr;
+            ShadowMask.Visibility = Visibility.Visible;
+            dbw.ShowDialog();
+            ShadowMask.Visibility = Visibility.Collapsed;
+        }
     }
 }

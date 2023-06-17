@@ -91,6 +91,7 @@ namespace MasterLibrary.Models.DataProvider
             cus.USERNAME = username;
             cus.USERPASSWORD = Utils.Helper.HashPassword(pass);
             cus.TENKH = fullname;
+            cus.NGAYDK = DateTime.Now;
             cus.IDROLE = 2;
             cus.EMAIL = email;
             cus.ISEXIST = 1;
@@ -134,6 +135,7 @@ namespace MasterLibrary.Models.DataProvider
                 cus.EMAIL = email;
                 cus.ISEXIST = 1;
                 cus.DIACHI = address;
+                cus.NGAYDK = DateTime.Now;
 
                 using (var context = new MasterlibraryEntities())
                 {
@@ -364,6 +366,7 @@ namespace MasterLibrary.Models.DataProvider
                                            USERPASSWORD= customer.USERPASSWORD,
                                            EMAIL= customer.EMAIL,
                                            DIACHI= customer.DIACHI,
+                                           NGDK = customer.NGAYDK,
                                            DeCodeUSERPASSWORD = Utils.Helper.DePassword(customer.USERPASSWORD),
                                        }).ToList();
                 }

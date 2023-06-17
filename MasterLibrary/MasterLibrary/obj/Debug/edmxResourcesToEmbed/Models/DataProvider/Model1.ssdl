@@ -66,6 +66,7 @@
     <Property Name="DIACHI" Type="nvarchar(max)" />
     <Property Name="ISEXIST" Type="int" />
     <Property Name="CHITIEU" Type="money" />
+    <Property Name="NGAYDK" Type="smalldatetime" Nullable="false" />
   </EntityType>
   <EntityType Name="LOAISUCO">
     <Key>

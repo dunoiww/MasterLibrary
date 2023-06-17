@@ -71,6 +71,7 @@
           <Property Name="DIACHI" Type="nvarchar(max)" />
           <Property Name="ISEXIST" Type="int" />
           <Property Name="CHITIEU" Type="money" />
+          <Property Name="NGAYDK" Type="smalldatetime" Nullable="false" />
         </EntityType>
         <EntityType Name="LOAISUCO">
           <Key>
@@ -717,6 +718,7 @@
           <Property Name="DIACHI" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ISEXIST" Type="Int32" />
           <Property Name="CHITIEU" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NGAYDK" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="GIOHANGs" Relationship="MasterlibraryModel.FK__GIOHANG__MAKH__778AC167" FromRole="KHACHHANG" ToRole="GIOHANG" />
           <NavigationProperty Name="HOADONs" Relationship="MasterlibraryModel.FK__HOADON__MAKH__6A30C649" FromRole="KHACHHANG" ToRole="HOADON" />
           <NavigationProperty Name="USERROLE" Relationship="MasterlibraryModel.FK__KHACHHANG__IDROL__5EBF139D" FromRole="KHACHHANG" ToRole="USERROLE" />
@@ -1177,6 +1179,7 @@
           <EntitySetMapping Name="KHACHHANGs">
             <EntityTypeMapping TypeName="MasterlibraryModel.KHACHHANG">
               <MappingFragment StoreEntitySet="KHACHHANG">
+                <ScalarProperty Name="NGAYDK" ColumnName="NGAYDK" />
                 <ScalarProperty Name="CHITIEU" ColumnName="CHITIEU" />
                 <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />

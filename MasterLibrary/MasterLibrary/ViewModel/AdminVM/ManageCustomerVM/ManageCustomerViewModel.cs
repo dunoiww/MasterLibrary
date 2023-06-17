@@ -49,15 +49,19 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
 
         #region ICommand
         public ICommand MaskNameManageCustomer { get; set; }
+        public ICommand MaskNameCardCustomer { get; set; }
         public ICommand FirstLoadManageCustomerCM { get; set; }
+        public ICommand LoadInforCusML { get; set; }
         public ICommand OpenAddCustomerCM { get; set; }
         public ICommand OpenEditCustomerCM { get; set; }
         public ICommand DeleteCustomerCM { get; set; }
+        public ICommand closeML { get; set; }
 
         #endregion
 
         #region Thuộc tính tạm thời
         public Grid MaskMain { get; set; }
+        public Grid MaskCard { get; set; }
 
         #endregion
 
@@ -89,8 +93,38 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
                 DeleteCustomerAsync();
             });
 
+            closeML = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                p.Close();
+            });
 
+            #endregion
 
+            #region cus card
+            MaskNameCardCustomer = new RelayCommand<Grid>((p) => { return true; }, (p) =>
+            {
+                MaskCard = p;
+            });
+
+            LoadInforCusML = new RelayCommand<object>((p) => { return true; }, async (p) =>
+            {
+                CustomerCardWindow ccw = new CustomerCardWindow();
+                ccw.cusName.Content = SelectedCustomer.TENKH;
+                ccw.cusAdd.Text = SelectedCustomer.DIACHI;
+                ccw.cusEmail.Content = SelectedCustomer.EMAIL;
+
+                for (int i = 0; i < ListCustomer.Count; i++)
+                {
+                    if (ListCustomer[i].MAKH == SelectedCustomer.MAKH)
+                    {
+                        ccw.createDay.Content = ListCustomer[i].NGDK;
+                        break;
+                    }
+                }
+                MaskMain.Visibility = Visibility.Visible;
+                ccw.ShowDialog();
+                MaskMain.Visibility = Visibility.Collapsed;
+            });
             #endregion
 
             #region AddCustomer
