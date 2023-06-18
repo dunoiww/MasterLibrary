@@ -176,6 +176,7 @@
     <Property Name="ISEXIST" Type="Int32" />
     <Property Name="CHITIEU" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="NGAYDK" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="SDT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="GIOHANGs" Relationship="MasterlibraryModel.FK__GIOHANG__MAKH__778AC167" FromRole="KHACHHANG" ToRole="GIOHANG" />
     <NavigationProperty Name="HOADONs" Relationship="MasterlibraryModel.FK__HOADON__MAKH__6A30C649" FromRole="KHACHHANG" ToRole="HOADON" />
     <NavigationProperty Name="USERROLE" Relationship="MasterlibraryModel.FK__KHACHHANG__IDROL__5EBF139D" FromRole="KHACHHANG" ToRole="USERROLE" />

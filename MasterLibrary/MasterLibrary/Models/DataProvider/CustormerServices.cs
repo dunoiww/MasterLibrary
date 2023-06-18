@@ -41,6 +41,7 @@ namespace MasterLibrary.Models.DataProvider
                                       {
                                           MAKH = s.MAKH,
                                           TENKH= s.TENKH,
+                                          SDT = s.SDT,
                                           EMAIL= s.EMAIL,
                                           USERNAME= s.USERNAME,
                                           USERPASSWORD= s.USERPASSWORD,
@@ -68,12 +69,13 @@ namespace MasterLibrary.Models.DataProvider
             }
         }
 
-        public async void Register(string fullname, string email, string username, string pass)
+        public async void Register(string fullname, string email, string phonenumber, string username, string pass)
         {
             if (string.IsNullOrEmpty(fullname) ||
                 string.IsNullOrEmpty(email) ||
                 string.IsNullOrEmpty(username) ||
-                string.IsNullOrEmpty(pass))
+                string.IsNullOrEmpty(pass) ||
+                string.IsNullOrEmpty(phonenumber))
             {
                 MessageBoxML ms = new MessageBoxML("Thông báo", "Thông tin bị trống vui lòng nhập thêm.", MessageType.Error, MessageButtons.OK);
                 ms.ShowDialog();
@@ -93,6 +95,7 @@ namespace MasterLibrary.Models.DataProvider
             cus.TENKH = fullname;
             cus.NGAYDK = DateTime.Now;
             cus.IDROLE = 2;
+            cus.SDT = phonenumber;
             cus.EMAIL = email;
             cus.ISEXIST = 1;
 
@@ -105,12 +108,25 @@ namespace MasterLibrary.Models.DataProvider
             }    
         }
 
-        public async Task<(bool, string)> CreateNewCustomer(string fullname, string username, string pass, string email, string address)
+        public async Task<(bool, string)> CreateNewCustomer(string fullname, string username, string pass, string phonenumber, string email, string address)
         {
             try
             {
                 string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
                 Regex reg = new Regex(match);
+
+                string matchPhone = @"^(0|\\+84|84)[3|5|7|8|9][0-9]{8}$";
+                Regex regphone = new Regex(matchPhone);
+
+                if (regphone.IsMatch(phonenumber) == false)
+                {
+                    return (false, "Số điện thoại không hợp lệ");
+                }
+
+                if (await Task.Run(() => Ins.CheckPhoneNumberCustormer(phonenumber, -1)))
+                {
+                    return (false, "Số điện thoại đã tồn tại");
+                }
 
                 if (reg.IsMatch(email) == false)
                 {
@@ -132,6 +148,7 @@ namespace MasterLibrary.Models.DataProvider
                 cus.USERPASSWORD = Utils.Helper.HashPassword(pass);
                 cus.TENKH = fullname;
                 cus.IDROLE = 2;
+                cus.SDT = phonenumber;
                 cus.EMAIL = email;
                 cus.ISEXIST = 1;
                 cus.DIACHI = address;
@@ -147,11 +164,11 @@ namespace MasterLibrary.Models.DataProvider
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
-                return (false, "Xãy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
+                return (false, "Xảy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
             }
             catch (Exception)
             {
-                return (false, "Xãy ra lỗi khi thực hiện thao tác");
+                return (false, "Xảy ra lỗi khi thực hiện thao tác");
             }
         }
 
@@ -168,6 +185,7 @@ namespace MasterLibrary.Models.DataProvider
                                      {
                                          MAKH = s.MAKH,
                                          TENKH = s.TENKH,
+                                         SDT = s.SDT,
                                          EMAIL = s.EMAIL,
                                          USERNAME = s.USERNAME,
                                          USERPASSWORD = s.USERPASSWORD,
@@ -215,7 +233,7 @@ namespace MasterLibrary.Models.DataProvider
             }
         }
 
-        public async Task<bool> CheckUserNameCustormer(string _username, int _makh)
+        public async Task<bool> CheckPhoneNumberCustormer(string phonenumber, int _makh)
         {
             try
             {
@@ -223,7 +241,7 @@ namespace MasterLibrary.Models.DataProvider
                 {
                     // Tìm khách hàng có mã khách hàng (MaKH)
                     var cus = await (from s in context.KHACHHANGs
-                                     where s.USERNAME == _username && s.MAKH != _makh && s.ISEXIST == 1
+                                     where s.SDT == phonenumber && s.MAKH != _makh && s.ISEXIST == 1
                                      select new CustomerDTO
                                      {
                                          MAKH = s.MAKH,
@@ -245,7 +263,38 @@ namespace MasterLibrary.Models.DataProvider
             }
         }
 
-        public async Task<bool> updateCustomer(int _makh, string _tenkh, string _email, string _diachi)
+        public async Task<bool> CheckUserNameCustormer(string _username, int _makh)
+        {
+            try
+            {
+                using (var context = new MasterlibraryEntities())
+                {
+                    // Tìm khách hàng có mã khách hàng (MaKH)
+                    var cus = await (from s in context.KHACHHANGs
+                                     where s.USERNAME == _username && s.MAKH != _makh && s.ISEXIST == 1
+                                     select new CustomerDTO
+                                     {
+                                         MAKH = s.MAKH,
+                                         TENKH = s.TENKH,
+                                         SDT = s.SDT,
+                                         EMAIL = s.EMAIL,
+                                         USERNAME = s.USERNAME,
+                                         USERPASSWORD = s.USERPASSWORD,
+                                         DIACHI = s.DIACHI,
+                                     }).FirstOrDefaultAsync();
+                    if (cus == null) return false;
+                    return true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxML ms = new MessageBoxML("Lỗi", "Xảy ra lỗi khi thực hiện thao tác", MessageType.Error, MessageButtons.OK);
+                ms.ShowDialog();
+                return true;
+            }
+        }
+
+        public async Task<bool> updateCustomer(int _makh, string _tenkh, string _sdt, string _email, string _diachi)
         {
             try
             {
@@ -257,6 +306,7 @@ namespace MasterLibrary.Models.DataProvider
                     if (cus == null) return false;
 
                     cus.TENKH = _tenkh;
+                    cus.SDT = _sdt;
                     cus.EMAIL = _email;
                     cus.DIACHI= _diachi;
 
@@ -270,10 +320,23 @@ namespace MasterLibrary.Models.DataProvider
             }
         }
 
-        public async Task<(bool, string)> SaveCustomer(int _makh, string _tenkh, string username, string pass, string _email, string _diachi)
+        public async Task<(bool, string)> SaveCustomer(int _makh, string _tenkh, string username, string pass, string _phonenumber, string _email, string _diachi)
         {
             try
             {
+                string matchPhone = @"^(0|\\+84|84)[3|5|7|8|9][0-9]{8}$";
+                Regex regphone = new Regex(matchPhone);
+
+                if (regphone.IsMatch(_phonenumber) == false)
+                {
+                    return (false, "Số điện thoại không hợp lệ");
+                }
+
+                if (await Task.Run(() => Ins.CheckPhoneNumberCustormer(_phonenumber, _makh)))
+                {
+                    return (false, "Số điện thoại đã tồn tại");
+                }
+
                 string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
                 Regex reg = new Regex(match);
 
@@ -302,6 +365,7 @@ namespace MasterLibrary.Models.DataProvider
                     cus.TENKH = _tenkh;
                     cus.USERNAME= username;
                     cus.USERPASSWORD = Utils.Helper.HashPassword(pass);
+                    cus.SDT = _phonenumber;
                     cus.EMAIL = _email;
                     cus.DIACHI = _diachi;
 
@@ -312,11 +376,11 @@ namespace MasterLibrary.Models.DataProvider
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
-                return (false, "Xãy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
+                return (false, "Xảy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
             }
             catch (Exception)
             {
-                return (false, "Xãy ra lỗi khi thực hiện thao tác");
+                return (false, "Xảy ra lỗi khi thực hiện thao tác");
             }
         }
 
@@ -339,11 +403,11 @@ namespace MasterLibrary.Models.DataProvider
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
-                return (false, "Xãy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
+                return (false, "Xảy ra lỗi khi thao tác dữ liệu trên cơ sở dữ liệu");
             }
             catch (Exception)
             {
-                return (false, "Xãy ra lỗi khi thực hiện thao tác");
+                return (false, "Xảy ra lỗi khi thực hiện thao tác");
             }
         }
 
@@ -364,6 +428,7 @@ namespace MasterLibrary.Models.DataProvider
                                            TENKH = customer.TENKH,
                                            USERNAME= customer.USERNAME,
                                            USERPASSWORD= customer.USERPASSWORD,
+                                           SDT = customer.SDT,
                                            EMAIL= customer.EMAIL,
                                            DIACHI= customer.DIACHI,
                                            NGDK = customer.NGAYDK,
@@ -402,11 +467,11 @@ namespace MasterLibrary.Models.DataProvider
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException)
             {
-                return (false, "Xãy ra lỗi khi lưu dữ liệu vào cơ sở dữ liệu");
+                return (false, "Xảy ra lỗi khi lưu dữ liệu vào cơ sở dữ liệu");
             }
             catch (Exception)
             {
-                return (false, "Xãy ra lỗi khi thực hiện thao tác");
+                return (false, "Xảy ra lỗi khi thực hiện thao tác");
             }
         }
     }

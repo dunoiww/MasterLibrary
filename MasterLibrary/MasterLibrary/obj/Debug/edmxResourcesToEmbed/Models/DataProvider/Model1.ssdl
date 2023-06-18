@@ -67,6 +67,7 @@
     <Property Name="ISEXIST" Type="int" />
     <Property Name="CHITIEU" Type="money" />
     <Property Name="NGAYDK" Type="smalldatetime" Nullable="false" />
+    <Property Name="SDT" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="LOAISUCO">
     <Key>

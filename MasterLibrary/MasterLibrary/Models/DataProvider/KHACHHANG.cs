@@ -36,6 +36,7 @@ namespace MasterLibrary.Models.DataProvider
         public Nullable<int> ISEXIST { get; set; }
         public Nullable<decimal> CHITIEU { get; set; }
         public System.DateTime NGAYDK { get; set; }
+        public string SDT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GIOHANG> GIOHANGs { get; set; }

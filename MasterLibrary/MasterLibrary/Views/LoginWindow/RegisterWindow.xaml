@@ -9,7 +9,7 @@
         xmlns:i = "http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="RegisterWindow" Height="500" Width="350"
+        Title="RegisterWindow" Height="580" Width="350"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         DataContext="{StaticResource RegisterML}"
@@ -18,7 +18,11 @@
     <Window.Resources>
         <cv:BoolValueConverter x:Key="ConverterBoolValue"/>
     </Window.Resources>
-    
+
+    <Window.Clip>
+        <RectangleGeometry Rect="0, 0, 350, 580" RadiusX="10" RadiusY="10"></RectangleGeometry>
+    </Window.Clip>
+
     <Grid>
         <StackPanel Orientation="Vertical">
             <Label FontFamily="junegull"
@@ -41,13 +45,14 @@
                                      Width="20"
                                      VerticalAlignment="Center" />
                 <TextBox materialDesign:HintAssist.Hint="Họ và tên"
-                     Foreground="Black"
-                     FontSize="15"
-                     Width="200"
-                     Margin="5,0,0,0"
-                     BorderBrush="LightGray"
-                     Text="{Binding Fullnamereg}"
-                     Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                         Foreground="Black"
+                         x:Name="hoten_tb"
+                         FontSize="15"
+                         Width="200"
+                         Margin="5,0,0,0"
+                         BorderBrush="LightGray"
+                         Text="{Binding Fullnamereg}"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="PreviewTextInput" >
                             <ei:CallMethodAction TargetObject="{Binding }" 
@@ -63,7 +68,40 @@
                            HorizontalAlignment="Right"
                            FontSize="12"
                            Visibility="{Binding IsNullNameReg, Converter={StaticResource ConverterBoolValue}}"/>
-            
+
+            <StackPanel Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                <materialDesign:PackIcon Kind= "PhoneHangup"
+                                     Height="20"
+                                     Width="20"
+                                     VerticalAlignment="Center" />
+                <TextBox materialDesign:HintAssist.Hint="Số điện thoại"
+                     Foreground="Black"
+                     x:Name="sdt_tb"
+                     FontSize="15"
+                     Width="200"
+                     Margin="5,0,0,0"
+                     BorderBrush="LightGray"
+                     PreviewTextInput="tb_PreviewTextInput"
+                     Text="{Binding Phonereg}"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="PreviewTextInput" >
+                            <ei:CallMethodAction TargetObject="{Binding }" 
+                                         MethodName="ValueValidationTextBox"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+            </StackPanel>
+            <TextBlock Text="Vui lòng nhập số điện thoại"
+                           Foreground="#FFF44336"
+                           FontWeight="DemiBold"
+                           Margin="0,2,65,0"
+                           HorizontalAlignment="Right"
+                           FontSize="12"
+                           Visibility="{Binding IsNullPhoneReg, Converter={StaticResource ConverterBoolValue}}"/>
+
             <StackPanel Margin="0,10,0,0"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
@@ -73,6 +111,7 @@
                                      VerticalAlignment="Center" />
                 <TextBox materialDesign:HintAssist.Hint="Email của bạn"
                      Foreground="Black"
+                     x:Name="email_tb"
                      FontSize="15"
                      Width="200"
                      Margin="5,0,0,0"
@@ -98,6 +137,7 @@
                                      VerticalAlignment="Center" />
                 <TextBox materialDesign:HintAssist.Hint="Tên đăng nhập"
                      Foreground="Black"
+                     x:Name="tdn_tb"
                      FontSize="15"
                      Width="200"
                      Margin="5,0,0,0"

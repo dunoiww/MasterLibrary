@@ -40,6 +40,13 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
             set { _DePasswordCustomer = value; OnPropertyChanged(); }
         }
 
+        private string _PhoneCustomer;
+        public string PhoneCustomer
+        {
+            get { return _PhoneCustomer; }
+            set { _PhoneCustomer = value; OnPropertyChanged(); }
+        }
+
         private string _EmailCustomer;
         public string EmailCustomer
         {
@@ -106,7 +113,7 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
             IsSavingAdd = true; 
             MaskAdd.Visibility = Visibility.Visible;
 
-            (bool isCreate, string lb) = await CustormerServices.Ins.CreateNewCustomer(NameCustomer, UserNameCustomer, DePasswordCustomer, EmailCustomer, AddressCustomer);
+            (bool isCreate, string lb) = await CustormerServices.Ins.CreateNewCustomer(NameCustomer, UserNameCustomer, DePasswordCustomer, PhoneCustomer, EmailCustomer, AddressCustomer);
 
             if (isCreate == true)
             {
@@ -131,6 +138,7 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
             NameCustomer = SelectedCustomer.TENKH;
             UserNameCustomer = SelectedCustomer.USERNAME;
             DePasswordCustomer = SelectedCustomer.DeCodeUSERPASSWORD;
+            PhoneCustomer = SelectedCustomer.SDT;
             EmailCustomer = SelectedCustomer.EMAIL;
             AddressCustomer = SelectedCustomer.DIACHI;
         }
@@ -141,6 +149,7 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
             NameCustomer = "";
             UserNameCustomer = "";
             DePasswordCustomer = "";
+            PhoneCustomer = "";
             EmailCustomer = "";
             AddressCustomer = "";
         }
@@ -172,7 +181,7 @@ namespace MasterLibrary.ViewModel.AdminVM.ManageCustomerVM
             IsSavingEdit = true;
             MaskEdit.Visibility = Visibility.Visible;
 
-            (bool isSave, string lb) = await CustormerServices.Ins.SaveCustomer(IdCustomer, NameCustomer, UserNameCustomer, DePasswordCustomer, EmailCustomer, AddressCustomer);
+            (bool isSave, string lb) = await CustormerServices.Ins.SaveCustomer(IdCustomer, NameCustomer, UserNameCustomer, DePasswordCustomer, PhoneCustomer, EmailCustomer, AddressCustomer);
 
             if (isSave == true)
             {

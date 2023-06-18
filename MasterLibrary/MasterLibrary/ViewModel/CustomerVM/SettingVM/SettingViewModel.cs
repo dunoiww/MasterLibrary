@@ -36,7 +36,12 @@ namespace MasterLibrary.ViewModel.CustomerVM.SettingVM
             set { _TenKH = value; OnPropertyChanged(); }
         }
 
-      
+        private string _SDT;
+        public string SDT
+        {
+            get { return _SDT; }
+            set { _SDT = value; OnPropertyChanged(); }
+        }
 
         private string _Email;
         public string Email
@@ -118,6 +123,7 @@ namespace MasterLibrary.ViewModel.CustomerVM.SettingVM
                 Cus = await Task.Run(() => CustormerServices.Ins.FindCustomer(MaKHcur));
                 MaKH = Cus.MAKH;
                 TenKH = Cus.TENKH;
+                SDT = Cus.SDT;
                 Email = Cus.EMAIL;
                 DiaChi = Cus.DIACHI;
                 MatKhauKH = Cus.USERPASSWORD;
@@ -128,7 +134,8 @@ namespace MasterLibrary.ViewModel.CustomerVM.SettingVM
             UpdateInfo = new RelayCommand<object>((p) =>
             {
                 if (string.IsNullOrEmpty(TenKH) ||
-                    string.IsNullOrEmpty(Email))
+                    string.IsNullOrEmpty(Email) ||
+                    string.IsNullOrEmpty(SDT))
                 {
                     return false;
                 }
@@ -136,6 +143,16 @@ namespace MasterLibrary.ViewModel.CustomerVM.SettingVM
                 return true;
             }, async (p) =>
             {
+                string matchPhone = @"^(0|\\+84|84)[3|5|7|8|9][0-9]{8}$";
+                Regex regphone = new Regex(matchPhone);
+
+                if (regphone.IsMatch(SDT) == false)
+                {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Số điện thoại không hợp lệ", MessageType.Error, MessageButtons.OK);
+                    ms.ShowDialog();
+                    return;
+                }
+
                 string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
                 Regex reg = new Regex(match);
 
@@ -149,13 +166,19 @@ namespace MasterLibrary.ViewModel.CustomerVM.SettingVM
                 IsSaving = true;
                 MaskName.Visibility = Visibility.Visible;
 
+                if (await Task.Run(() => CustormerServices.Ins.CheckPhoneNumberCustormer(SDT, MaKH)))
+                {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Số điện thoại đã tồn tại", MessageType.Error, MessageButtons.OK);
+                    ms.ShowDialog();
+                }
+
                 if (await Task.Run(() => CustormerServices.Ins.CheckEmailCustormer(Email, MaKH)))
                 {
                     MessageBoxML ms = new MessageBoxML("Thông báo", "Email đã tồn tại", MessageType.Error, MessageButtons.OK);
                     ms.ShowDialog();
                 }
                 else
-                if (await Task.Run(() => CustormerServices.Ins.updateCustomer(MaKH, TenKH, Email, DiaChi)))
+                if (await Task.Run(() => CustormerServices.Ins.updateCustomer(MaKH, TenKH, SDT, Email, DiaChi)))
                 {
                     MessageBoxML ms = new MessageBoxML("Thông báo", "Chỉnh sửa thông tin thành công", MessageType.Accept, MessageButtons.OK);
 

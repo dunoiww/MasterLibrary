@@ -57,6 +57,7 @@
     <EntitySetMapping Name="KHACHHANGs">
       <EntityTypeMapping TypeName="MasterlibraryModel.KHACHHANG">
         <MappingFragment StoreEntitySet="KHACHHANG">
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="NGAYDK" ColumnName="NGAYDK" />
           <ScalarProperty Name="CHITIEU" ColumnName="CHITIEU" />
           <ScalarProperty Name="ISEXIST" ColumnName="ISEXIST" />

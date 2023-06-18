@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Text.RegularExpressions;
+using System.Windows.Controls;
 
 namespace MasterLibrary.Views.Customer.SettingPage
 {
@@ -11,6 +12,12 @@ namespace MasterLibrary.Views.Customer.SettingPage
         {
             InitializeComponent();
             this.Language = System.Windows.Markup.XmlLanguage.GetLanguage("vi-VN");
+        }
+
+        private void TextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

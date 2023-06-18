@@ -192,7 +192,7 @@
                     Grid.Column="1"
                     Background="#FFFFFFFF"
                     HorizontalAlignment="Right" 
-                    Height="500"
+                    Height="580"
                     Width="650"
                     Margin="0,20,20,0" 
                     UniformCornerRadius="8"
@@ -310,6 +310,59 @@
                                 SelectionBrush="#ffde59"
                                 BorderThickness="0"
                                 FontWeight="SemiBold">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PreviewTextInput" >
+                                        <ei:CallMethodAction TargetObject="{Binding }" 
+                                         MethodName="ValueValidationTextBox"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+                        </Grid>
+
+                        <Grid 
+                            Margin="20 0"
+                            VerticalAlignment="Center" 
+                            Width="600" 
+                            HorizontalAlignment="Left">
+                            <Label
+                                Content="Số điện thoại" 
+                                HorizontalAlignment="Left"
+                                FontSize="18" 
+                                FontWeight="SemiBold" 
+                                Foreground="#3f2016"
+                                Height="55"
+                                Width="135"
+                                Padding="5,10"
+                                VerticalAlignment="Center"
+                                Background="{x:Null}"/>
+
+                            <Rectangle
+                                Width="420" 
+                                Height="60"
+                                RadiusY="6"
+                                RadiusX="6" 
+                                Margin="0"
+                                Stroke="LightGray" 
+                                HorizontalAlignment="Right" 
+                                Fill="White"/>
+
+                            <TextBox Text="{Binding SDT, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                materialDesign:HintAssist.Hint="Số điện thoại"
+                                BorderBrush="LightGray"
+                                HorizontalAlignment="Right"  
+                                Width="420" 
+                                Height="75" 
+                                FontSize="18" 
+                                MaxLines="1"
+                                Padding="10,0,0,0" 
+                                Foreground="#3f2016"
+                                HorizontalContentAlignment="Left"
+                                VerticalContentAlignment="Center" 
+                                VerticalAlignment="Center"
+                                SelectionBrush="#ffde59"
+                                BorderThickness="0"
+                                FontWeight="SemiBold"
+                                PreviewTextInput="TextBox_PreviewTextInput">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PreviewTextInput" >
                                         <ei:CallMethodAction TargetObject="{Binding }" 

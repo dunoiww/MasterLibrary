@@ -62,6 +62,13 @@ namespace MasterLibrary.ViewModel.LoginVM
             set { _fullnamereg = value; OnPropertyChanged(); }
         }
 
+        private string _phonereg;
+        public string Phonereg
+        {
+            get { return _phonereg; }
+            set { _phonereg = value; OnPropertyChanged(); }
+        }
+
         private string _emailreg;
         public string Emailreg
         {
@@ -94,6 +101,13 @@ namespace MasterLibrary.ViewModel.LoginVM
         {
             get { return _IsNullNameReg; }
             set { _IsNullNameReg = value; OnPropertyChanged(); }
+        }
+
+        private bool _IsNullPhoneReg;
+        public bool IsNullPhoneReg
+        {
+            get { return _IsNullPhoneReg; }
+            set { _IsNullPhoneReg = value; OnPropertyChanged(); }
         }
 
         private bool _IsNullEmailReg;
@@ -143,8 +157,11 @@ namespace MasterLibrary.ViewModel.LoginVM
             // Bật window đăng kí
             LoadRegister = new RelayCommand<System.Windows.Window>((p) => { return true; }, (p) =>
             {
-                Window w1 = new RegisterWindow();
-
+                RegisterWindow w1 = new RegisterWindow();
+                w1.hoten_tb.Clear();
+                w1.sdt_tb.Clear();
+                w1.email_tb.Clear();
+                w1.tdn_tb.Clear();
                 Mask.Visibility = Visibility.Visible;
 
                 w1.ShowDialog();
@@ -183,17 +200,34 @@ namespace MasterLibrary.ViewModel.LoginVM
             #region Register
             RegisterML = new RelayCommand<Label>((p) => { return true; }, async (p) =>
             {
-                IsNullNameReg = IsNullEmailReg = IsNullUserReg = IsNullPasswordReg = false;
+                IsNullNameReg = IsNullEmailReg = IsNullUserReg = IsNullPasswordReg = IsNullPhoneReg = false;
 
                 if (string.IsNullOrEmpty(Fullnamereg)) IsNullNameReg = true;
                 if (string.IsNullOrEmpty(Emailreg)) IsNullEmailReg = true;
                 if (string.IsNullOrEmpty(Usernamereg)) IsNullUserReg = true;
                 if (string.IsNullOrEmpty(Passwordreg)) IsNullPasswordReg = true;
+                if (string.IsNullOrEmpty(Phonereg)) IsNullPhoneReg = true;
 
-                if (IsNullNameReg || IsNullEmailReg || IsNullUserReg || IsNullPasswordReg) return;
+                if (IsNullNameReg || IsNullEmailReg || IsNullUserReg || IsNullPasswordReg || IsNullPhoneReg) return;
 
                 string match = @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
                 Regex reg = new Regex(match);
+
+                string matchPhone = @"^(0|\\+84|84)[3|5|7|8|9][0-9]{8}$";
+                Regex regphone = new Regex(matchPhone);
+
+                if (regphone.IsMatch(Phonereg) == false)
+                {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Số điện thoại không hợp lệ", MessageType.Error, MessageButtons.OK);
+                    ms.ShowDialog();
+                    return;
+                }
+
+                if (await Task.Run(() => CustormerServices.Ins.CheckPhoneNumberCustormer(Phonereg, -1))) {
+                    MessageBoxML ms = new MessageBoxML("Thông báo", "Số điện thoại đã tồn tại", MessageType.Error, MessageButtons.OK);
+                    ms.ShowDialog();
+                    return;
+                }
 
                 if (reg.IsMatch(Emailreg) == false)
                 {
@@ -219,12 +253,18 @@ namespace MasterLibrary.ViewModel.LoginVM
                 }
 
                 string fullname = Fullnamereg;
+                string phonenumber = Phonereg;
                 string email = Emailreg;
                 string usernamereg = Usernamereg;
                 string passwordreg = Passwordreg;
 
                 //thực hiện đăng ký tài khoản
-                CustormerServices.Ins.Register(fullname, email, usernamereg, passwordreg);
+                CustormerServices.Ins.Register(fullname, email, phonenumber, usernamereg, passwordreg);
+
+                //đóng window đăng kí
+                LoginViewModel.Mask.Visibility = Visibility.Collapsed;
+                RegisterWindow w = Application.Current.Windows.OfType<RegisterWindow>().FirstOrDefault();
+                w.Close();
             });
 
             // Nhận mật khẩu mỗi lần thay đổi
