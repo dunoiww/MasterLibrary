@@ -99,7 +99,7 @@
                 <ListView ItemsSource="{Binding ListCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                           x:Name="lvCustomer"
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
                           ToolTip="Nhấp đúp để xem phiếu độc giả.">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="MouseDoubleClick">
@@ -125,7 +125,7 @@
                             </GridViewColumn>
 
                             <GridViewColumn Header="Tên khách hàng"
-                                            Width="200">
+                                            Width="auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding TENKH}"
@@ -141,7 +141,7 @@
                             </GridViewColumn>
 
                             <GridViewColumn Header="Tài khoản"
-                                            Width="150">
+                                            Width="auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding USERNAME}"
@@ -157,10 +157,26 @@
                             </GridViewColumn>
 
                             <GridViewColumn Header="Mật khẩu"
-                                            Width="150">
+                                            Width="auto">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBlock Text="{Binding DeCodeUSERPASSWORD}"
+                                                   TextWrapping="Wrap"
+                                                   Margin=" 18 0 0 0"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="16"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="#FF333333" />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                            <GridViewColumn Header="Số điện thoại"
+                                            Width="auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding SDT}"
                                                    TextWrapping="Wrap"
                                                    Margin=" 18 0 0 0"
                                                    HorizontalAlignment="Center"

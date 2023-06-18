@@ -4,6 +4,7 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\MainWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\ResourcesXAML\MainResources.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\UserControlML\controlbar_uc.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\BookManagePage1.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\DetailBookWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\updatingwindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BorrowBookPage\BorrowBookPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BorrowBookPage\BorrowBookVorcherPage.xaml;;
@@ -43,6 +44,7 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BookLocationPage\Bo
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BorrowBookPage\BorrowBookPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\BuyBookPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\DetailBookService.xaml;;
+FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\DetailReviewWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeFinish.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeliveryPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\DeliveryPage\DeNotFinish.xaml;;
@@ -61,6 +63,4 @@ FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\LoginWindow\LoginWindow.xaml
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\LoginWindow\RegisterWindow.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\LoginWindow\VerificationPage.xaml;;
 FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\MessageBoxML\MessageBoxML.xaml;;
-FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Admin\BookManagePage\DetailBookWindow.xaml;;
-FD:\MasterLibrary\MasterLibrary\MasterLibrary\Views\Customer\BuyBookPage\DetailReviewWindow.xaml;;
 
