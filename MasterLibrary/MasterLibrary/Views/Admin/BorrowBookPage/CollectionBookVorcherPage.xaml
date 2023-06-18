@@ -540,12 +540,15 @@
                                Foreground="#FF333333" />
 
                     <TextBox Grid.Column="1"
+                             x:Name="tbMaKH"
                              HorizontalAlignment="Left"
                              TextWrapping="Wrap"
                              VerticalAlignment="Center"
                              FontSize="16"
                              FontWeight="SemiBold"
                              Foreground="#FF333333"
+                             TextChanged="TextBox_TextChanged"
+                             PreviewTextInput="tbMaKH_PreviewTextInput"
                              Text="{Binding MaKH,UpdateSourceTrigger=PropertyChanged}"
                              Width="170">
                         <i:Interaction.Triggers>

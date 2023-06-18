@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,6 +46,20 @@ namespace MasterLibrary.Views.Admin.BorrowBookPage
         {
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListBoxBookInBorrow.ItemsSource);
             view.Filter = Filter;
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(tbMaKH.Text))
+            {
+                tbMaKH.Text = "0";
+            }
+        }
+
+        private void tbMaKH_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

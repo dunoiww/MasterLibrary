@@ -201,10 +201,11 @@ namespace MasterLibrary.Models.DataProvider
                                              TenKH = thusach.KHACHHANG.TENKH,
                                              TenSach = thusach.SACH.TENSACH,
                                              NgayTra = thusach.NGAYTHU,
+                                             SoNgayQuaHan = (int)DbFunctions.DiffDays(thusach.NGAYHETHAN, thusach.NGAYTHU),
                                              SoLuong = (int)thusach.SOLUONG,
                                              SoLuongHong = (int)thusach.SOLUONGHONG,
-                                             TienHong = (int)thusach.TIENPHATHONG,
-                                             TienTre = (int)thusach.TIENTREMOTNGAY,
+                                             TienHong = (int)(thusach.TIENPHATHONG * thusach.SOLUONGHONG),
+                                             TongTienTreMotCuon = (int)(thusach.TIENTREMOTNGAY * DbFunctions.DiffDays(thusach.NGAYHETHAN, thusach.NGAYTHU)),
                                              TongTienTra = (int)thusach.TONGTIEN
                                          }
                     ).ToListAsync();
@@ -279,10 +280,11 @@ namespace MasterLibrary.Models.DataProvider
                                              TenKH = thusach.KHACHHANG.TENKH,
                                              TenSach = thusach.SACH.TENSACH,
                                              NgayTra = thusach.NGAYTHU,
+                                             SoNgayQuaHan = (int)DbFunctions.DiffDays(thusach.NGAYHETHAN, thusach.NGAYTHU),
                                              SoLuong = (int)thusach.SOLUONG,
                                              SoLuongHong = (int)thusach.SOLUONGHONG,
-                                             TienHong = (int)thusach.TIENPHATHONG,
-                                             TienTre = (int)thusach.TIENTREMOTNGAY,
+                                             TienHong = (int)(thusach.TIENPHATHONG * thusach.SOLUONGHONG),
+                                             TongTienTreMotCuon = (int)(thusach.TIENTREMOTNGAY * DbFunctions.DiffDays(thusach.NGAYHETHAN, thusach.NGAYTHU)),
                                              TongTienTra = (int)thusach.TONGTIEN
                                          }).ToListAsync();
                 }

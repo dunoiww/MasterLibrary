@@ -216,11 +216,22 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
+                        <GridViewColumn Header="Ngày quá hạn"
+                                        Width="auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock  Text="{Binding SoNgayQuaHan}"
+                                                FontSize="18"
+                                                Margin="18,0,0,0" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                         <GridViewColumn Header="Tiền phạt hỏng"
                                         Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding TienHong}"
+                                    <TextBlock  Text="{Binding TienHongStr}"
                                                 FontSize="18"
                                                 Margin="18,0,0,0" />
                                 </DataTemplate>
@@ -231,7 +242,7 @@
                                         Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding TongTienTreMotCuon}"
+                                    <TextBlock  Text="{Binding TongTienTreMotCuonStr}"
                                                 FontSize="18"
                                                 Margin="18,0,0,0" />
                                 </DataTemplate>
@@ -242,7 +253,7 @@
                                         Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock  Text="{Binding TongTienTra}"
+                                    <TextBlock  Text="{Binding TongTienTraStr}"
                                                 FontSize="18"
                                                 Margin="18,0,0,0" />
                                 </DataTemplate>

@@ -34,7 +34,16 @@ namespace MasterLibrary.DTOs
         public int SoLuongMax { get; set; }
         public int SoLuongHong { get; set; }
 
+        public int SoNgayQuaHan { get; set; }
+
         public int TienHong { get; set; }
+        public string TienHongStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(TienHong);
+            }
+        }
         public int TongTienHong { get; set; }
         public string TongTienHongStr
         {
@@ -54,6 +63,13 @@ namespace MasterLibrary.DTOs
         }
 
         public int TongTienTreMotCuon { get; set; }
+        public string TongTienTreMotCuonStr
+        {
+            get
+            {
+                return Helper.FormatVNMoney(TongTienTreMotCuon);
+            }
+        }
 
         public int TongTienTra { get; set; }
         public string TongTienTraStr

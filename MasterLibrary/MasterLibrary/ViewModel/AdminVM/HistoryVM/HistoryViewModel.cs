@@ -1251,10 +1251,12 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                             ws.Cells[1, 1] = "Mã phiếu thu";
                             ws.Cells[1, 2] = "Tên khách hàng";
                             ws.Cells[1, 3] = "Tên sách";
-                            ws.Cells[1, 4] = "Số lượng hỏng";
-                            ws.Cells[1, 5] = "Tổng tiền hỏng";
-                            ws.Cells[1, 6] = "Tiền trễ";
-                            ws.Cells[1, 7] = "Tổng tiền trả";
+                            ws.Cells[1, 4] = "Ngày thu";
+                            ws.Cells[1, 5] = "Số ngày quá hạn";
+                            ws.Cells[1, 6] = "Số lượng hỏng";
+                            ws.Cells[1, 7] = "Tổng tiền hỏng";
+                            ws.Cells[1, 8] = "Tiền trễ";
+                            ws.Cells[1, 9] = "Tổng tiền trả";
 
                             int count = 2;
                             foreach (var item in ListCollect)
@@ -1262,10 +1264,12 @@ namespace MasterLibrary.ViewModel.AdminVM.HistoryVM
                                 ws.Cells[count, 1] = item.MaPhieuMuon;
                                 ws.Cells[count, 2] = item.TenKH;
                                 ws.Cells[count, 3] = item.TenSach;
-                                ws.Cells[count, 4] = item.SoLuongHong;
-                                ws.Cells[count, 5] = item.TongTienHongStr;
-                                ws.Cells[count, 6] = item.TienTreStr;
-                                ws.Cells[count, 7] = item.TongTienTraStr;
+                                ws.Cells[count, 4] = item.NgayTra;
+                                ws.Cells[count, 5] = item.SoNgayQuaHan;
+                                ws.Cells[count, 6] = item.SoLuongHong;
+                                ws.Cells[count, 7] = item.TongTienHongStr;
+                                ws.Cells[count, 8] = item.TienTreStr;
+                                ws.Cells[count, 9] = item.TongTienTraStr;
 
                                 count++;
                             }
