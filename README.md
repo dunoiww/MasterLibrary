@@ -137,11 +137,11 @@ Facilitating the management of libraries by providing enhanced support for book 
 
 ## III. Authors
 
-* [Ngô Phương Nam](https://github.com/dunoiww) - 21522361
-    * Role: Frontend developer, backend developer, Database designer
-
 * [Vũ Đức Minh](https://github.com/dvcminh) - 21522348
     * Role: Team leader, Tester, Document preparer, Report preparer
+     
+* [Ngô Phương Nam](https://github.com/dunoiww) - 21522361
+    * Role: Frontend developer, backend developer, Database designer
 
 * [Võ Hữu](https://github.com/QuickyBooster) - 21522133
     * Role: Tester, Document preparer, Report preparer, System Analyst
