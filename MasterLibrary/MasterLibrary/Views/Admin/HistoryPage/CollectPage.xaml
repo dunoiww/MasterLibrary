@@ -238,7 +238,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Tiền trễ"
+                        <GridViewColumn Header="Tiền trễ/cuốn"
                                         Width="auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>

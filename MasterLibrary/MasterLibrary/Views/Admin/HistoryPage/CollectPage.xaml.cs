@@ -39,8 +39,8 @@ namespace MasterLibrary.Views.Admin.HistoryPage
             else
             {
                 return ((item as BookInCollectDTO).MaPhieuMuon.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                    ((item as BookInCollectDTO).TenKH.ToString().IndexOf(FilterBox.Text, StringComparison.Ordinal) >= 0) ||
-                    ((item as BookInCollectDTO).MaSach.ToString().IndexOf(FilterBox.Text, StringComparison.Ordinal) >= 0);
+                    ((item as BookInCollectDTO).TenKH.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                    ((item as BookInCollectDTO).TenSach.ToString().IndexOf(FilterBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
 

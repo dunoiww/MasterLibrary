@@ -316,9 +316,9 @@ namespace MasterLibrary.Models.DataProvider
                         {
                             MASACH = gr.Key,
                             Revenue = gr.Sum(s => s.SACH.GIA),
-                            soluong = gr.Sum(b => b.SOLUONG)
+                            soluong = gr.Sum(b => b.SOLUONG),
                         })
-                        .OrderByDescending(m => m.Revenue).Take(5)
+                        //.OrderByDescending(m => m.Revenue * m.soluong).Take(5)
                         .Join(
                             context.SACHes,
                             statis => statis.MASACH,
@@ -330,7 +330,9 @@ namespace MasterLibrary.Models.DataProvider
                                 tonggiaban = (decimal)(statis.soluong * sach.GIA),
                                 soluongban = (int)statis.soluong
                             }
-                         ).ToList();
+                         )
+                        .OrderByDescending(m => m.tonggiaban).Take(5)
+                        .ToList();
                         
                    
 
@@ -355,7 +357,7 @@ namespace MasterLibrary.Models.DataProvider
                             Revenue = gr.Sum(s => s.SACH.GIA),
                             soluong = gr.Sum(b => b.SOLUONG)
                         })
-                        .OrderByDescending(r => r.Revenue).Take(5)
+                        //.OrderByDescending(r => r.Revenue * r.soluong).Take(5)
                         .Join (
                             context.SACHes,
                             statis => statis.MASACH,
@@ -363,10 +365,13 @@ namespace MasterLibrary.Models.DataProvider
                             (statis, sach) => new BookDTO
                             {
                                 TenSach = sach.TENSACH,
-                                tonggiaban = (decimal)statis.Revenue,
+                                //tonggiaban = (decimal)statis.Revenue,
+                                tonggiaban = (decimal)(statis.soluong * sach.GIA),
                                 soluongban = (int)statis.soluong
                             }
-                        ).ToList();
+                        )
+                        .OrderByDescending(m => m.tonggiaban).Take(5)
+                        .ToList();
 
                     return bookStatis;
                 }
